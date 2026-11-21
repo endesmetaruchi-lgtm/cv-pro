@@ -282,5 +282,13 @@ function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`
 (function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
 window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();afficherUser();const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
+async function saveClient(nom,email,phone){
+  await supabase.from("clients").insert({name:nom,email:email,phone:phone});
+  alert("Bien enregistré !");
+}
+</script>
 </body>
 </html>
