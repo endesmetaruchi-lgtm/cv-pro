@@ -11,7 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;overflow-x:hidden}
-.header{background:#0f766e;color:#fff;padding:16px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;flex-direction:column;align-items:stretch!important;gap:12px}
+.header{background:#fff;color:#1e293b;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08);gap:12px}
+.topbar-logo{font-weight:900;color:#0f766e;font-size:18px;white-space:nowrap}.topbar-logo span{color:#f59e0b}
 .badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700;align-self:flex-start}
 .container{max-width:1300px;margin:0 auto;padding:16px;width:100%}
 .pub-zone{background:#fff;border:2px dashed #cbd5e1;border-radius:12px;padding:14px;text-align:center;color:#94a3b8;font-size:11px;font-weight:700;margin:12px 0}
@@ -62,9 +63,10 @@ input[type=range]{padding:0;background:transparent}
 .order-row{display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
 .order-btns button{border:1.5px solid #0f766e;background:#ecfdf5;color:#065f46;width:32px;height:32px;border-radius:8px;font-weight:900;cursor:pointer;margin-left:4px}
 .order-btns button:disabled{opacity:.3}
-.nav{display:flex;flex-direction:column;gap:8px;width:100%}
-.nav button{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:11px 14px;border-radius:12px;font-weight:800;cursor:pointer;font-size:14px;text-align:left;width:100%}
-.nav button.active,.nav button:hover{background:#fff;color:#0f766e}
+.nav{display:flex;gap:6px;align-items:center}
+.nav button{background:transparent;color:#334155;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
+.nav button.active,.nav button:hover{background:#ecfdf5;color:#0f766e}
+.nav .btn-inscrire{background:#f59e0b!important;color:#fff!important;border-radius:12px;padding:11px 18px}
 #btnAdminNav{display:none!important}
 #btnAdminNav.visible{display:block!important}
 .page{display:none}.page.active{display:block}
@@ -88,37 +90,47 @@ input[type=range]{padding:0;background:transparent}
 .avis-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:10px}
 .stars{font-size:20px;cursor:pointer;letter-spacing:2px}
 .seo-text{font-size:12px;color:#64748b;line-height:1.6;text-align:center;padding:10px}
-#userProfile{display:none;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.5);border-radius:14px;padding:10px;align-items:center;gap:10px}
+#userProfile{display:none;background:#ecfdf5;border:1.5px solid #a7f3d0;border-radius:14px;padding:6px 10px;align-items:center;gap:8px}
 #userProfile.visible{display:flex}
-#userProfile img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
-#btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:900;cursor:pointer;width:100%}
+#userProfile img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
+#btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:9px 12px;border-radius:10px;font-weight:900;cursor:pointer}
 #btnLogoutClient.visible{display:block}
-@media(min-width:1100px){.layout{flex-direction:row}.header{width:220px;min-height:100vh;height:100vh;position:sticky;top:0;flex-shrink:0}.main{flex:1;min-width:0}.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:20px}.preview-box{min-height:640px}}
-@media(min-width:900px) and (max-width:1099px){.layout{flex-direction:row}.header{width:200px;min-height:100vh;height:100vh;position:sticky;top:0;flex-shrink:0}.main{flex:1;min-width:0}.container{max-width:none}.grid{grid-template-columns:1fr}.preview-card{position:static}}
-@media(max-width:899px){.layout{flex-direction:column}.header{flex-direction:row;flex-wrap:wrap;align-items:center!important;position:sticky;top:0;padding:12px}.header>div:first-child{flex:1 1 55%}.badge{align-self:center}.nav{flex-direction:row;flex-wrap:wrap;flex:1 1 100%}.nav button{flex:1 1 30%;text-align:center;padding:10px 8px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}}
+@media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
+@media(max-width:899px){.header{flex-wrap:wrap;padding:12px}.nav{flex-wrap:wrap;justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.steps-grid{grid-template-columns:1fr 1fr!important}}
 </style>
 </head>
 <body>
 <a class="wa-float" href="https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20pour%20mon%20CV" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:22px"></i> Besoin d'aide ?</a>
 <div class="layout">
-<div class="header"><div><b> CV PRO GABON</b><br><span style="font-size:11px;opacity:.85">Ton CV pro en 2 min</span></div>
+<div class="header">
+<div class="topbar-logo">CV <span>PRO</span> GABON</div>
+<div class="nav"><button class="active" onclick="showPage('accueil',this)">Accueil</button><button onclick="showPage('generateur',this)">Créer mon CV</button><button onclick="showPage('avis',this)">Avis &amp; Aide</button><button onclick="showPage('connexion',this)">Connexion</button><button class="btn-inscrire" onclick="showPage('connexion',this)">S'inscrire</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div>
 <div id="userProfile"><img id="userPhotoTop" src=""><div><b id="userNameTop" style="font-size:13px"></b><br><span style="font-size:11px;opacity:.85">Mon compte</span></div></div>
 <button id="btnLogoutClient" onclick="seDeconnecter()">🚪 Se déconnecter</button>
-<div class="nav"><button class="active" onclick="showPage('accueil',this)">🏠 Accueil</button><button onclick="showPage('generateur',this)">📄 Créer mon CV</button><button onclick="showPage('connexion',this)">👤 Connexion</button><button onclick="showPage('avis',this)">💬 Avis &amp; Aide</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div><span id="saveStatus" class="badge">✓ Sauvegardé</span></div>
+<span id="saveStatus" class="badge" style="display:none">✓ Sauvegardé</span>
+</div>
 <div class="main">
 <div class="container">
 <div id="page-accueil" class="page active">
-<div class="hero"><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b style="font-size:22px;color:#fde68a">1000F</b> - Airtel Money • Moov Money • Visa via SasPay<br>4 modèles pro, aperçu en direct, PDF prêt à envoyer<br><b>Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville...</b></p><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
+<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center" class="hero-grid">
+<div class="hero" style="text-align:left;margin:0"><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b style="font-size:22px;color:#fde68a">1000F</b> - Airtel Money • Moov Money • Visa via SasPay<br>4 modèles pro, aperçu en direct, PDF prêt à envoyer<br><b>Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville...</b></p><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
+<div class="card" style="margin:0"><b>Aperçu d'un CV pro</b><p style="font-size:13px;color:#64748b;line-height:1.7">MBOUMBA Jean Pierre<br>Assistant Administratif<br>06 12 34 56 78 • Libreville<br><br>⭐ Modèle Sombre Pro<br>⭐ Aperçu en direct<br>⭐ PDF prêt à envoyer</p></div>
+</div>
 <div class="stats"><div class="stat"><b>4</b>Modèles pro</div><div class="stat"><b>2 min</b>Pour créer</div><div class="stat"><b>1000F</b>Paiement unique</div></div>
 <div class="card"><div class="section-title">⭐ ILS ONT DÉJÀ CRÉÉ LEUR CV</div>
 <div class="avis-card"><b>⭐⭐⭐⭐⭐ Excellent !</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout à Libreville. Merci !" <br><span style="color:#64748b;font-size:12px">- Grâce M., Nzeng-Ayong, Libreville</span></div>
 <div class="avis-card"><b>⭐⭐⭐⭐⭐ Très facile</b><br>"Je ne savais pas faire un CV, l'exemple m'a beaucoup aidé. PDF propre." <br><span style="color:#64748b;font-size:12px">- Junior O., Port-Gentil</span></div>
 <div class="avis-card"><b>⭐⭐⭐⭐⭐ Je recommande</b><br>"Paiement Airtel Money facile, CV téléchargé direct. Top !" <br><span style="color:#64748b;font-size:12px">- Prisca N., Oyem</span></div>
 </div>
-<div class="card"><div class="section-title">COMMENT ÇA MARCHE ?</div><p>1. Choisis ton modèle<br>2. Remplis tes infos (ou clique sur Exemple)<br>3. Paie 1000F sur SasPay<br>4. Télécharge ton PDF</p></div>
-<p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi. Modèles CV Gabon, CV Libreville, emploi Gabon.</p>
-</div>
-<div id="page-generateur" class="page">
+<div class="card"><div class="section-title">COMMENT ÇA MARCHE ?</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" class="steps-grid">
+<div class="stat"><b>1</b>Choisis ton modèle</div>
+<div class="stat"><b>2</b>Remplis tes infos (ou clique sur Exemple)</div>
+<div class="stat"><b>3</b>Paie 1000F sur SasPay</div>
+<div class="stat"><b>4</b>Télécharge ton PDF</div>
+</div></div>
+<p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi.</p>
+</div><div id="page-generateur" class="page">
 <div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <button class="exemple-toggle" onclick="document.getElementById('exempleBox').classList.toggle('open')">👀 VOIR L'EXEMPLE CV PRO COMPLET</button>
 <div id="exempleBox" class="exemple-content">
@@ -211,7 +223,7 @@ input[type=range]{padding:0;background:transparent}
 </div>
 </div>
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
-<script>
+  <script>
 const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
 const ADMIN_CODE="gabon2026@admin";
 const WA_NUMBER="24165663721";
@@ -282,7 +294,7 @@ function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`
 (function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
 window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();afficherUser();const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
 async function saveClient(nom,email,phone){
