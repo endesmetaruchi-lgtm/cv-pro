@@ -92,8 +92,24 @@ input[type=range]{padding:0;background:transparent}
 .btn-aide{background:#16a34a;color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:12px;text-decoration:none;display:inline-block;margin-top:6px}
 .photo-upload{width:96px;height:96px;border-radius:50%;border:3px solid #f59e0b;background:#ecfdf5;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px auto 12px;cursor:pointer;overflow:hidden;text-align:center;color:#0f766e;font-size:11px;font-weight:800}
 .photo-upload img{width:100%;height:100%;object-fit:cover;display:none}
+.hero-new{background:linear-gradient(135deg,#047857,#059669 55%,#10b981);color:#fff;border-radius:18px;padding:22px;margin:6px 0 14px;overflow:hidden}
+.hero-top{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:center}
+.hero-new h1{margin:0 0 8px;font-size:28px;line-height:1.15}
+.hero-new p{margin:0 0 10px;font-size:13px;line-height:1.6;opacity:.95}
+.hero-loc{font-size:12px;opacity:.9;margin-bottom:14px}
+.laptop{background:#fff;border-radius:10px 10px 0 0;padding:12px;color:#1e293b;box-shadow:0 12px 25px rgba(0,0,0,.25);min-height:150px}
+.laptop:before{content:"";display:block;width:36px;height:5px;background:#e2e8f0;border-radius:99px;margin:0 auto 10px}
+.laptop-base{height:10px;background:#e2e8f0;border-radius:0 0 12px 12px;margin:0 -6px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.hstat{background:#fff;color:#1e293b;border-radius:12px;padding:12px;text-align:center}
+.hstat .ico{width:34px;height:34px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:16px}
+.hstat:nth-child(2) .ico{background:#fef3c7;color:#d97706}
+.hstat:nth-child(3) .ico{background:#fff7ed;color:#ea580c}
+.hstat b{display:block;font-size:16px;color:#065f46}
+.hstat:nth-child(2) b{color:#92400e}.hstat:nth-child(3) b{color:#9a3412}
+.hstat span{font-size:11px;color:#64748b;line-height:1.3;display:block}
 @media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
-@media(max-width:899px){.header{justify-content:center;text-align:center}.nav{justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.bottom-grid{grid-template-columns:1fr}}
+@media(max-width:899px){.header{justify-content:center;text-align:center}.nav{justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.bottom-grid{grid-template-columns:1fr}.hero-top{grid-template-columns:1fr}.hero-new h1{font-size:23px}.hero-stats{gap:6px}.hstat{padding:8px 4px}}
 </style>
 </head>
 <body>
@@ -109,11 +125,17 @@ input[type=range]{padding:0;background:transparent}
 <div class="main">
 <div class="container">
 <div id="page-accueil" class="page active">
-<div style="display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center" class="hero-grid">
-<div class="hero" style="text-align:left;margin:0"><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b style="font-size:22px;color:#fde68a">1000F</b> - Airtel Money • Moov Money • Visa via SasPay<br>4 modèles pro, aperçu en direct, PDF prêt à envoyer<br><b>Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville...</b></p><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
-<div class="card" style="margin:0"><b>Aperçu d'un CV pro</b><p style="font-size:13px;color:#64748b;line-height:1.7">MBOUMBA Jean Pierre<br>Assistant Administratif<br>06 12 34 56 78 • Libreville<br><br>⭐ Modèle Sombre Pro<br>⭐ Aperçu en direct<br>⭐ PDF prêt à envoyer</p></div>
+<div class="hero-new">
+<div class="hero-top">
+<div><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b>1000F</b> - Airtel Money, Moov Money, Visa via SasPay • 4 modèles pro • aperçu en direct • PDF prêt à envoyer</p><div class="hero-loc">📍 Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville</div><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
+<div><div class="laptop"><b style="font-size:11px;color:#0f766e">MON CV</b><div style="display:flex;gap:8px;margin-top:8px"><div style="width:36px;height:36px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">JD</div><div style="font-size:11px;line-height:1.4"><b>Jean Dupont</b><br><span style="color:#64748b">Comptable - Libreville</span></div></div><div style="margin-top:10px;font-size:10px;color:#334155"><b style="color:#059669">Expérience</b><div style="height:5px;background:#e2e8f0;border-radius:99px;margin:4px 0"></div><div style="height:5px;background:#e2e8f0;border-radius:99px;width:80%"></div><b style="color:#059669;display:block;margin-top:8px">Compétences</b><div style="height:5px;background:#fef3c7;border-radius:99px;margin-top:4px"></div></div></div><div class="laptop-base"></div></div>
 </div>
-<div class="stats"><div class="stat"><b>4</b>Modèles pro</div><div class="stat"><b>2 min</b>Pour créer</div><div class="stat"><b>1000F</b>Paiement unique</div></div>
+<div class="hero-stats">
+<div class="hstat"><div class="ico"><i class="fa-solid fa-layer-group"></i></div><b>4 Modèles</b><span>Designs modernes et 100% friendly</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-clock"></i></div><b>2 min</b><span>Pour créer Remplis, prévisualise, télécharge</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-coins"></i></div><b>1000F</b><span>Paiement unique Sans abonnement, paiement unique sécurisé</span></div>
+</div>
+</div>
 <div class="bottom-grid">
 <div><div class="mini-title">ILS ONT DÉJÀ CRÉÉ LEUR CV</div><div class="mini-avis">
 <div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout."<br><span style="color:#16a34a;font-weight:800">Grâce M. - Libreville</span></div>
@@ -122,7 +144,7 @@ input[type=range]{padding:0;background:transparent}
 </div></div>
 <div><div class="mini-title">COMMENT ÇA MARCHE ?</div><div class="mini-steps">
 <div class="mini-step"><b>1</b>Choisis ton modèle</div>
-<div class="mini-step"><b>2</b>Remplis tes infos</div>
+<div class="mini-step"><b>2</b>Remplis tes infos (ou clique sur Exemple)</div>
 <div class="mini-step"><b>3</b>Paie 1000F sur SasPay</div>
 <div class="mini-step"><b>4</b>Télécharge ton PDF</div>
 </div></div>
