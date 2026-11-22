@@ -3,153 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Gabon - Crée ton CV Pro en 2 min</title>
+<title>CV Gabon - Crée ton CV Pro à Libreville pour 1000F en 2 minutes</title>
+<meta name="description" content="Crée ton CV pro en 2 minutes pour 1000F à Libreville, Port-Gentil et partout au Gabon. 4 modèles, aperçu en direct, PDF prêt à envoyer. Paiement Airtel Money, Moov Money via SasPay.">
+<meta name="keywords" content="CV Gabon, CV Libreville, CV Port-Gentil, emploi Gabon, créer CV Gabon">
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Montserrat:wght@700;800;900&family=Poppins:wght@600;700;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f8fafc;color:#1e293b}
-a{cursor:pointer}
-.topbar{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;gap:10px}
-.topbar-logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:#0f172a}
-.topbar-logo span{color:#059669}
-.logo-icon{width:42px;height:42px;background:#059669;border-radius:10px;display:flex;align-items:center;justify-content:center}
-.logo-icon svg{width:26px;height:26px}
-.logo-gabon{font-size:11px;letter-spacing:2px;color:#059669;font-weight:800}
-.nav{display:flex;gap:6px;flex-wrap:wrap}
-.nav button{border:1px solid #e2e8f0;background:#fff;padding:8px 12px;border-radius:999px;font-weight:700;font-size:13px;cursor:pointer}
-.nav button.active{background:#0f172a;color:#fff}
-.container{max-width:1200px;margin:0 auto;padding:14px}
-.page{display:none}.page.active{display:block}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:16px;margin-bottom:14px}
-.section-title{background:#0f172a;color:#fff;padding:10px 12px;border-radius:8px;font-weight:800;font-size:13px;margin:14px 0 10px}
-.section-title:first-child{margin-top:0}
-input,textarea,select{width:100%;padding:11px 12px;border:1.5px solid #cbd5e1;border-radius:9px;margin:6px 0 10px;font-size:14px;font-family:inherit}
-input[type=color]{height:42px;padding:4px}input[type=file]{padding:8px}input[type=range]{padding:0}
-label.label{display:block;font-size:12px;font-weight:700;color:#475569;margin-top:8px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.btn-all{display:block;width:100%;background:#059669;color:#fff;border:none;padding:14px;border-radius:10px;font-weight:900;font-size:15px;cursor:pointer;margin:10px 0}
-.btn-pay{display:block;width:100%;background:linear-gradient(135deg,#f59e0b,#ea580c);color:#fff;border:none;padding:16px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer;margin:14px 0}
-.btn-pay small{display:block;font-size:11px;font-weight:600;opacity:.95;margin-top:4px}
-.btn-clear{display:block;width:100%;background:#fff;border:1.5px solid #fca5a5;color:#dc2626;padding:11px;border-radius:9px;font-weight:700;cursor:pointer;margin:8px 0}
-.btn-ex{background:#fef3c7;border:1px solid #fcd34d;color:#92400e;font-size:11px;padding:4px 8px;border-radius:999px;cursor:pointer;font-weight:700}
-.btn-del{background:#fee2e2;border:1px solid #fca5a5;color:#991b1b;font-size:11px;padding:4px 8px;border-radius:999px;cursor:pointer}
-.label-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
-.label-row .actions{display:flex;gap:6px}
-.error{display:none;color:#dc2626;font-size:12px;font-weight:700;margin:-4px 0 8px}
-.error.show{display:block}
+*{box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b}
+.header{background:#fff;color:#1e293b;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08);gap:12px;flex-wrap:wrap;width:100%}
+.topbar-logo{display:flex;align-items:center;gap:9px;font-weight:900;color:#0f766e;font-size:19px;line-height:1;white-space:nowrap}
+.topbar-logo span{color:#f59e0b}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#0f766e,#14b8a6);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(15,118,110,.35)}
+.logo-icon svg{width:26px;height:26px;display:block}
+.logo-gabon{font-size:14px;letter-spacing:3px;color:#0f766e;font-weight:900}
+.badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700}
+.container{max-width:1300px;margin:0 auto;padding:16px;width:100%}
+.pub-zone{background:#fff;border:2px dashed #cbd5e1;border-radius:12px;padding:14px;text-align:center;color:#94a3b8;font-size:11px;font-weight:700;margin:12px 0}
+.grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-bottom:16px}
+.section-title{background:#1e293b;color:#fff;padding:9px 12px;border-radius:8px;font-weight:800;font-size:12px;margin:16px 0 12px}
+.label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px}
+.label{font-size:11px;font-weight:800;color:#334155;text-transform:uppercase}
+.actions{display:flex;gap:5px}
+.btn-ex{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#ecfdf5;color:#065f46;border:1.5px solid #10b981;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
+.btn-del{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
+input,textarea,select{width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:11px;font-size:14px;margin-bottom:12px;background:#f8fafc;outline:none}
+input:focus,textarea:focus{border-color:#0f766e;background:#fff}
+input[type=color]{height:44px;padding:4px;cursor:pointer}
+input[type=range]{padding:0;background:transparent}
+.row{display:flex;gap:10px}.row>*{flex:1}
 .models{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.model{border:2px solid #e2e8f0;border-radius:10px;padding:12px 6px;text-align:center;cursor:pointer;font-weight:800;font-size:13px;background:#fff}
-.model.active{border-color:#059669;background:#ecfdf5;color:#065f46}
-.pub-zone{border:2px dashed #f59e0b;background:#fffbeb;color:#92400e;text-align:center;padding:14px;border-radius:10px;font-weight:800;font-size:12px;margin:12px 0}
-.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:start}
-.preview-card{position:sticky;top:70px}
-.preview-box{border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;background:#fff;min-height:500px;display:flex}
-.pb-side{width:210px;flex-shrink:0;padding:16px 14px}
-.pb-main{flex:1;padding:18px}
-.photo-wrap{border-radius:50%;overflow:hidden;border:3px solid #f59e0b;margin:0 auto;background:#e2e8f0}
-.photo-circle{width:100%;height:100%;object-fit:cover}
-.photo-upload{width:96px;height:96px;border:2px dashed #94a3b8;border-radius:50%;margin:8px auto;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;overflow:hidden;position:relative;background:#f1f5f9}
+.model{border:2px solid #e2e8f0;border-radius:12px;padding:12px 6px;cursor:pointer;text-align:center;font-size:12px;font-weight:700}
+.model.active{border-color:#0f766e;background:#f0fdfa;color:#0f766e}
+.btn-pay{width:100%;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;border:none;border-radius:14px;padding:16px;font-weight:900;cursor:pointer;font-size:15px}
+.btn-pay small{display:block;font-weight:500;font-size:12px;opacity:.9;margin-top:3px}
+.preview-box{border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;min-height:500px;display:flex}
+.pb-side{width:36%;padding:16px;line-height:1.4}.pb-main{width:64%;padding:16px;line-height:1.5;flex:1}
+.photo-wrap{width:84px;height:84px;border-radius:50%;overflow:hidden;border:3px solid #fbbf24;flex-shrink:0;background:#e2e8f0;line-height:0}
+.photo-circle{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;border-radius:50%}
+.pb-side .photo-wrap{margin:0 auto 10px}
+.error{color:#dc2626;font-weight:700;font-size:12px;display:none;margin:-6px 0 8px}.error.show{display:block}
+.exemple-toggle{width:100%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px}
+.exemple-content{display:none;background:#fffbeb;border:2px dashed #f59e0b;border-radius:14px;padding:16px;margin-top:12px;font-size:13px;line-height:1.6}
+.exemple-content.open{display:block}
+.btn-all{background:#0f766e;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:10px}
+.btn-clear{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:12px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:8px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;align-items:center;justify-content:center;padding:16px}
+.modal.open{display:flex}.modal-box{background:#fff;max-width:640px;width:100%;max-height:88vh;overflow:auto;border-radius:18px;padding:26px;line-height:1.65;font-size:14px}
+.close-btn{background:#1e293b;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:800;cursor:pointer;width:100%;margin-top:18px}
+.order-row{display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
+.order-btns button{border:1.5px solid #0f766e;background:#ecfdf5;color:#065f46;width:32px;height:32px;border-radius:8px;font-weight:900;cursor:pointer;margin-left:4px}
+.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav button{background:transparent;color:#334155;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
+.nav button.active,.nav button:hover{background:#ecfdf5;color:#0f766e}
+.nav .btn-inscrire{background:#f59e0b!important;color:#fff!important;border-radius:12px;padding:11px 18px}
+#btnAdminNav{display:none!important}#btnAdminNav.visible{display:block!important}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(135deg,#0f766e,#115e59);color:#fff;border-radius:22px;padding:34px 22px;text-align:center;margin:6px 0 16px}
+.hero h1{margin:0 0 10px;font-size:30px}.hero p{opacity:.92;margin:0 0 18px;line-height:1.6}
+.btn-hero{background:#f59e0b;color:#fff;border:none;padding:15px 26px;border-radius:14px;font-weight:900;cursor:pointer;font-size:15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.stat{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center}
+.stat b{font-size:24px;color:#0f766e;display:block}
+.auth-box{max-width:420px;margin:20px auto}
+#page-generateur .card{border:none;box-shadow:0 4px 20px rgba(15,23,42,.07);border-radius:18px;padding:20px}
+#page-generateur .section-title{border-radius:10px;padding:11px 14px;font-size:13px}
+.layout{display:flex;flex-direction:column;min-height:100vh}.main{flex:1;display:flex;flex-direction:column;min-width:0;width:100%}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.avis-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:10px}
+.stars{font-size:20px;cursor:pointer;letter-spacing:2px}
+.seo-text{font-size:12px;color:#64748b;line-height:1.6;text-align:center;padding:10px}
+#userProfile{display:none;background:#ecfdf5;border:1.5px solid #a7f3d0;border-radius:14px;padding:6px 10px;align-items:center;gap:8px}
+#userProfile.visible{display:flex}#userProfile img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
+#btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:9px 12px;border-radius:10px;font-weight:900;cursor:pointer}
+#btnLogoutClient.visible{display:block}
+.bottom-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:16px}
+.mini-title{font-size:11px;font-weight:900;letter-spacing:.5px;color:#334155;text-align:center;margin-bottom:10px}
+.mini-avis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-avis .avis-card{margin:0;padding:10px;font-size:11px;line-height:1.5}
+.mini-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mini-step{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px 6px;text-align:center;font-size:11px;line-height:1.4}
+.mini-step b{width:26px;height:26px;border-radius:50%;background:#0f766e;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:13px}
+.mini-step:nth-child(2) b{background:#f59e0b}.mini-step:nth-child(3) b{background:#2563eb}.mini-step:nth-child(4) b{background:#dc2626}
+.footer-new{background:#111827;color:#cbd5e1;padding:18px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;width:100%}
+.footer-new .links{font-size:12px;color:#fff;font-weight:600}
+.footer-new .links a{color:#fff;text-decoration:none;margin:0 6px;cursor:pointer}
+.btn-aide{background:#16a34a;color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:12px;text-decoration:none;display:inline-block;margin-top:6px}
+.photo-upload{width:96px;height:96px;border-radius:50%;border:3px solid #f59e0b;background:#ecfdf5;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px auto 12px;cursor:pointer;overflow:hidden;text-align:center;color:#0f766e;font-size:11px;font-weight:800}
 .photo-upload img{width:100%;height:100%;object-fit:cover;display:none}
-.exemple-toggle{width:100%;background:#fef3c7;border:1.5px solid #f59e0b;color:#92400e;padding:12px;border-radius:10px;font-weight:900;cursor:pointer;margin:10px 0}
-.exemple-content{display:none}.exemple-content.open{display:block}
-.stars{font-size:26px;color:#f59e0b;cursor:pointer;letter-spacing:3px;margin:8px 0}
-.avis-card{border:1px solid #e2e8f0;border-radius:10px;padding:12px;margin:8px 0;background:#f8fafc}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stat{background:#f1f5f9;border-radius:10px;padding:14px;text-align:center}
-.stat b{display:block;font-size:22px;color:#059669}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:center;justify-content:center;padding:16px}
-.modal.open{display:flex}
-.modal-box{background:#fff;border-radius:14px;padding:20px;max-width:520px;width:100%;max-height:85vh;overflow:auto}
-.close-btn{background:#0f172a;color:#fff;border:none;padding:10px 16px;border-radius:8px;font-weight:700;cursor:pointer;margin-top:12px}
-.order-row{display:flex;justify-content:space-between;align-items:center;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px;margin:6px 0;font-size:13px;font-weight:600}
-.order-btns button{border:1px solid #cbd5e1;background:#fff;border-radius:6px;padding:4px 9px;cursor:pointer;font-weight:800}
-.order-btns button:disabled{opacity:.35;cursor:not-allowed}
-#saveStatus{font-size:11px;color:#16a34a;font-weight:700}
-.auth-box{max-width:440px;margin:20px auto}
-#userProfile{display:none;align-items:center;gap:8px}
-#userProfile.visible{display:flex}
-#userPhotoTop{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
-#btnLogoutClient,#btnAdminNav{display:none}
-#btnLogoutClient.visible,#btnAdminNav.visible{display:inline-block}
-.hero-new{background:#059669;color:#fff;border-radius:16px;padding:20px 22px 18px;margin:6px 0 14px;overflow:hidden}
-.hero-top{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;align-items:start}
-.hero-new h1{margin:0 0 8px;font-size:27px;line-height:1.15;font-weight:900}
-.hero-new p{margin:0 0 8px;font-size:12.5px;line-height:1.55;opacity:.95}
-.hero-loc{font-size:11.5px;opacity:.9;margin-bottom:12px}
-.laptop{background:#fff;border-radius:8px 8px 0 0;padding:10px;color:#1e293b;box-shadow:0 10px 20px rgba(0,0,0,.22);width:270px;margin-left:auto;min-height:118px}
-.laptop:before{content:"";display:block;width:32px;height:4px;background:#e2e8f0;border-radius:99px;margin:0 auto 8px}
-.laptop-base{height:8px;background:#dbe4ec;border-radius:0 0 10px 10px;width:282px;margin-left:auto}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.hstat{background:#fff;color:#1e293b;border-radius:10px;padding:10px 8px;text-align:center;min-height:78px}
-.hstat .ico{width:30px;height:30px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 5px;font-size:14px}
+.hero-new{background:linear-gradient(135deg,#047857,#059669 55%,#10b981);color:#fff;border-radius:18px;padding:22px;margin:6px 0 14px;overflow:hidden}
+.hero-top{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:center}
+.hero-new h1{margin:0 0 8px;font-size:28px;line-height:1.15}
+.hero-new p{margin:0 0 10px;font-size:13px;line-height:1.6;opacity:.95}
+.hero-loc{font-size:12px;opacity:.9;margin-bottom:14px}
+.laptop{background:#fff;border-radius:10px 10px 0 0;padding:12px;color:#1e293b;box-shadow:0 12px 25px rgba(0,0,0,.25);min-height:150px}
+.laptop:before{content:"";display:block;width:36px;height:5px;background:#e2e8f0;border-radius:99px;margin:0 auto 10px}
+.laptop-base{height:10px;background:#e2e8f0;border-radius:0 0 12px 12px;margin:0 -6px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.hstat{background:#fff;color:#1e293b;border-radius:12px;padding:12px;text-align:center}
+.hstat .ico{width:34px;height:34px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:16px}
 .hstat:nth-child(2) .ico{background:#fef3c7;color:#d97706}
 .hstat:nth-child(3) .ico{background:#fff7ed;color:#ea580c}
-.hstat b{display:block;font-size:15px;color:#065f46}
+.hstat b{display:block;font-size:16px;color:#065f46}
 .hstat:nth-child(2) b{color:#92400e}.hstat:nth-child(3) b{color:#9a3412}
-.hstat span{font-size:10px;color:#64748b;line-height:1.3;display:block}
-.bottom-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:14px;margin-top:14px}
-.mini-avis .avis-card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px;box-shadow:none}
-.mini-steps{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.mini-step{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:10px 6px;text-align:center;font-size:11px;font-weight:700;box-shadow:none}
-.mini-step i{display:block;font-size:18px;color:#059669;margin-bottom:5px}
-.footer-new{background:#0f172a;color:#cbd5e1;border-radius:14px;padding:18px;margin-top:16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.footer-new a{color:#fbbf24;text-decoration:none;font-weight:700}
-.links{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;margin-top:6px}
-.btn-aide{display:inline-block;background:#25D366;color:#fff!important;padding:8px 12px;border-radius:999px;font-weight:800;font-size:12px;margin-top:8px}
-@media(max-width:899px){.grid{grid-template-columns:1fr}.preview-card{position:static}.hero-top{grid-template-columns:1fr}.laptop{margin:10px auto 0}.laptop-base{margin:0 auto}.bottom-grid{grid-template-columns:1fr}.footer-new{grid-template-columns:1fr}.models{grid-template-columns:repeat(2,1fr)}.row{grid-template-columns:1fr}.hero-stats{grid-template-columns:repeat(3,1fr)}}
+.hstat span{font-size:11px;color:#64748b;line-height:1.3;display:block}
+@media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
+@media(max-width:899px){.header{justify-content:center;text-align:center}.nav{justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.bottom-grid{grid-template-columns:1fr}.hero-top{grid-template-columns:1fr}.hero-new h1{font-size:23px}.hero-stats{gap:6px}.hstat{padding:8px 4px}}
 </style>
 </head>
 <body>
-<div class="topbar">
+<a class="wa-float" href="https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20pour%20mon%20CV" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:22px"></i> Besoin d'aide ?</a>
+<div class="layout">
+<div class="header">
 <div class="topbar-logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" fill="#fff"/><path d="M14 2v4h4" fill="#0f766e"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#0f766e" stroke-width="1.6" stroke-linecap="round"/><path d="M15 15l5 5-2 2-5-5z" fill="#f59e0b" stroke="#92400e" stroke-width=".6"/></svg></div><div><div>CV <span>PRO</span></div><div class="logo-gabon">GABON</div></div></div>
-<div class="nav">
-<button class="active" onclick="showPage('accueil',this)">Accueil</button>
-<button onclick="showPage('generateur',this)">Créer mon CV</button>
-<button onclick="showPage('avis',this)">Avis &amp; Aide</button>
-<button onclick="showPage('connexion',this)">Connexion</button>
-<button id="btnAdminNav" onclick="showPage('admin',this)">Admin</button>
-<span id="userProfile"><img id="userPhotoTop"><b id="userNameTop" style="font-size:13px"></b></span>
-<button id="btnLogoutClient" onclick="seDeconnecter()">🚪</button>
+<div class="nav"><button class="active" onclick="showPage('accueil',this)">Accueil</button><button onclick="showPage('generateur',this)">Créer mon CV</button><button onclick="showPage('avis',this)">Avis &amp; Aide</button><button onclick="showPage('connexion',this)">Connexion</button><button class="btn-inscrire" onclick="showPage('connexion',this)">S'inscrire</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div>
+<div id="userProfile"><img id="userPhotoTop" src=""><div><b id="userNameTop" style="font-size:13px"></b><br><span style="font-size:11px;opacity:.85">Mon compte</span></div></div>
+<button id="btnLogoutClient" onclick="seDeconnecter()">🚪 Se déconnecter</button>
+<span id="saveStatus" class="badge" style="display:none">✓ Sauvegardé</span>
 </div>
-</div>
+<div class="main">
 <div class="container">
 <div id="page-accueil" class="page active">
 <div class="hero-new">
 <div class="hero-top">
-<div>
-<h1>Crée ton CV pro en 2 minutes ⏱️</h1>
-<p>4 modèles, envoie ton CV en PDF, trouve un travail plus vite au Gabon 🇬🇦</p>
-<div class="hero-loc">📍 Libreville • Port-Gentil • Oyem • partout au Gabon</div>
-</div>
-<div>
-<div class="laptop"><b style="font-size:13px">MON CV</b><div style="font-size:11px;color:#64748b;margin-top:4px">Prêt en 2 min ✅<br>PDF propre ✅</div></div>
-<div class="laptop-base"></div>
-</div>
+<div><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b>1000F</b> - Airtel Money, Moov Money, Visa via SasPay • 4 modèles pro • aperçu en direct • PDF prêt à envoyer</p><div class="hero-loc">📍 Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville</div><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
+<div><div class="laptop"><b style="font-size:11px;color:#0f766e">MON CV</b><div style="display:flex;gap:8px;margin-top:8px"><div style="width:36px;height:36px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">JD</div><div style="font-size:11px;line-height:1.4"><b>Jean Dupont</b><br><span style="color:#64748b">Comptable - Libreville</span></div></div><div style="margin-top:10px;font-size:10px;color:#334155"><b style="color:#059669">Expérience</b><div style="height:5px;background:#e2e8f0;border-radius:99px;margin:4px 0"></div><div style="height:5px;background:#e2e8f0;border-radius:99px;width:80%"></div><b style="color:#059669;display:block;margin-top:8px">Compétences</b><div style="height:5px;background:#fef3c7;border-radius:99px;margin-top:4px"></div></div></div><div class="laptop-base"></div></div>
 </div>
 <div class="hero-stats">
-<div class="hstat"><div class="ico">📄</div><b>4 Modèles</b><span>pro au choix</span></div>
-<div class="hstat"><div class="ico">⏱️</div><b>2 min</b><span>chrono express</span></div>
-<div class="hstat"><div class="ico">💳</div><b>1000F</b><span>via SasPay</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-layer-group"></i></div><b>4 Modèles</b><span>Designs modernes et 100% friendly</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-clock"></i></div><b>2 min</b><span>Pour créer Remplis, prévisualise, télécharge</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-coins"></i></div><b>1000F</b><span>Paiement unique Sans abonnement, paiement unique sécurisé</span></div>
 </div>
 </div>
 <div class="bottom-grid">
-<div class="mini-avis">
-<b style="font-size:13px">ILS ONT DÉJÀ CRÉÉ LEUR CV 💬</b>
-<div class="avis-card">★★★★★<br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout. Merci !" 😊<br><span style="color:#64748b;font-size:12px">- Grâce M., Libreville</span></div>
-<div class="avis-card">★★★★★<br>"Je ne savais pas faire un CV, l'exemple m'a beaucoup aidé." 😊<br><span style="color:#64748b;font-size:12px">- Junior O., Port-Gentil</span></div>
-<div class="avis-card">★★★★★<br>"Enfin un site gabonais simple et rapide !" 😊<br><span style="color:#64748b;font-size:12px">- Ornella N., Oyem</span></div>
+<div><div class="mini-title">ILS ONT DÉJÀ CRÉÉ LEUR CV</div><div class="mini-avis">
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout."<br><span style="color:#16a34a;font-weight:800">Grâce M. - Libreville</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Je ne savais pas faire un CV, l'exemple m'a aidé."<br><span style="color:#16a34a;font-weight:800">Junior O. - Port-Gentil</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Paiement Airtel Money facile, PDF direct. Top !"<br><span style="color:#16a34a;font-weight:800">Prisca N. - Oyem</span></div>
+</div></div>
+<div><div class="mini-title">COMMENT ÇA MARCHE ?</div><div class="mini-steps">
+<div class="mini-step"><b>1</b>Choisis ton modèle</div>
+<div class="mini-step"><b>2</b>Remplis tes infos (ou clique sur Exemple)</div>
+<div class="mini-step"><b>3</b>Paie 1000F sur SasPay</div>
+<div class="mini-step"><b>4</b>Télécharge ton PDF</div>
+</div></div>
 </div>
-<div>
-<b style="font-size:13px">COMMENT ÇA MARCHE ?</b>
-<div class="mini-steps" style="margin-top:8px">
-<div class="mini-step"><i class="fa-solid fa-pen"></i>1. Remplis</div>
-<div class="mini-step"><i class="fa-solid fa-eye"></i>2. Aperçu live</div>
-<div class="mini-step"><i class="fa-solid fa-credit-card"></i>3. Paie 1000F</div>
-<div class="mini-step"><i class="fa-solid fa-download"></i>4. PDF prêt</div>
-</div>
-</div>
-</div>
+<p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi.</p>
 </div><div id="page-generateur" class="page">
 <div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <button class="exemple-toggle" onclick="document.getElementById('exempleBox').classList.toggle('open')">👀 VOIR L'EXEMPLE CV PRO COMPLET</button>
@@ -249,50 +249,83 @@ label.label{display:block;font-size:12px;font-weight:700;color:#475569;margin-to
 </div>
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
 <script>
-const EXEMPLES={
-nom:"MBOUMBA Jean Pierre",titre:"Assistant Administratif / Comptable",tel:"06 12 34 56 78",email:"jean.mboumba@exemple.ga",adresse:"Nzeng-Ayong, Libreville",
-profil:"Jeune diplômé en Gestion et Comptabilité, motivé, organisé et ponctuel. Disponible immédiatement.",
-form:"2022-2024 BTS Gestion - Lycée d'Etat de Libreville\n2020-2022 Bac Série B - Lycée Classique de Libreville",
-exps:"2024 Stagiaire Boutique Mbolo - Accueil clients, caisse, factures",
-comps:"Word, Excel, Accueil client, Gestion de caisse",
-langues:"Français : Courant\nAnglais : Notions",qualites:"Ponctuel, travailleur, à l'écoute, rapide à apprendre",
-motiv:"Je souhaite intégrer votre entreprise pour mettre mes compétences en gestion au service de votre équipe et progresser durablement à Libreville."};
-const BLOCS=[{id:'profil',t:'PROFIL'},{id:'form',t:'FORMATION'},{id:'exps',t:'EXPÉRIENCE'},{id:'comps',t:'COMPÉTENCES'},{id:'langues',t:'LANGUES'},{id:'qualites',t:'QUALITÉS'},{id:'motiv',t:'MOTIVATION'},{id:'contact',t:'CONTACT'}];
-let order=[...BLOCS],model=1,photoData=null,avisEtoiles=0,paiementFait=false;
-const MODELS={1:{side:'#0f2a44',title:'#0f766e',accent:'#f59e0b',font:'inter'},2:{side:'#7c3aed',title:'#7c3aed',accent:'#06b6d4',font:'poppins'},3:{side:'#f59e0b',title:'#92400e',accent:'#059669',font:'montserrat'},4:{side:'#e0f2fe',title:'#0369a1',accent:'#0ea5e9',font:'roboto'}};
-function showPage(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
-function v(id){return document.getElementById(id).value.trim()}
-function setModel(m){model=m;document.querySelectorAll('.model').forEach(e=>e.classList.toggle('active',+e.dataset.m===m));document.getElementById('previewTitle').textContent='Aperçu Live - Modèle '+m;document.getElementById('styleModelLabel').textContent=m;document.getElementById('persoModelLabel').textContent=m;document.getElementById('exempleModelLabel').textContent=m;const c=MODELS[m];document.getElementById('colSide').value=c.side;document.getElementById('colTitle').value=c.title;document.getElementById('colAccent').value=c.accent;document.getElementById('fontSelect').value=c.font;renderOrder();updateStyle()}
-function renderOrder(){document.getElementById('orderList').innerHTML=order.map((b,i)=>`<div class="order-row"><span>${i+1}. ${b.t}</span><span class="order-btns"><button onclick="moveBlock(${i},-1)" ${i==0?'disabled':''}>↑</button><button onclick="moveBlock(${i},1)" ${i==order.length-1?'disabled':''}>↓</button></span></div>`).join('')}
-function moveBlock(i,d){const j=i+d;if(j<0||j>=order.length)return;[order[i],order[j]]=[order[j],order[i]];renderOrder();updateStyle()}
-function copierUn(id){document.getElementById(id).value=EXEMPLES[id];updateStyle()}
-function effacerUn(id){document.getElementById(id).value='';updateStyle()}
-function remplirTout(){Object.keys(EXEMPLES).forEach(k=>{const el=document.getElementById(k);if(el)el.value=EXEMPLES[k]});updateStyle();alert('Exemple copié dans le modèle '+model+' ✅')}
-function effacerExemple(){Object.keys(EXEMPLES).forEach(k=>{const el=document.getElementById(k);if(el)el.value=''});photoData=null;updateStyle()}
-function valider(){let ok=true;const checks=[['nom','errNom',x=>x.length>=3],['titre','errTitre',x=>x.length>=3],['tel','errTel',x=>x.replace(/\s/g,'').length>=8],['email','errEmail',x=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x)]];checks.forEach(([id,err,fn])=>{const good=fn(v(id));document.getElementById(err).classList.toggle('show',!good);if(!good)ok=false});return ok}
-function blocHTML(id){const t=BLOCS.find(b=>b.id===id).t;let c='';if(id==='contact'){c=`${v('tel')}<br>${v('email')}${v('adresse')?'<br>'+v('adresse'):''}`}else{c=v(id)}return c?`<p style="margin:0 0 8px"><b style="color:${document.getElementById('colTitle').value};border-bottom:2px solid ${document.getElementById('colAccent').value}">${t}</b><br>${c.replace(/\n/g,'<br>')}</p>`:''}
-function updateStyle(){const side=document.getElementById('colSide').value,title=document.getElementById('colTitle').value,accent=document.getElementById('colAccent').value,font=document.getElementById('fontSelect').value,size=document.getElementById('fontSizeRange').value+'px',ps=document.getElementById('photoSizeRange').value+'px',gap=document.getElementById('nameGapRange').value+'px',bg=document.getElementById('blockGapRange').value+'px';const fonts={inter:"'Inter',sans-serif",montserrat:"'Montserrat',sans-serif",poppins:"'Poppins',sans-serif",roboto:"'Roboto',sans-serif",times:"'Times New Roman',serif"};
-const sideHTML=`<div style="text-align:center"><div class="photo-wrap" style="width:${ps};height:${ps}">${photoData?`<img class="photo-circle" src="${photoData}">`:''}</div><div style="height:${gap}"></div><b style="font-size:16px;line-height:1.2">${v('nom')||'TON NOM'}</b><div style="color:${accent};font-weight:800;font-size:12px;margin-top:4px">${v('titre')||'Ton poste'}</div><div style="font-size:11px;opacity:.9;margin-top:8px">${v('tel')}<br>${v('email')}<br>${v('adresse')}</div></div>`;
-const mainHTML=order.map(b=>blocHTML(b.id)).join('').replace(/margin:0 0 8px/g,`margin:0 0 ${bg}`);
-document.getElementById('preview').innerHTML=`<div class="pb-side" style="background:${side};color:${model==4?'#0f172a':'#fff'};font-family:${fonts[font]};font-size:${size}">${sideHTML}</div><div class="pb-main" style="font-family:${fonts[font]};font-size:${size}">${mainHTML||'<p style="color:#94a3b8">Remplis tes infos à gauche...</p>'}</div>`}
-document.getElementById('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{photoData=ev.target.result;updateStyle()};r.readAsDataURL(f)});
-['nom','titre','tel','email','adresse','profil','form','exps','comps','langues','qualites','motiv'].forEach(id=>document.getElementById(id).addEventListener('input',updateStyle));
-function lancerPaiement(){if(!valider()){alert('⚠️ Corrige les champs en rouge');return}const ref='CVGABON'+Date.now();localStorage.setItem('refPaiement',ref);window.open('https://saspay.com/paiement?montant=1000&reference='+ref+'&produit=CV%20Pro%20Gabon','_blank');document.getElementById('btnPaid').style.display='block';alert('Paiement ouvert dans SasPay. Après avoir payé, clique sur le bouton vert.')}
-function confirmerApresPaiement(){paiementFait=true;telechargerPDF()}
-function telechargerPDF(){if(!valider())return;const {jsPDF}=window.jspdf;const doc=new jsPDF('p','mm','a4');const side=document.getElementById('colSide').value,title=document.getElementById('colTitle').value;doc.setFillColor(side);doc.rect(0,0,62,297,'F');doc.setTextColor(255,255,255);doc.setFontSize(14);doc.text(v('nom').toUpperCase(),31,30,{align:'center',maxWidth:54});doc.setFontSize(10);doc.text(v('titre'),31,38,{align:'center',maxWidth:54});doc.setFontSize(8);doc.text([v('tel'),v('email'),v('adresse')],31,48,{align:'center',maxWidth:54});let y=70;doc.setTextColor(15,23,42);order.forEach(b=>{let c=b.id==='contact'?v('tel')+'\n'+v('email')+'\n'+v('adresse'):v(b.id);if(!c)return;doc.setFontSize(11);doc.setTextColor(title);doc.text(b.t,70,y);y+=5;doc.setFontSize(9);doc.setTextColor(30,41,59);doc.text(doc.splitTextToSize(c,120),70,y);y+=doc.getTextDimensions(c).height+6;if(y>270){doc.addPage();y=20}});doc.save('CV-'+v('nom').replace(/\s/g,'-')+'.pdf');let p=JSON.parse(localStorage.getItem('paiements')||'[]');p.push({ref:localStorage.getItem('refPaiement'),date:new Date().toLocaleString(),montant:1000});localStorage.setItem('paiements',JSON.stringify(p));alert('✅ Ton PDF est téléchargé !')}
-function setStars(e){const r=document.getElementById('starsBox').getBoundingClientRect();avisEtoiles=Math.max(1,Math.min(5,Math.floor((e.clientX-r.left)/26)+1));document.getElementById('starsBox').innerHTML='★'.repeat(avisEtoiles)+'☆'.repeat(5-avisEtoiles)+' <span style="font-size:12px;color:#64748b">clique pour noter</span>'}
-function posterAvis(){const nom=v('avisNom'),txt=v('avisTxt');if(!nom||!txt||!avisEtoiles){alert('Mets ton nom, ton avis et tes étoiles');return}let a=JSON.parse(localStorage.getItem('avis')||'[]');a.unshift({nom,txt,etoiles:avisEtoiles,date:new Date().toLocaleDateString()});localStorage.setItem('avis',JSON.stringify(a));afficherAvis();document.getElementById('avisTxt').value='';avisEtoiles=0;document.getElementById('starsBox').innerHTML='☆☆☆☆☆ <span style="font-size:12px;color:#64748b">clique pour noter</span>'}
-function afficherAvis(){const def=[{nom:'Grâce M., Libreville',txt:'Mon CV était prêt en 2 minutes, je l\'ai envoyé partout. Merci !',etoiles:5},{nom:'Junior O., Port-Gentil',txt:'Je ne savais pas faire un CV, l\'exemple m\'a beaucoup aidé.',etoiles:5},{nom:'Ornella N., Oyem',txt:'Enfin un site gabonais simple et rapide !',etoiles:5}];let a=JSON.parse(localStorage.getItem('avis')||'[]');document.getElementById('avisList').innerHTML=[...a,...def].map(x=>`<div class="avis-card">${'★'.repeat(x.etoiles)}<br>"${x.txt}" 😊<br><span style="color:#64748b;font-size:12px">- ${x.nom}</span></div>`).join('')}
-document.getElementById('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('authPhotoPreview').src=ev.target.result;document.getElementById('authPhotoPreview').style.display='block';document.getElementById('photoUploadTxt').style.display='none';localStorage.setItem('photoTemp',ev.target.result)};r.readAsDataURL(f)});
-function creerCompte(){const nom=v('authNom'),email=v('authEmail'),pass=v('authPass');if(!nom||!email||!pass){document.getElementById('authMsg').textContent='Remplis tout';return}let u=JSON.parse(localStorage.getItem('users')||'[]');if(u.find(x=>x.email===email)){document.getElementById('authMsg').textContent='Email déjà utilisé, connecte-toi';return}u.push({nom,email,pass,photo:localStorage.getItem('photoTemp')||''});localStorage.setItem('users',JSON.stringify(u));localStorage.setItem('session',email);majUser();document.getElementById('authMsg').textContent='✅ Compte créé !'}
-function seConnecter(){const email=v('authEmail'),pass=v('authPass');let u=JSON.parse(localStorage.getItem('users')||'[]');const f=u.find(x=>x.email===email&&x.pass===pass);if(!f){document.getElementById('authMsg').textContent='Email ou mot de passe faux';return}localStorage.setItem('session',email);majUser()}
-function seDeconnecter(){localStorage.removeItem('session');majUser()}
-function majUser(){const email=localStorage.getItem('session');let u=JSON.parse(localStorage.getItem('users')||'[]');const f=u.find(x=>x.email===email);const logged=!!f;document.getElementById('userProfile').classList.toggle('visible',logged);document.getElementById('btnLogoutClient').classList.toggle('visible',logged);document.getElementById('authLogged').style.display=logged?'block':'none';document.getElementById('authForm').style.display=logged?'none':'block';if(f){document.getElementById('userNameTop').textContent=f.nom;document.getElementById('userPhotoTop').src=f.photo||'';document.getElementById('authNameView').textContent=f.nom;document.getElementById('authPhotoView').src=f.photo||''}}
-function ouvrirAdmin(){if(document.getElementById('adminCode').value!=='admin2026'){alert('Code faux');return}document.getElementById('adminBox').style.display='block';document.getElementById('btnAdminNav').classList.add('visible');let u=JSON.parse(localStorage.getItem('users')||'[]'),p=JSON.parse(localStorage.getItem('paiements')||'[]'),a=JSON.parse(localStorage.getItem('avis')||'[]');document.getElementById('stUsers').textContent=u.length;document.getElementById('stPaiements').textContent=p.length;document.getElementById('stTotal').textContent=(p.length*1000)+' F';document.getElementById('adminAvis').innerHTML=a.map(x=>`<div class="avis-card">${'★'.repeat(x.etoiles)} "${x.txt}" - ${x.nom}</div>`).join('')||'Aucun avis';document.getElementById('adminUsers').innerHTML=u.map(x=>`<div class="order-row"><span>${x.nom} - ${x.email}</span></div>`).join('')||'Aucun user'}
-function quitterAdmin(){document.getElementById('adminBox').style.display='none';document.getElementById('btnAdminNav').classList.remove('visible');document.getElementById('adminCode').value=''}
-function openModal(t){const c={conf:'<h3>Confidentialité</h3><p>Tes données restent sur ton téléphone. Aucune vente.</p>',mentions:'<h3>Mentions Légales</h3><p>CV Pro Gabon - Libreville - 065663721</p>',contact:'<h3>Contact</h3><p>WhatsApp : 065663721</p>',apropos:'<h3>À propos</h3><p>Aider les Gabonais à créer un CV pro en 2 min pour 1000F.</p>'};document.getElementById('modalContent').innerHTML=c[t]+'<button class="close-btn" onclick="closeModal()">Fermer</button>';document.getElementById('modal').classList.add('open')}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-setModel(1);afficherAvis();majUser();
+const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
+const ADMIN_CODE="gabon2026@admin";
+const WA_NUMBER="24165663721";
+const{jsPDF}=window.jspdf;let currentModel=1;const $=id=>document.getElementById(id);
+const FIELDS=['nom','titre','tel','email','adresse','profil','form','exps','comps','langues','qualites','motiv'];
+const BLOCKS=[{k:'profil',l:'PROFIL'},{k:'form',l:'FORMATION'},{k:'exps',l:'EXPÉRIENCE'},{k:'comps',l:'COMPÉTENCES'},{k:'langues',l:'LANGUES'},{k:'qualites',l:'QUALITÉS'},{k:'motiv',l:'MOTIVATION'}];
+const FONT_MAP={inter:"'Inter',sans-serif",montserrat:"'Montserrat',sans-serif",poppins:"'Poppins',sans-serif",roboto:"'Roboto',sans-serif",times:"'Times New Roman',serif"};
+function ds(){return{fontKey:'inter',size:11,colSide:'#0f2a44',colTitle:'#0f766e',colAccent:'#f59e0b',photoSize:84,nameGap:10,blockGap:8,order:BLOCKS.map(b=>b.k)};}
+let modelsData={};
+for(let i=1;i<=4;i++){let o={};o.data={};o['sty'+'le']=ds();o.photo=null;modelsData[i]=o;}
+const EXEMPLES={nom:'MBOUMBA Jean Pierre',titre:'Assistant Administratif / Comptable',tel:'06 12 34 56 78',email:'jean.mboumba@exemple.ga',adresse:'Nzeng-Ayong, Libreville, Gabon',profil:'Jeune diplômé en Gestion et Comptabilité, motivé, organisé et ponctuel. Disponible immédiatement.',form:'2022 - 2024 : BTS Gestion - Lycée d\'Etat de Libreville\n2020 - 2022 : Bac Série B - Lycée Classique de Libreville',exps:'2024 (3 mois) : Stagiaire - Boutique Mbolo, Libreville\n- Accueil clients\n- Classement factures et caisse\n- Inventaire stocks',comps:'Microsoft Word et Excel\nAccueil, relation client\nGestion de caisse\nPonctualité, honnêteté',langues:'Français : Courant\nAnglais : Notions',qualites:'Ponctuel, travailleur, à l\'écoute',motiv:'Je souhaite intégrer votre entreprise pour mettre mes compétences en gestion au service de votre équipe.'};
+function copierUn(c){if(EXEMPLES[c]!==undefined){$(c).value=EXEMPLES[c];saveCurrentToModel();render();saveAuto();}}
+function effacerUn(c){if($(c)){$(c).value='';saveCurrentToModel();render();saveAuto();}}
+function remplirTout(){Object.keys(EXEMPLES).forEach(k=>{if($(k))$(k).value=EXEMPLES[k];});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();}
+function effacerExemple(){if(!confirm('Vider ce Modèle '+currentModel+' ?'))return;FIELDS.forEach(id=>{if($(id))$(id).value='';});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();}
+function escapeHtml(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
+function ensureStyle(st){const d=ds();for(let k in d){if(st[k]===undefined)st[k]=d[k];}if(!Array.isArray(st.order)||st.order.length!==BLOCKS.length)st.order=d.order.slice();return st;}
+function saveCurrentToModel(){const m=modelsData[currentModel];FIELDS.forEach(id=>{if($(id))m.data[id]=$(id).value;});const old=m['sty'+'le']||ds();m['sty'+'le']=ensureStyle({fontKey:$('fontSelect').value,size:parseFloat($('fontSizeRange').value),colSide:$('colSide').value,colTitle:$('colTitle').value,colAccent:$('colAccent').value,photoSize:parseFloat($('photoSizeRange')?$('photoSizeRange').value:old.photoSize),nameGap:parseFloat($('nameGapRange')?$('nameGapRange').value:old.nameGap),blockGap:parseFloat($('blockGapRange')?$('blockGapRange').value:old.blockGap),order:old.order});}
+function loadModelToControls(){const m=modelsData[currentModel];const st=ensureStyle(m['sty'+'le']||ds());m['sty'+'le']=st;FIELDS.forEach(id=>{if($(id))$(id).value=m.data[id]||'';});$('fontSelect').value=st.fontKey;$('fontSizeRange').value=st.size;$('sizeVal').textContent=st.size+'px';$('colSide').value=st.colSide;$('colTitle').value=st.colTitle;$('colAccent').value=st.colAccent;if($('photoSizeRange')){$('photoSizeRange').value=st.photoSize;$('photoSizeVal').textContent=st.photoSize+'px';}if($('nameGapRange')){$('nameGapRange').value=st.nameGap;$('nameGapVal').textContent=st.nameGap+'px';}if($('blockGapRange')){$('blockGapRange').value=st.blockGap;$('blockGapVal').textContent=st.blockGap+'px';}$('styleModelLabel').textContent=currentModel;$('exempleModelLabel').textContent=currentModel;if($('persoModelLabel'))$('persoModelLabel').textContent=currentModel;renderOrderUI();}
+function renderOrderUI(){const box=$('orderList');if(!box)return;const st=ensureStyle(modelsData[currentModel]['sty'+'le']);box.innerHTML=st.order.map((k,i)=>{const b=BLOCKS.find(x=>x.k===k);if(!b)return'';return `<div class="order-row"><span>${i+1}. ${b.l}</span><span class="order-btns"><button ${i===0?'disabled':''} onclick="moveBlock(${i},-1)">↑</button><button ${i===st.order.length-1?'disabled':''} onclick="moveBlock(${i},1)">↓</button></span></div>`;}).join('');}
+function moveBlock(i,dir){const st=ensureStyle(modelsData[currentModel]['sty'+'le']);const j=i+dir;if(j<0||j>=st.order.length)return;const t=st.order[i];st.order[i]=st.order[j];st.order[j]=t;modelsData[currentModel]['sty'+'le']=st;renderOrderUI();render();saveAuto();}
+function updateStyle(){saveCurrentToModel();render();saveAuto();}
+function setModel(m){if(m===currentModel)return;saveCurrentToModel();currentModel=m;document.querySelectorAll('.model').forEach(e=>e.classList.toggle('active',+e.dataset.m===m));$('previewTitle').textContent='Aperçu Live - Modèle '+m;loadModelToControls();render();saveAuto();}
+function getData(){saveCurrentToModel();const m=modelsData[currentModel];let o={};for(let k in m.data)o[k]=m.data[k];o['sty'+'le']=ensureStyle(m['sty'+'le']);o.photo=m.photo;return o;}
+function blockHTML(d,st,k){const gap=st.blockGap;const map={profil:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">PROFIL</b><p style="white-space:pre-wrap">${escapeHtml(d.profil)}</p>`,form:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">FORMATION</b><p style="white-space:pre-wrap">${escapeHtml(d.form)}</p>`,exps:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">EXPÉRIENCE</b><p style="white-space:pre-wrap">${escapeHtml(d.exps)}</p>`,comps:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">COMPÉTENCES</b><p>${(d.comps||'').split('\n').filter(x=>x.trim()).map(c=>escapeHtml(c)).join(' • ')}</p>`,langues:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">LANGUES</b><p style="white-space:pre-wrap">${escapeHtml(d.langues)}</p>`,qualites:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">QUALITÉS</b><p>${escapeHtml(d.qualites)}</p>`,motiv:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">MOTIVATION</b><p style="white-space:pre-wrap">${escapeHtml(d.motiv)}</p>`};return map[k]||'';}
+function render(){const d=getData();const st=d['sty'+'le'];const col=st.colSide,tc=st.colTitle,acc=st.colAccent,sz=st.size,fc=FONT_MAP[st.fontKey]||FONT_MAP.inter;const nv=d.nom||'Votre Nom';const ps=st.photoSize,ng=st.nameGap;const ph=d.photo?`<div class="photo-wrap" style="border-color:${acc};width:${ps}px;height:${ps}px"><img src="${d.photo}" class="photo-circle"></div>`:`<div class="photo-wrap" style="border-color:${acc};width:${ps}px;height:${ps}px;display:flex;align-items:center;justify-content:center;color:#94a3b8;line-height:1"><i class="fa-solid fa-user"></i></div>`;const cl=(d.comps||'').split('\n').filter(x=>x.trim());const ct=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).map(x=>escapeHtml(x)).join(' • ');const b=`font-family:${fc};font-size:${sz}px`;let h='';
+if(currentModel===1){const sideKeys=st.order.filter(k=>['form','comps','langues','qualites'].includes(k));const mainKeys=st.order.filter(k=>['profil','exps','motiv'].includes(k));h=`<div class="pb-side" style="background:${col};color:#fff;${b}">${ph}<div style="font-weight:800;text-align:center;font-size:${sz+2}px;margin-top:${ng}px">${escapeHtml(nv)}</div><div style="text-align:center;color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><h4 style="color:${tc};border-bottom:2px solid ${acc}">CONTACT</h4><p>${escapeHtml(d.tel)}<br>${escapeHtml(d.email)}<br>${escapeHtml(d.adresse)}</p>${sideKeys.map(k=>blockHTML(d,{...st,colTitle:tc},k)).join('')}</div><div class="pb-main" style="${b}">${mainKeys.map(k=>blockHTML(d,st,k)).join('')}</div>`;}
+else if(currentModel===2){h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="background:${col};padding:16px;color:#fff;display:flex;gap:12px;align-items:center">${ph}<div style="margin-top:${ng}px"><div style="font-size:${sz+5}px;font-weight:900">${escapeHtml(nv)}</div><div style="color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px">${ct}</div></div></div><div style="padding:14px">${st.order.map(k=>blockHTML(d,st,k)).join('')}</div></div>`;}
+else if(currentModel===3){const leftKeys=st.order.filter(k=>['profil','form','comps'].includes(k));const rightKeys=st.order.filter(k=>['exps','langues','qualites'].includes(k));const motivKeys=st.order.filter(k=>k==='motiv');const pill=(k,bg,fg)=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l||k;const txt=k==='comps'?cl.map(c=>'• '+c).join('\n'):(d[k]||'');return `<b style="background:${bg};padding:4px 8px;border-radius:6px;display:block;color:${fg};margin-top:${st.blockGap}px">${label}</b><p style="white-space:pre-wrap">${escapeHtml(txt)}</p>`;};h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="text-align:center;padding:18px 14px 12px;border-bottom:5px solid ${acc};background:#fffbeb"><div style="display:flex;justify-content:center">${ph}</div><div style="font-size:${sz+6}px;font-weight:900;color:${col};margin-top:${ng}px">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:900">${escapeHtml(d.titre)}</div><div style="font-size:${sz-1}px;color:#64748b;margin-top:4px">${ct}</div></div><div style="padding:14px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div>${leftKeys.map(k=>pill(k,acc,'#1e293b')).join('')}</div><div>${rightKeys.map(k=>pill(k,col,'#fff')).join('')}</div></div>${motivKeys.map(k=>pill(k,tc,'#fff')).join('')}</div></div>`;}
+else{h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 16px 12px;border-bottom:2px solid ${col}"><div style="margin-top:${ng}px"><div style="font-size:${sz+6}px;font-weight:900;color:${col}">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:700">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px;color:#64748b">${ct}</div></div><div>${ph}</div></div><div style="padding:14px 16px">${st.order.map(k=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l;const txt=k==='comps'?cl.join(', '):(d[k]||'');return `<p style="margin:0 0 ${st.blockGap}px"><b style="color:${col}">${label}.</b> <span style="white-space:pre-wrap">${escapeHtml(txt)}</span></p>`;}).join('')}</div></div>`;}
+$('preview').innerHTML=h;}
+function saveAuto(){saveCurrentToModel();const badge=$('saveStatus');try{localStorage.setItem('cv_v10',JSON.stringify(modelsData));badge.textContent='✓ Sauvegardé '+new Date().toLocaleTimeString();}catch(e){}}
+function loadAuto(){try{const r=localStorage.getItem('cv_v10')||localStorage.getItem('cv_v9');if(r){const p=JSON.parse(r);Object.keys(p).forEach(k=>{if(modelsData[k]){modelsData[k]=p[k];if(modelsData[k]['sty'+'le'])modelsData[k]['sty'+'le']=ensureStyle(modelsData[k]['sty'+'le']);}});}}catch(e){}}
+let t;FIELDS.forEach(id=>{if($(id)){$(id).addEventListener('input',()=>{render();clearTimeout(t);t=setTimeout(saveAuto,400);});}});
+$('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=400;c.height=400;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;const dx=(c.width-w)/2;const dy=(c.height-h)*0.15;x.beginPath();x.arc(200,200,200,0,Math.PI*2);x.closePath();x.clip();x.drawImage(img,dx,dy,w,h);modelsData[currentModel].photo=c.toDataURL('image/png');saveAuto();render();};img.src=ev.target.result;};r.readAsDataURL(f);});
+function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
+function getJSPDFImageFormat(d){if(!d||typeof d!=='string')return null;if(d.startsWith('data:image/png'))return 'PNG';if(d.startsWith('data:image/jpeg'))return 'JPEG';return null;}
+function safeAddImage(doc,dataUrl,fmt,x,y,w,h){if(!dataUrl)return false;try{doc.addImage(dataUrl,fmt||getJSPDFImageFormat(dataUrl)||'PNG',x,y,w,h);return true;}catch(e){return false;}}
+function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
+const txtFor=k=>k==='comps'?compsLines.map(c=>'- '+c).join('\n'):(d[k]||'');const labelFor=k=>(BLOCKS.find(x=>x.k===k)||{}).l||k.toUpperCase();
+if(currentModel===1){doc.setFillColor(sr,sg,sb);doc.rect(0,0,210,pageH,'F');let y=20;const ps=Math.min(st.photoSize||84,100);if(d.photo){safeAddImage(doc,d.photo,photoFormat,105-ps/2,y,ps,ps);y+=ps+10+(st.nameGap||10);}doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+3);const n=doc.splitTextToSize(nom.toUpperCase(),180);doc.text(n,105,y,{align:'center'});y+=n.length*(base+5)+8;doc.setTextColor(ar,ag,ab);doc.setFontSize(base+1);const ti=doc.splitTextToSize(d.titre||'',180);doc.text(ti,105,y,{align:'center'});y+=ti.length*lh+20;y=sec(15,'CONTACT',contact,y,170,true);st.order.filter(k=>['form','comps','langues','qualites'].includes(k)).forEach(k=>{y=sec(15,labelFor(k),txtFor(k),y,170,true);});let y2=40;st.order.filter(k=>['profil','exps','motiv'].includes(k)).forEach(k=>{y2=sec(230,labelFor(k),txtFor(k),y2,320,false);});}
+else if(currentModel===2){doc.setFillColor(sr,sg,sb);doc.rect(0,0,pageW,110,'F');const ps=Math.min(st.photoSize||84,90);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-20,10,ps,ps);doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,24,50+(st.nameGap||10)*0.3);doc.setTextColor(ar,ag,ab);doc.setFontSize(base+2);doc.text(d.titre||'',24,72);doc.setTextColor(230,230,230);doc.setFontSize(base-1);doc.text(contact,24,92);let cy=140;st.order.forEach(k=>{cy=sec(30,labelFor(k),k==='comps'?compsLines.join(' • '):txtFor(k),cy,pageW-60,false);});}
+else if(currentModel===3){const ps=Math.min(st.photoSize||84,96);const headerH=ps+92+(st.nameGap||10);doc.setFillColor(255,251,235);doc.rect(0,0,pageW,headerH,'F');let y=18;const photoX=pageW/2-ps/2;if(d.photo){safeAddImage(doc,d.photo,photoFormat,photoX,y,ps,ps);y+=ps+8+(st.nameGap||10);}else{y+=ps+8+(st.nameGap||10);}doc.setTextColor(sr,sg,sb);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom.toUpperCase(),pageW/2,y,{align:'center'});y+=base+8;doc.setTextColor(tr,tg,tb);doc.setFontSize(base+1);doc.text(d.titre||'',pageW/2,y,{align:'center'});y+=base+6;doc.setTextColor(100,116,139);doc.setFont(pdfFont,'normal');doc.setFontSize(base-1);const contactLines=doc.splitTextToSize(contact,pageW-60);doc.text(contactLines,pageW/2,y,{align:'center'});y+=contactLines.length*lh+6;doc.setFillColor(ar,ag,ab);doc.rect(0,headerH-5,pageW,5,'F');y=headerH+18;const margin=28,gapC=14,colW=(pageW-margin*2-gapC)/2;const leftX=margin,rightX=margin+colW+gapC;function pill(x,t,tx,yy,w,bg,fg){if(!tx||!String(tx).trim())return yy;yy=checkPage(yy);doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(x,yy-base-2,w,base+7,'F');doc.setFont(pdfFont,'bold');doc.setFontSize(base+0.5);doc.setTextColor(fg[0],fg[1],fg[2]);doc.text(t.toUpperCase(),x+7,yy);yy+=base+9;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(30,41,59);const lines=doc.splitTextToSize(String(tx),w-4);for(let i=0;i<lines.length;i++){yy=checkPage(yy);doc.text(lines[i],x+2,yy);yy+=lh;}return yy+gap;}let y1=y,y2=y;st.order.filter(k=>['profil','form','comps'].includes(k)).forEach(k=>{y1=pill(leftX,labelFor(k),k==='comps'?compsLines.map(c=>'• '+c).join('\n'):txtFor(k),y1,colW,[ar,ag,ab],[30,41,59]);});st.order.filter(k=>['exps','langues','qualites'].includes(k)).forEach(k=>{y2=pill(rightX,labelFor(k),txtFor(k),y2,colW,[sr,sg,sb],[255,255,255]);});let ym=Math.max(y1,y2)+6;st.order.filter(k=>k==='motiv').forEach(k=>{pill(margin,labelFor(k),txtFor(k),ym,pageW-margin*2,[tr,tg,tb],[255,255,255]);});}
+else{const ps=Math.min(st.photoSize||84,80);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-30,20,ps,ps);doc.setTextColor(sr,sg,sb);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,30,55+(st.nameGap||10)*0.3);doc.setTextColor(tr,tg,tb);doc.setFont(pdfFont,'normal');doc.setFontSize(base+1);doc.text(d.titre||'',30,78);doc.setTextColor(100,116,139);doc.setFontSize(base-1);doc.text(contact,30,95);doc.setDrawColor(sr,sg,sb);doc.setLineWidth(2);doc.line(30,105,pageW-30,105);let cy=135;st.order.forEach(k=>{const tx=k==='comps'?compsLines.join(', '):txtFor(k);if(!tx||!String(tx).trim())return;cy=checkPage(cy);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(sr,sg,sb);doc.text(labelFor(k)+'.',30,cy);doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(30,30,30);const lines=doc.splitTextToSize(String(tx),pageW-60);doc.text(lines,30,cy+lh);cy+=lines.length*lh+gap;});}
+doc.save('CV_'+nom.replace(/\s+/g,'_')+'.pdf');}
+function valider(){let ok=true;const tel=($('tel').value||'').replace(/\s/g,'');const email=$('email').value||'';$('errNom').classList.toggle('show',!$('nom').value.trim());if(!$('nom').value.trim())ok=false;$('errTitre').classList.toggle('show',!$('titre').value.trim());if(!$('titre').value.trim())ok=false;const telOk=tel.length>=8&&/^[0-9+]+$/.test(tel);$('errTel').classList.toggle('show',!telOk);if(!telOk)ok=false;const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);$('errEmail').classList.toggle('show',!emailOk);if(!emailOk)ok=false;return ok;}
+function isTestMode(){return new URLSearchParams(location.search).get('test')==='1';}
+function lancerPaiement(){if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}saveAuto();sessionStorage.setItem('cv_pending',JSON.stringify({model:currentModel,time:Date.now(),email:$('email').value.trim()}));if(SASPAY_PAYMENT_LINK.includes('METS-TON')||isTestMode()){alert('⚠️ MODE TEST - PDF gratuit');sessionStorage.removeItem('cv_pending');genererPDF();return;}$('btnPaid').style.display='block';window.open(SASPAY_PAYMENT_LINK,'_blank');alert('💳 Tu as été redirigé vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');}
+function confirmerApresPaiement(){const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}if(!confirm('Tu confirmes avoir payé 1000F sur SasPay ?'))return;sessionStorage.removeItem('cv_pending');localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));$('btnPaid').style.display='none';alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);}
+function openModal(t){const c=$('modalContent');const x={conf:'<h3>🔒 Confidentialité</h3><p>Aucune donnée stockée sur serveur. Tout reste dans ton téléphone.</p>',mentions:'<h3>⚖️ Mentions Légales</h3><p>CV PRO Gabon - Libreville - 1000 FCFA via SasPay - Contact 065663721</p>',contact:'<h3>📞 Contact</h3><p>contact@cv-gabon.ga - 065663721 - WhatsApp direct</p>',apropos:'<h3>🇬🇦 À propos</h3><p>CV Gabon aide les jeunes gabonais à créer un CV pro en 2 min pour 1000 FCFA.</p>'};c.innerHTML=x[t]+'<button class="close-btn" onclick="closeModal()">FERMER</button>';$('modal').classList.add('open');}
+function closeModal(){$('modal').classList.remove('open');}
+function showPage(n,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);}
+function getUsers(){try{return JSON.parse(localStorage.getItem('cv_users')||'[]')}catch(e){return[]}}
+let authPhotoData=null;
+$('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=200;c.height=200;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;x.drawImage(img,(c.width-w)/2,(c.height-h)/2,w,h);authPhotoData=c.toDataURL('image/jpeg',0.8);const prev=$('authPhotoPreview');if(prev){prev.src=authPhotoData;prev.style.display='block';$('photoUploadTxt').style.display='none';}};img.src=ev.target.result;};r.readAsDataURL(f);});
+function afficherUser(){const email=localStorage.getItem('cv_session');const u=getUsers().find(x=>x.email===email);if(u){$('userProfile').classList.add('visible');$('btnLogoutClient').classList.add('visible');$('userNameTop').textContent=u.nom;$('userPhotoTop').src=u.photo||'https://via.placeholder.com/48?text='+encodeURIComponent(u.nom[0]||'U');$('authForm').style.display='none';$('authLogged').style.display='block';$('authNameView').textContent=u.nom;$('authPhotoView').src=u.photo||'https://via.placeholder.com/80';}else{$('userProfile').classList.remove('visible');$('btnLogoutClient').classList.remove('visible');$('authForm').style.display='block';$('authLogged').style.display='none';}}
+function creerCompte(){const nom=document.getElementById('authNom').value.trim(),email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');if(!nom||!email||!pass){msg.textContent='⚠️ Remplis nom, email et mot de passe';msg.style.color='#dc2626';return;}let users=getUsers();if(users.find(u=>u.email===email)){msg.textContent='⚠️ Email déjà utilisé, connecte-toi';msg.style.color='#dc2626';return;}users.push({nom,email,pass,photo:authPhotoData,date:new Date().toLocaleDateString()});localStorage.setItem('cv_users',JSON.stringify(users));localStorage.setItem('cv_session',email);msg.textContent='✅ Compte créé ! Bienvenue '+nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
+function seConnecter(){const email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');const u=getUsers().find(x=>x.email===email&&x.pass===pass);if(!u){msg.textContent='⚠️ Email ou mot de passe faux';msg.style.color='#dc2626';return;}localStorage.setItem('cv_session',email);msg.textContent='✅ Bon retour '+u.nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
+function seDeconnecter(){localStorage.removeItem('cv_session');afficherUser();alert('✅ Déconnecté. À bientôt !');showPage('accueil',document.querySelectorAll('.nav button')[0]);}
+function ouvrirAdmin(){if(document.getElementById('adminCode').value!==ADMIN_CODE){alert('Code admin faux');return;}localStorage.setItem('cv_is_admin','1');document.getElementById('btnAdminNav').classList.add('visible');document.getElementById('adminBox').style.display='block';const users=getUsers();const paiements=parseInt(localStorage.getItem('cv_paiements')||'0');document.getElementById('stUsers').textContent=users.length;document.getElementById('stPaiements').textContent=paiements;document.getElementById('stTotal').textContent=(paiements*1000)+' F';document.getElementById('adminUsers').innerHTML=users.map(u=>'<div class="order-row"><span>'+(u.photo?'<img src="'+u.photo+'" style="width:32px;height:32px;border-radius:50%;object-fit:cover;vertical-align:middle"> ':'')+escapeHtml(u.nom)+' - '+escapeHtml(u.email)+'</span><span style="font-size:11px">'+u.date+'</span></div>').join('')||'<p>Aucun compte</p>';renderAdminAvis();}
+function quitterAdmin(){localStorage.removeItem('cv_is_admin');document.getElementById('btnAdminNav').classList.remove('visible');document.getElementById('adminBox').style.display='none';alert('✅ Déconnecté d\'Admin');showPage('accueil',document.querySelectorAll('.nav button')[0]);}
+let currentStars=5;
+function setStars(e){const r=$('starsBox').getBoundingClientRect();const x=e.clientX-r.left;currentStars=Math.max(1,Math.min(5,Math.ceil(x/24)));$('starsBox').innerHTML='★'.repeat(currentStars)+'☆'.repeat(5-currentStars)+' <span style="font-size:12px;color:#64748b">clique pour noter</span>';}
+function getAvis(){try{return JSON.parse(localStorage.getItem('cv_avis')||'[]')}catch(e){return[]}}
+function posterAvis(){const nom=$('avisNom').value.trim(),txt=$('avisTxt').value.trim();if(!nom||!txt)return alert('Mets ton nom et ton avis');let a=getAvis();a.unshift({nom,txt,stars:currentStars,date:new Date().toLocaleDateString()});localStorage.setItem('cv_avis',JSON.stringify(a));$('avisNom').value='';$('avisTxt').value='';renderAvis();alert('✅ Merci pour ton avis !');}
+function renderAvis(){const a=getAvis();const def=[{nom:'Grâce M., Libreville',txt:'Mon CV était prêt en 2 minutes, je l\'ai envoyé partout. Merci !',stars:5},{nom:'Junior O., Port-Gentil',txt:'Je ne savais pas faire un CV, l\'exemple m\'a beaucoup aidé.',stars:5}];const all=a.concat(def);$('avisList').innerHTML=all.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</b><br>"${escapeHtml(x.txt)}" 😊<br><span style="color:#64748b;font-size:12px">- ${escapeHtml(x.nom)}</span></div>`).join('');}
+function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}</b> ${escapeHtml(x.nom)}<br>"${escapeHtml(x.txt)}"<br><button class="btn-all" style="background:#25D366;padding:8px" onclick="window.open('https://wa.me/${WA_NUMBER}?text=Bonjour%20${encodeURIComponent(x.nom)}%2C%20merci%20pour%20ton%20avis%20sur%20CV%20Gabon','_blank')">💬 RÉPONDRE SUR WHATSAPP</button></div>`).join('')||'<p>Aucun avis pour l\'instant</p>';}
+(function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
+window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();afficherUser();const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
+async function saveClient(nom,email,phone){
+  await supabase.from("clients").insert({name:nom,email:email,phone:phone});
+  alert("Bien enregistré !");
+}
 </script>
 </body>
 </html>
