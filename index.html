@@ -110,6 +110,23 @@ input[type=range]{padding:0;background:transparent}
 .hstat span{font-size:11px;color:#64748b;line-height:1.3;display:block}
 @media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
 @media(max-width:899px){.header{justify-content:center;text-align:center}.nav{justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.bottom-grid{grid-template-columns:1fr}.hero-top{grid-template-columns:1fr}.hero-new h1{font-size:23px}.hero-stats{gap:6px}.hstat{padding:8px 4px}}
+/* ===== NOUVEAU DESIGN CREER MON CV - PINTEREST ===== */
+#page-generateur{background:linear-gradient(180deg,#f8fafc,#ecfdf5);padding:18px 12px 24px;border-radius:22px}
+#page-generateur .pub-zone{background:#fff;border:2px dashed #cbd5e1;border-radius:16px;padding:18px;margin:0 0 16px;box-shadow:0 4px 14px rgba(0,0,0,.04)}
+#page-generateur .exemple-toggle{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:18px;font-size:15px;box-shadow:0 8px 20px rgba(15,23,42,.25);margin-bottom:16px}
+#page-generateur .card{background:#fff;border:none;border-radius:20px;padding:20px;margin-bottom:18px;box-shadow:0 8px 24px rgba(15,23,42,.08);border:1px solid #f1f5f9}
+#page-generateur .section-title{background:#0f172a!important;color:#fff;padding:13px 16px;border-radius:12px;font-size:13px;letter-spacing:.4px;margin:0 0 16px;display:flex;align-items:center;gap:8px}
+#page-generateur .section-title[style]{background:#0f172a!important}
+#page-generateur .models{grid-template-columns:repeat(2,1fr);gap:12px}
+#page-generateur .model{padding:16px 10px;border-radius:16px;border:2px solid #e2e8f0;background:#f8fafc;font-size:13px;line-height:1.5;transition:.2s}
+#page-generateur .model.active{border-color:#059669;background:#ecfdf5;color:#065f46;box-shadow:0 6px 16px rgba(5,150,105,.18);transform:translateY(-2px)}
+#page-generateur input,#page-generateur textarea,#page-generateur select{border-radius:12px;padding:13px;background:#f8fafc;border:1.5px solid #e2e8f0}
+#page-generateur input:focus,#page-generateur textarea:focus{border-color:#059669;background:#fff;box-shadow:0 0 0 3px rgba(5,150,105,.12)}
+#page-generateur .btn-pay{background:linear-gradient(135deg,#f59e0b,#ea580c);border-radius:16px;padding:18px;font-size:16px;box-shadow:0 10px 24px rgba(245,158,11,.35);margin:6px 0 12px}
+#page-generateur .preview-card{background:#ecfdf5;border:1.5px solid #a7f3d0}
+#page-generateur .preview-box{border-radius:16px;box-shadow:0 8px 20px rgba(0,0,0,.08);min-height:520px}
+#page-generateur .order-row{border-radius:12px;padding:10px 12px}
+@media(min-width:1100px){#page-generateur .grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:24px}#page-generateur .preview-card{position:sticky;top:84px}}
 </style>
 </head>
 <body>
@@ -154,7 +171,7 @@ input[type=range]{padding:0;background:transparent}
 <div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <button class="exemple-toggle" onclick="document.getElementById('exempleBox').classList.toggle('open')">👀 VOIR L'EXEMPLE CV PRO COMPLET</button>
 <div id="exempleBox" class="exemple-content">
-<div style="background:#fff;border-radius:12px;padding:18px;border:1px solid #fde68a">
+<div style="background:#fff;border-radius:16px;padding:18px;border:1px solid #fde68a">
 <div style="display:flex;gap:14px;align-items:center;border-bottom:3px solid #0f766e;padding-bottom:12px">
 <div style="width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;flex-shrink:0">MJ</div>
 <div><b style="font-size:17px">MBOUMBA Jean Pierre</b> <span style="background:#fef3c7;color:#92400e;font-size:10px;padding:2px 7px;border-radius:999px;font-weight:800">EXEMPLE FICTIF</span><br><b style="color:#0f766e">Assistant Administratif / Comptable</b><br><span style="color:#64748b;font-size:12px">06 12 34 56 78 • jean.mboumba@exemple.ga • Nzeng-Ayong, Libreville</span></div>
@@ -171,25 +188,36 @@ input[type=range]{padding:0;background:transparent}
 <button class="btn-all" onclick="remplirTout()">📋 COPIER TOUT L'EXEMPLE DANS LE MODÈLE <span id="exempleModelLabel">1</span></button>
 <button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button>
 </div>
-<div class="grid" style="margin-top:16px"><div>
-<div class="card"><div class="section-title">1. CHOISIS TON MODÈLE</div>
+<div class="grid" style="margin-top:18px"><div>
+<div class="card">
+<div class="section-title">① &nbsp;CHOISIS TON MODÈLE</div>
 <div class="models"><div class="model active" data-m="1" onclick="setModel(1)">1<br>Sombre Pro</div><div class="model" data-m="2" onclick="setModel(2)">2<br>Moderne</div><div class="model" data-m="3" onclick="setModel(3)">3<br>Jaune Gabon</div><div class="model" data-m="4" onclick="setModel(4)">4<br>Bleu Minimal</div></div>
-<div class="section-title" style="background:#7c3aed">STYLE DU MODÈLE <span id="styleModelLabel">1</span></div>
+</div>
+<div class="card">
+<div class="section-title">② &nbsp;STYLE DU MODÈLE <span id="styleModelLabel">1</span></div>
 <div class="row"><div><label class="label">Police</label><select id="fontSelect" onchange="updateStyle()"><option value="inter">Inter</option><option value="montserrat">Montserrat</option><option value="poppins">Poppins</option><option value="roboto">Roboto</option><option value="times">Times</option></select></div><div><label class="label">Taille : <span id="sizeVal">11px</span></label><input type="range" id="fontSizeRange" min="8" max="14" step="0.5" value="11" oninput="document.getElementById('sizeVal').textContent=this.value+'px';updateStyle()"></div></div>
 <div class="row"><div><label class="label">Couleur barre</label><input type="color" id="colSide" value="#0f2a44" oninput="updateStyle()"></div><div><label class="label">Couleur titres</label><input type="color" id="colTitle" value="#0f766e" oninput="updateStyle()"></div><div><label class="label">Couleur accent</label><input type="color" id="colAccent" value="#f59e0b" oninput="updateStyle()"></div></div>
-<div class="section-title" style="background:#db2777">✏️ PERSONNALISER LE MODÈLE <span id="persoModelLabel">1</span></div>
+</div>
+<div class="card">
+<div class="section-title">③ &nbsp;✏️ PERSONNALISER LE MODÈLE <span id="persoModelLabel">1</span></div>
 <div class="row"><div><label class="label">Taille photo : <span id="photoSizeVal">84px</span></label><input type="range" id="photoSizeRange" min="50" max="130" step="2" value="84" oninput="document.getElementById('photoSizeVal').textContent=this.value+'px';updateStyle()"></div><div><label class="label">Espace photo/nom : <span id="nameGapVal">10px</span></label><input type="range" id="nameGapRange" min="0" max="30" step="1" value="10" oninput="document.getElementById('nameGapVal').textContent=this.value+'px';updateStyle()"></div></div>
 <label class="label">Espace entre blocs : <span id="blockGapVal">8px</span></label><input type="range" id="blockGapRange" min="0" max="24" step="1" value="8" oninput="document.getElementById('blockGapVal').textContent=this.value+'px';updateStyle()">
 <label class="label">↕️ Ordre des blocs (flèches pour déplacer)</label><div id="orderList"></div>
 </div>
 <div class="pub-zone">[ PUB MONETAG 2 ]</div>
-<div class="card"><div class="section-title">2. TA PHOTO</div><input type="file" id="photoInput" accept="image/*"></div>
-<div class="card"><div class="section-title" style="background:#2563eb">3. TON IDENTITÉ</div>
+<div class="card">
+<div class="section-title">④ &nbsp;TA PHOTO</div>
+<input type="file" id="photoInput" accept="image/*">
+</div>
+<div class="card">
+<div class="section-title">⑤ &nbsp;TON IDENTITÉ</div>
 <div class="label-row"><label class="label">Nom complet *</label><div class="actions"><button class="btn-ex" onclick="copierUn('nom')">Exemple</button><button class="btn-del" onclick="effacerUn('nom')">🗑️</button></div></div><input id="nom" placeholder="Ex: MBOUMBA Jean Pierre"><div class="error" id="errNom">⚠️ Mets ton nom</div>
 <div class="label-row"><label class="label">Poste recherché *</label><div class="actions"><button class="btn-ex" onclick="copierUn('titre')">Exemple</button><button class="btn-del" onclick="effacerUn('titre')">🗑️</button></div></div><input id="titre"><div class="error" id="errTitre">⚠️ Mets ton poste</div>
 <div class="row"><div><div class="label-row"><label class="label">Téléphone *</label><div class="actions"><button class="btn-ex" onclick="copierUn('tel')">Ex</button><button class="btn-del" onclick="effacerUn('tel')">🗑️</button></div></div><input id="tel" placeholder="06 12 34 56 78"><div class="error" id="errTel">⚠️ Numéro invalide</div></div><div><div class="label-row"><label class="label">Email *</label><div class="actions"><button class="btn-ex" onclick="copierUn('email')">Ex</button><button class="btn-del" onclick="effacerUn('email')">🗑️</button></div></div><input id="email" placeholder="exemple@mail.ga"><div class="error" id="errEmail">⚠️ Email invalide</div></div></div>
-<div class="label-row"><label class="label">Adresse</label><div class="actions"><button class="btn-ex" onclick="copierUn('adresse')">Ex</button><button class="btn-del" onclick="effacerUn('adresse')">🗑️</button></div></div><input id="adresse"></div>
-<div class="card"><div class="section-title" style="background:#16a34a">4. TON CONTENU</div>
+<div class="label-row"><label class="label">Adresse</label><div class="actions"><button class="btn-ex" onclick="copierUn('adresse')">Ex</button><button class="btn-del" onclick="effacerUn('adresse')">🗑️</button></div></div><input id="adresse">
+</div>
+<div class="card">
+<div class="section-title">⑥ &nbsp;TON CONTENU</div>
 <div class="label-row"><label class="label">Profil</label><div class="actions"><button class="btn-ex" onclick="copierUn('profil')">Exemple</button><button class="btn-del" onclick="effacerUn('profil')">🗑️</button></div></div><textarea id="profil" style="height:70px"></textarea>
 <div class="label-row"><label class="label">Formations</label><div class="actions"><button class="btn-ex" onclick="copierUn('form')">Exemple</button><button class="btn-del" onclick="effacerUn('form')">🗑️</button></div></div><textarea id="form" style="height:70px"></textarea>
 <div class="label-row"><label class="label">Expériences</label><div class="actions"><button class="btn-ex" onclick="copierUn('exps')">Exemple</button><button class="btn-del" onclick="effacerUn('exps')">🗑️</button></div></div><textarea id="exps" style="height:100px"></textarea>
@@ -197,14 +225,14 @@ input[type=range]{padding:0;background:transparent}
 <div class="label-row"><label class="label">Langues</label><div class="actions"><button class="btn-ex" onclick="copierUn('langues')">Exemple</button><button class="btn-del" onclick="effacerUn('langues')">🗑️</button></div></div><textarea id="langues" style="height:45px"></textarea>
 <div class="label-row"><label class="label">Qualités</label><div class="actions"><button class="btn-ex" onclick="copierUn('qualites')">Exemple</button><button class="btn-del" onclick="effacerUn('qualites')">🗑️</button></div></div><input id="qualites">
 <div class="label-row"><label class="label">Motivation</label><div class="actions"><button class="btn-ex" onclick="copierUn('motiv')">Exemple</button><button class="btn-del" onclick="effacerUn('motiv')">🗑️</button></div></div><textarea id="motiv" style="height:60px"></textarea>
-<button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button></div>
+<button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button>
+</div>
 <div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <button class="btn-pay" onclick="lancerPaiement()"><i class="fa-solid fa-lock"></i> PAYER 1000F ET TÉLÉCHARGER LE PDF<small>Airtel Money • Moov Money • Visa - via SasPay</small></button>
 <button id="btnPaid" class="btn-all" style="display:none;background:#16a34a" onclick="confirmerApresPaiement()">✅ J'AI PAYÉ, TÉLÉCHARGER MON PDF</button>
 </div>
 <div class="card preview-card"><h3 style="margin:0 0 12px;font-size:14px" id="previewTitle">Aperçu Live - Modèle 1</h3><div class="preview-box" id="preview"></div></div>
-</div></div>
-<div id="page-avis" class="page">
+</div></div><div id="page-avis" class="page">
 <div class="card"><div class="section-title">💬 AVIS &amp; AIDE - MESSAGERIE</div>
 <p style="font-size:13px">Un souci ? Ton CV n'est pas arrivé alors que tu as payé ? Écris ici, on te répond sur WhatsApp direct 😊</p>
 <button class="btn-all" style="background:#25D366" onclick="window.open('https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20pay%C3%A9%201000F%20mais%20mon%20CV%20n%27est%20pas%20arriv%C3%A9%20%F0%9F%98%A1','_blank')">😡 MON CV N'EST PAS ARRIVÉ</button>
@@ -284,10 +312,10 @@ function saveAuto(){saveCurrentToModel();const badge=$('saveStatus');try{localSt
 function loadAuto(){try{const r=localStorage.getItem('cv_v10')||localStorage.getItem('cv_v9');if(r){const p=JSON.parse(r);Object.keys(p).forEach(k=>{if(modelsData[k]){modelsData[k]=p[k];if(modelsData[k]['sty'+'le'])modelsData[k]['sty'+'le']=ensureStyle(modelsData[k]['sty'+'le']);}});}}catch(e){}}
 let t;FIELDS.forEach(id=>{if($(id)){$(id).addEventListener('input',()=>{render();clearTimeout(t);t=setTimeout(saveAuto,400);});}});
 $('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=400;c.height=400;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;const dx=(c.width-w)/2;const dy=(c.height-h)*0.15;x.beginPath();x.arc(200,200,200,0,Math.PI*2);x.closePath();x.clip();x.drawImage(img,dx,dy,w,h);modelsData[currentModel].photo=c.toDataURL('image/png');saveAuto();render();};img.src=ev.target.result;};r.readAsDataURL(f);});
-function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
+  function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
 function getJSPDFImageFormat(d){if(!d||typeof d!=='string')return null;if(d.startsWith('data:image/png'))return 'PNG';if(d.startsWith('data:image/jpeg'))return 'JPEG';return null;}
 function safeAddImage(doc,dataUrl,fmt,x,y,w,h){if(!dataUrl)return false;try{doc.addImage(dataUrl,fmt||getJSPDFImageFormat(dataUrl)||'PNG',x,y,w,h);return true;}catch(e){return false;}}
-function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
+function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:255);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
 const txtFor=k=>k==='comps'?compsLines.map(c=>'- '+c).join('\n'):(d[k]||'');const labelFor=k=>(BLOCKS.find(x=>x.k===k)||{}).l||k.toUpperCase();
 if(currentModel===1){doc.setFillColor(sr,sg,sb);doc.rect(0,0,210,pageH,'F');let y=20;const ps=Math.min(st.photoSize||84,100);if(d.photo){safeAddImage(doc,d.photo,photoFormat,105-ps/2,y,ps,ps);y+=ps+10+(st.nameGap||10);}doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+3);const n=doc.splitTextToSize(nom.toUpperCase(),180);doc.text(n,105,y,{align:'center'});y+=n.length*(base+5)+8;doc.setTextColor(ar,ag,ab);doc.setFontSize(base+1);const ti=doc.splitTextToSize(d.titre||'',180);doc.text(ti,105,y,{align:'center'});y+=ti.length*lh+20;y=sec(15,'CONTACT',contact,y,170,true);st.order.filter(k=>['form','comps','langues','qualites'].includes(k)).forEach(k=>{y=sec(15,labelFor(k),txtFor(k),y,170,true);});let y2=40;st.order.filter(k=>['profil','exps','motiv'].includes(k)).forEach(k=>{y2=sec(230,labelFor(k),txtFor(k),y2,320,false);});}
 else if(currentModel===2){doc.setFillColor(sr,sg,sb);doc.rect(0,0,pageW,110,'F');const ps=Math.min(st.photoSize||84,90);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-20,10,ps,ps);doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,24,50+(st.nameGap||10)*0.3);doc.setTextColor(ar,ag,ab);doc.setFontSize(base+2);doc.text(d.titre||'',24,72);doc.setTextColor(230,230,230);doc.setFontSize(base-1);doc.text(contact,24,92);let cy=140;st.order.forEach(k=>{cy=sec(30,labelFor(k),k==='comps'?compsLines.join(' • '):txtFor(k),cy,pageW-60,false);});}
