@@ -258,11 +258,13 @@ input[type=range]{padding:0;background:transparent}
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
+let supabase;
+try { supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4"); } catch(e) { supabase = { auth: { getUser: async()=>({data:{user:null}}), signUp: async()=>({error:{message:'Hors ligne'}}), signInWithPassword: async()=>({error:{message:'Hors ligne'}}), signOut: async()=>{}, onAuthStateChange: ()=>{} }, from: ()=>({ select: ()=>({eq:()=>({single:async()=>({data:null})}), order: async()=>({data:[]})}), insert: async()=>({error:null}) }) }; }
 const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
 const ADMIN_CODE="gabon2026@admin";
 const WA_NUMBER="24165663721";
-const{jsPDF}=window.jspdf;let currentModel=1;const $=id=>document.getElementById(id);
+const jsPDF = window.jspdf ? window.jspdf.jsPDF : null;
+let currentModel=1;const $=id=>document.getElementById(id);
 const FIELDS=['nom','titre','tel','email','adresse','profil','form','exps','comps','langues','qualites','motiv'];
 const BLOCKS=[{k:'profil',l:'PROFIL'},{k:'form',l:'FORMATION'},{k:'exps',l:'EXPÉRIENCE'},{k:'comps',l:'COMPÉTENCES'},{k:'langues',l:'LANGUES'},{k:'qualites',l:'QUALITÉS'},{k:'motiv',l:'MOTIVATION'}];
 const FONT_MAP={inter:"'Inter',sans-serif",montserrat:"'Montserrat',sans-serif",poppins:"'Poppins',sans-serif",roboto:"'Roboto',sans-serif",times:"'Times New Roman',serif"};
@@ -297,7 +299,7 @@ $('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)re
 function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
 function getJSPDFImageFormat(d){if(!d||typeof d!=='string')return null;if(d.startsWith('data:image/png'))return 'PNG';if(d.startsWith('data:image/jpeg'))return 'JPEG';return null;}
 function safeAddImage(doc,dataUrl,fmt,x,y,w,h){if(!dataUrl)return false;try{doc.addImage(dataUrl,fmt||getJSPDFImageFormat(dataUrl)||'PNG',x,y,w,h);return true;}catch(e){return false;}}
-function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
+function genererPDF(){if(!jsPDF){alert('PDF pas encore chargé, recharge la page');return;}const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
 const txtFor=k=>k==='comps'?compsLines.map(c=>'- '+c).join('\n'):(d[k]||'');const labelFor=k=>(BLOCKS.find(x=>x.k===k)||{}).l||k.toUpperCase();
 if(currentModel===1){doc.setFillColor(sr,sg,sb);doc.rect(0,0,210,pageH,'F');let y=20;const ps=Math.min(st.photoSize||84,100);if(d.photo){safeAddImage(doc,d.photo,photoFormat,105-ps/2,y,ps,ps);y+=ps+10+(st.nameGap||10);}doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+3);const n=doc.splitTextToSize(nom.toUpperCase(),180);doc.text(n,105,y,{align:'center'});y+=n.length*(base+5)+8;doc.setTextColor(ar,ag,ab);doc.setFontSize(base+1);const ti=doc.splitTextToSize(d.titre||'',180);doc.text(ti,105,y,{align:'center'});y+=ti.length*lh+20;y=sec(15,'CONTACT',contact,y,170,true);st.order.filter(k=>['form','comps','langues','qualites'].includes(k)).forEach(k=>{y=sec(15,labelFor(k),txtFor(k),y,170,true);});let y2=40;st.order.filter(k=>['profil','exps','motiv'].includes(k)).forEach(k=>{y2=sec(230,labelFor(k),txtFor(k),y2,320,false);});}
 else if(currentModel===2){doc.setFillColor(sr,sg,sb);doc.rect(0,0,pageW,110,'F');const ps=Math.min(st.photoSize||84,90);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-20,10,ps,ps);doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,24,50+(st.nameGap||10)*0.3);doc.setTextColor(ar,ag,ab);doc.setFontSize(base+2);doc.text(d.titre||'',24,72);doc.setTextColor(230,230,230);doc.setFontSize(base-1);doc.text(contact,24,92);let cy=140;st.order.forEach(k=>{cy=sec(30,labelFor(k),k==='comps'?compsLines.join(' • '):txtFor(k),cy,pageW-60,false);});}
@@ -329,24 +331,8 @@ function posterAvis(){const nom=$('avisNom').value.trim(),txt=$('avisTxt').value
 function renderAvis(){const a=getAvis();const def=[{nom:'Grâce M., Libreville',txt:'Mon CV était prêt en 2 minutes, je l\'ai envoyé partout. Merci !',stars:5},{nom:'Junior O., Port-Gentil',txt:'Je ne savais pas faire un CV, l\'exemple m\'a beaucoup aidé.',stars:5}];const all=a.concat(def);$('avisList').innerHTML=all.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</b><br>"${escapeHtml(x.txt)}" 😊<br><span style="color:#64748b;font-size:12px">- ${escapeHtml(x.nom)}</span></div>`).join('');}
 function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}</b> ${escapeHtml(x.nom)}<br>"${escapeHtml(x.txt)}"<br><button class="btn-all" style="background:#25D366;padding:8px" onclick="window.open('https://wa.me/${WA_NUMBER}?text=Bonjour%20${encodeURIComponent(x.nom)}%2C%20merci%20pour%20ton%20avis%20sur%20CV%20Gabon','_blank')">💬 RÉPONDRE SUR WHATSAPP</button></div>`).join('')||'<p>Aucun avis pour l\'instant</p>';}
 (function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
-supabase.auth.onAuthStateChange(()=>{try{afficherUserSupabase();}catch(e){console.log(e);}});
+try{ supabase.auth.onAuthStateChange(()=>{afficherUserSupabase();}); }catch(e){}
 window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();try{afficherUserSupabase();}catch(e){console.log(e);}switchTab('login');const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
-</script>
-  <style>
-  #loader, .loader, .overlay, #loading, .modal-backdrop { display:none !important; }
-  button, a, input { pointer-events:auto !important; position:relative !important; z-index:9999 !important; }
-  body { overflow:auto !important; }
-</style>
-<script>
-window.addEventListener('load', function(){
-  document.querySelectorAll('#loader,.loader,.overlay,#loading').forEach(e=>e.remove());
-  document.body.style.overflow='auto';
-  document.querySelectorAll('button,a').forEach(b=>{
-    b.style.pointerEvents='auto';
-    b.style.position='relative';
-    b.style.zIndex='9999';
-  });
-});
 </script>
 </body>
 </html>
