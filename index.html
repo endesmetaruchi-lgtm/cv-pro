@@ -332,5 +332,14 @@ function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`
 supabase.auth.onAuthStateChange(()=>{try{afficherUserSupabase();}catch(e){console.log(e);}});
 window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();try{afficherUserSupabase();}catch(e){console.log(e);}switchTab('login');const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
 </script>
+  <script>
+// secours si supabase rame
+setTimeout(function(){
+  document.querySelectorAll('button, a').forEach(function(b){
+    b.style.pointerEvents = 'auto';
+    b.style.opacity = '1';
+  });
+}, 1500);
+</script>
 </body>
 </html>
