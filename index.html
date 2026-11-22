@@ -10,10 +10,14 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;overflow-x:hidden}
-.header{background:#fff;color:#1e293b;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08);gap:12px}
-.topbar-logo{font-weight:900;color:#0f766e;font-size:18px;white-space:nowrap}.topbar-logo span{color:#f59e0b}
-.badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700;align-self:flex-start}
+*{box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b}
+.header{background:#fff;color:#1e293b;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08);gap:12px;flex-wrap:wrap;width:100%}
+.topbar-logo{display:flex;align-items:center;gap:9px;font-weight:900;color:#0f766e;font-size:19px;line-height:1;white-space:nowrap}
+.topbar-logo span{color:#f59e0b}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#0f766e,#14b8a6);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(15,118,110,.35)}
+.logo-icon svg{width:26px;height:26px;display:block}
+.logo-gabon{font-size:14px;letter-spacing:3px;color:#0f766e;font-weight:900}
+.badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700}
 .container{max-width:1300px;margin:0 auto;padding:16px;width:100%}
 .pub-zone{background:#fff;border:2px dashed #cbd5e1;border-radius:12px;padding:14px;text-align:center;color:#94a3b8;font-size:11px;font-weight:700;margin:12px 0}
 .grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
@@ -22,10 +26,8 @@
 .label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px}
 .label{font-size:11px;font-weight:800;color:#334155;text-transform:uppercase}
 .actions{display:flex;gap:5px}
-.btn-ex{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#ecfdf5;color:#065f46;border:1.5px solid #10b981;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s}
-.btn-ex:hover{background:#10b981;color:#fff}
-.btn-del{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s}
-.btn-del:hover{background:#dc2626;color:#fff}
+.btn-ex{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#ecfdf5;color:#065f46;border:1.5px solid #10b981;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
+.btn-del{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
 input,textarea,select{width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:11px;font-size:14px;margin-bottom:12px;background:#f8fafc;outline:none}
 input:focus,textarea:focus{border-color:#0f766e;background:#fff}
 input[type=color]{height:44px;padding:4px;cursor:pointer}
@@ -34,76 +36,71 @@ input[type=range]{padding:0;background:transparent}
 .models{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .model{border:2px solid #e2e8f0;border-radius:12px;padding:12px 6px;cursor:pointer;text-align:center;font-size:12px;font-weight:700}
 .model.active{border-color:#0f766e;background:#f0fdfa;color:#0f766e}
-.btn-pay{width:100%;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;border:none;border-radius:14px;padding:16px;font-weight:900;cursor:pointer;font-size:15px;transition:.2s}
-.btn-pay:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(22,163,74,.45);filter:brightness(1.08)}
+.btn-pay{width:100%;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;border:none;border-radius:14px;padding:16px;font-weight:900;cursor:pointer;font-size:15px}
 .btn-pay small{display:block;font-weight:500;font-size:12px;opacity:.9;margin-top:3px}
-.preview-card{position:static}
 .preview-box{border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;min-height:500px;display:flex}
 .pb-side{width:36%;padding:16px;line-height:1.4}.pb-main{width:64%;padding:16px;line-height:1.5;flex:1}
 .photo-wrap{width:84px;height:84px;border-radius:50%;overflow:hidden;border:3px solid #fbbf24;flex-shrink:0;background:#e2e8f0;line-height:0}
 .photo-circle{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;border-radius:50%}
 .pb-side .photo-wrap{margin:0 auto 10px}
-.pb-main .photo-wrap{margin:0}
 .error{color:#dc2626;font-weight:700;font-size:12px;display:none;margin:-6px 0 8px}.error.show{display:block}
-.exemple-toggle{width:100%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px;transition:.2s}
-.exemple-toggle:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(245,158,11,.45);filter:brightness(1.08)}
+.exemple-toggle{width:100%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px}
 .exemple-content{display:none;background:#fffbeb;border:2px dashed #f59e0b;border-radius:14px;padding:16px;margin-top:12px;font-size:13px;line-height:1.6}
 .exemple-content.open{display:block}
-.btn-all{background:#0f766e;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:10px;transition:.2s}
-.btn-all:hover{background:#115e59;transform:translateY(-2px)}
-.btn-clear{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:12px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:8px;transition:.2s}
-.btn-clear:hover{background:#dc2626;color:#fff}
-.footer{background:#1e293b;color:#cbd5e1;padding:22px 16px;text-align:center;margin-top:30px;width:100%}
-.footer-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
-.footer a{color:#fff;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
-.footer a:hover{text-decoration:underline}
+.btn-all{background:#0f766e;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:10px}
+.btn-clear{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:12px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:8px}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}.modal-box{background:#fff;max-width:640px;width:100%;max-height:88vh;overflow:auto;border-radius:18px;padding:26px;line-height:1.65;font-size:14px}
 .close-btn{background:#1e293b;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:800;cursor:pointer;width:100%;margin-top:18px}
 .order-row{display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
 .order-btns button{border:1.5px solid #0f766e;background:#ecfdf5;color:#065f46;width:32px;height:32px;border-radius:8px;font-weight:900;cursor:pointer;margin-left:4px}
-.order-btns button:disabled{opacity:.3}
-.nav{display:flex;gap:6px;align-items:center}
+.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .nav button{background:transparent;color:#334155;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
 .nav button.active,.nav button:hover{background:#ecfdf5;color:#0f766e}
 .nav .btn-inscrire{background:#f59e0b!important;color:#fff!important;border-radius:12px;padding:11px 18px}
-#btnAdminNav{display:none!important}
-#btnAdminNav.visible{display:block!important}
+#btnAdminNav{display:none!important}#btnAdminNav.visible{display:block!important}
 .page{display:none}.page.active{display:block}
-.hero{background:linear-gradient(135deg,#0f766e,#115e59);color:#fff;border-radius:22px;padding:34px 22px;text-align:center;margin:6px 0 16px;box-shadow:0 15px 35px rgba(15,118,110,.25)}
-.hero h1{margin:0 0 10px;font-size:30px}
-.hero p{opacity:.92;margin:0 0 18px;line-height:1.6}
-.btn-hero{background:#f59e0b;color:#fff;border:none;padding:15px 26px;border-radius:14px;font-weight:900;cursor:pointer;font-size:15px;box-shadow:0 8px 20px rgba(245,158,11,.4)}
+.hero{background:linear-gradient(135deg,#0f766e,#115e59);color:#fff;border-radius:22px;padding:34px 22px;text-align:center;margin:6px 0 16px}
+.hero h1{margin:0 0 10px;font-size:30px}.hero p{opacity:.92;margin:0 0 18px;line-height:1.6}
+.btn-hero{background:#f59e0b;color:#fff;border:none;padding:15px 26px;border-radius:14px;font-weight:900;cursor:pointer;font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
-.stat{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.stat{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center}
 .stat b{font-size:24px;color:#0f766e;display:block}
 .auth-box{max-width:420px;margin:20px auto}
 #page-generateur .card{border:none;box-shadow:0 4px 20px rgba(15,23,42,.07);border-radius:18px;padding:20px}
-#page-generateur .section-title{border-radius:10px;padding:11px 14px;font-size:13px;letter-spacing:.4px}
-#page-generateur input,#page-generateur textarea,#page-generateur select{border-radius:12px;padding:12px}
-#page-generateur .model{border-radius:14px;padding:14px 6px;transition:.2s}
-#page-generateur .model:hover{transform:translateY(-2px)}
-#page-generateur .pub-zone{border-radius:14px}
-.layout{display:flex;flex-direction:column;min-height:100vh}
-.main{flex:1;display:flex;flex-direction:column;min-width:0;width:100%}
-.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;font-size:14px;box-shadow:0 10px 25px rgba(37,211,102,.5);text-decoration:none;display:flex;align-items:center;gap:8px}
+#page-generateur .section-title{border-radius:10px;padding:11px 14px;font-size:13px}
+.layout{display:flex;flex-direction:column;min-height:100vh}.main{flex:1;display:flex;flex-direction:column;min-width:0;width:100%}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px}
 .avis-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:10px}
 .stars{font-size:20px;cursor:pointer;letter-spacing:2px}
 .seo-text{font-size:12px;color:#64748b;line-height:1.6;text-align:center;padding:10px}
 #userProfile{display:none;background:#ecfdf5;border:1.5px solid #a7f3d0;border-radius:14px;padding:6px 10px;align-items:center;gap:8px}
-#userProfile.visible{display:flex}
-#userProfile img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
+#userProfile.visible{display:flex}#userProfile img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
 #btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:9px 12px;border-radius:10px;font-weight:900;cursor:pointer}
 #btnLogoutClient.visible{display:block}
+.bottom-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:16px}
+.mini-title{font-size:11px;font-weight:900;letter-spacing:.5px;color:#334155;text-align:center;margin-bottom:10px}
+.mini-avis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-avis .avis-card{margin:0;padding:10px;font-size:11px;line-height:1.5}
+.mini-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mini-step{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px 6px;text-align:center;font-size:11px;line-height:1.4}
+.mini-step b{width:26px;height:26px;border-radius:50%;background:#0f766e;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:13px}
+.mini-step:nth-child(2) b{background:#f59e0b}.mini-step:nth-child(3) b{background:#2563eb}.mini-step:nth-child(4) b{background:#dc2626}
+.footer-new{background:#111827;color:#cbd5e1;padding:18px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;width:100%}
+.footer-new .links{font-size:12px;color:#fff;font-weight:600}
+.footer-new .links a{color:#fff;text-decoration:none;margin:0 6px;cursor:pointer}
+.btn-aide{background:#16a34a;color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:12px;text-decoration:none;display:inline-block;margin-top:6px}
+.photo-upload{width:96px;height:96px;border-radius:50%;border:3px solid #f59e0b;background:#ecfdf5;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px auto 12px;cursor:pointer;overflow:hidden;text-align:center;color:#0f766e;font-size:11px;font-weight:800}
+.photo-upload img{width:100%;height:100%;object-fit:cover;display:none}
 @media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
-@media(max-width:899px){.header{flex-wrap:wrap;padding:12px}.nav{flex-wrap:wrap;justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.steps-grid{grid-template-columns:1fr 1fr!important}}
+@media(max-width:899px){.header{justify-content:center;text-align:center}.nav{justify-content:center;width:100%}.nav button{padding:9px 10px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}.hero-grid{grid-template-columns:1fr!important}.bottom-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <a class="wa-float" href="https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20pour%20mon%20CV" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:22px"></i> Besoin d'aide ?</a>
 <div class="layout">
 <div class="header">
-<div class="topbar-logo">CV <span>PRO</span> GABON</div>
+<div class="topbar-logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" fill="#fff"/><path d="M14 2v4h4" fill="#0f766e"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#0f766e" stroke-width="1.6" stroke-linecap="round"/><path d="M15 15l5 5-2 2-5-5z" fill="#f59e0b" stroke="#92400e" stroke-width=".6"/></svg></div><div><div>CV <span>PRO</span></div><div class="logo-gabon">GABON</div></div></div>
 <div class="nav"><button class="active" onclick="showPage('accueil',this)">Accueil</button><button onclick="showPage('generateur',this)">Créer mon CV</button><button onclick="showPage('avis',this)">Avis &amp; Aide</button><button onclick="showPage('connexion',this)">Connexion</button><button class="btn-inscrire" onclick="showPage('connexion',this)">S'inscrire</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div>
 <div id="userProfile"><img id="userPhotoTop" src=""><div><b id="userNameTop" style="font-size:13px"></b><br><span style="font-size:11px;opacity:.85">Mon compte</span></div></div>
 <button id="btnLogoutClient" onclick="seDeconnecter()">🚪 Se déconnecter</button>
@@ -117,18 +114,19 @@ input[type=range]{padding:0;background:transparent}
 <div class="card" style="margin:0"><b>Aperçu d'un CV pro</b><p style="font-size:13px;color:#64748b;line-height:1.7">MBOUMBA Jean Pierre<br>Assistant Administratif<br>06 12 34 56 78 • Libreville<br><br>⭐ Modèle Sombre Pro<br>⭐ Aperçu en direct<br>⭐ PDF prêt à envoyer</p></div>
 </div>
 <div class="stats"><div class="stat"><b>4</b>Modèles pro</div><div class="stat"><b>2 min</b>Pour créer</div><div class="stat"><b>1000F</b>Paiement unique</div></div>
-<div class="card"><div class="section-title">⭐ ILS ONT DÉJÀ CRÉÉ LEUR CV</div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Excellent !</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout à Libreville. Merci !" <br><span style="color:#64748b;font-size:12px">- Grâce M., Nzeng-Ayong, Libreville</span></div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Très facile</b><br>"Je ne savais pas faire un CV, l'exemple m'a beaucoup aidé. PDF propre." <br><span style="color:#64748b;font-size:12px">- Junior O., Port-Gentil</span></div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Je recommande</b><br>"Paiement Airtel Money facile, CV téléchargé direct. Top !" <br><span style="color:#64748b;font-size:12px">- Prisca N., Oyem</span></div>
-</div>
-<div class="card"><div class="section-title">COMMENT ÇA MARCHE ?</div>
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px" class="steps-grid">
-<div class="stat"><b>1</b>Choisis ton modèle</div>
-<div class="stat"><b>2</b>Remplis tes infos (ou clique sur Exemple)</div>
-<div class="stat"><b>3</b>Paie 1000F sur SasPay</div>
-<div class="stat"><b>4</b>Télécharge ton PDF</div>
+<div class="bottom-grid">
+<div><div class="mini-title">ILS ONT DÉJÀ CRÉÉ LEUR CV</div><div class="mini-avis">
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout."<br><span style="color:#16a34a;font-weight:800">Grâce M. - Libreville</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Je ne savais pas faire un CV, l'exemple m'a aidé."<br><span style="color:#16a34a;font-weight:800">Junior O. - Port-Gentil</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Paiement Airtel Money facile, PDF direct. Top !"<br><span style="color:#16a34a;font-weight:800">Prisca N. - Oyem</span></div>
 </div></div>
+<div><div class="mini-title">COMMENT ÇA MARCHE ?</div><div class="mini-steps">
+<div class="mini-step"><b>1</b>Choisis ton modèle</div>
+<div class="mini-step"><b>2</b>Remplis tes infos</div>
+<div class="mini-step"><b>3</b>Paie 1000F sur SasPay</div>
+<div class="mini-step"><b>4</b>Télécharge ton PDF</div>
+</div></div>
+</div>
 <p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi.</p>
 </div><div id="page-generateur" class="page">
 <div class="pub-zone">[ PUB MONETAG 1 ]</div>
@@ -201,8 +199,9 @@ input[type=range]{padding:0;background:transparent}
 <div class="card auth-box"><div class="section-title">CONNEXION / INSCRIPTION</div>
 <div id="authLogged" style="display:none;text-align:center"><img id="authPhotoView" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fbbf24"><p><b id="authNameView"></b></p><button class="btn-clear" onclick="seDeconnecter()">🚪 Se déconnecter</button><button class="btn-all" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">📄 Aller à Créer mon CV</button></div>
 <div id="authForm">
+<div class="photo-upload" id="photoUploadBox" onclick="document.getElementById('authPhoto').click()"><img id="authPhotoPreview"><span id="photoUploadTxt">📸<br>Ta photo<br><small>clique ici</small></span></div>
+<input type="file" id="authPhoto" accept="image/*" style="display:none">
 <input id="authNom" placeholder="Ton prénom et nom (Ex: Grâce Mboumba)">
-<label class="label">📸 Ta photo de profil (optionnel)</label><input type="file" id="authPhoto" accept="image/*">
 <input id="authEmail" placeholder="Ton email"><input id="authPass" type="password" placeholder="Mot de passe">
 <button class="btn-all" onclick="creerCompte()">CRÉER MON COMPTE</button>
 <button class="btn-clear" onclick="seConnecter()">J'AI DÉJÀ UN COMPTE, ME CONNECTER</button>
@@ -219,11 +218,15 @@ input[type=range]{padding:0;background:transparent}
 <div id="adminUsers"></div></div></div>
 </div>
 </div>
-<div class="footer"><b style="color:#fff"> CV PRO GABON</b> - 065663721<div class="footer-links"><a onclick="openModal('conf')">Confidentialité</a><span>|</span><a onclick="openModal('mentions')">Mentions Légales</a><span>|</span><a onclick="openModal('contact')">Contact</a><span>|</span><a onclick="openModal('apropos')">À propos</a></div><p style="font-size:12px;margin:8px 0 0">© 2026 CV Gabon - Libreville</p></div>
+<div class="footer-new">
+<div><div class="topbar-logo" style="color:#fff"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" fill="#fff"/><path d="M14 2v4h4" fill="#0f766e"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#0f766e" stroke-width="1.6" stroke-linecap="round"/><path d="M15 15l5 5-2 2-5-5z" fill="#f59e0b" stroke="#92400e" stroke-width=".6"/></svg></div><div><div>CV <span>PRO</span></div><div class="logo-gabon" style="color:#fff">GABON</div></div></div><div style="font-size:12px;margin-top:6px">📞 065663721</div></div>
+<div style="text-align:center"><b style="color:#fff;font-size:13px">Liens</b><div class="links"><a onclick="openModal('conf')">Confidentialité</a>•<a onclick="openModal('mentions')">Mentions Légales</a>•<a onclick="openModal('contact')">Contact</a>•<a onclick="openModal('apropos')">À propos</a></div></div>
+<div style="text-align:right"><div style="font-size:12px">© 2026 CV Gabon - Libreville</div><a class="btn-aide" href="https://wa.me/24165663721" target="_blank">💬 Besoin d'aide ?</a></div>
+</div>
 </div>
 </div>
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
-  <script>
+<script>
 const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
 const ADMIN_CODE="gabon2026@admin";
 const WA_NUMBER="24165663721";
@@ -278,7 +281,7 @@ function closeModal(){$('modal').classList.remove('open');}
 function showPage(n,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);}
 function getUsers(){try{return JSON.parse(localStorage.getItem('cv_users')||'[]')}catch(e){return[]}}
 let authPhotoData=null;
-$('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=200;c.height=200;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;x.drawImage(img,(c.width-w)/2,(c.height-h)/2,w,h);authPhotoData=c.toDataURL('image/jpeg',0.8);};img.src=ev.target.result;};r.readAsDataURL(f);});
+$('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=200;c.height=200;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;x.drawImage(img,(c.width-w)/2,(c.height-h)/2,w,h);authPhotoData=c.toDataURL('image/jpeg',0.8);const prev=$('authPhotoPreview');if(prev){prev.src=authPhotoData;prev.style.display='block';$('photoUploadTxt').style.display='none';}};img.src=ev.target.result;};r.readAsDataURL(f);});
 function afficherUser(){const email=localStorage.getItem('cv_session');const u=getUsers().find(x=>x.email===email);if(u){$('userProfile').classList.add('visible');$('btnLogoutClient').classList.add('visible');$('userNameTop').textContent=u.nom;$('userPhotoTop').src=u.photo||'https://via.placeholder.com/48?text='+encodeURIComponent(u.nom[0]||'U');$('authForm').style.display='none';$('authLogged').style.display='block';$('authNameView').textContent=u.nom;$('authPhotoView').src=u.photo||'https://via.placeholder.com/80';}else{$('userProfile').classList.remove('visible');$('btnLogoutClient').classList.remove('visible');$('authForm').style.display='block';$('authLogged').style.display='none';}}
 function creerCompte(){const nom=document.getElementById('authNom').value.trim(),email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');if(!nom||!email||!pass){msg.textContent='⚠️ Remplis nom, email et mot de passe';msg.style.color='#dc2626';return;}let users=getUsers();if(users.find(u=>u.email===email)){msg.textContent='⚠️ Email déjà utilisé, connecte-toi';msg.style.color='#dc2626';return;}users.push({nom,email,pass,photo:authPhotoData,date:new Date().toLocaleDateString()});localStorage.setItem('cv_users',JSON.stringify(users));localStorage.setItem('cv_session',email);msg.textContent='✅ Compte créé ! Bienvenue '+nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
 function seConnecter(){const email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');const u=getUsers().find(x=>x.email===email&&x.pass===pass);if(!u){msg.textContent='⚠️ Email ou mot de passe faux';msg.style.color='#dc2626';return;}localStorage.setItem('cv_session',email);msg.textContent='✅ Bon retour '+u.nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
