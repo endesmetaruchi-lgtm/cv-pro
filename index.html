@@ -332,14 +332,21 @@ function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`
 supabase.auth.onAuthStateChange(()=>{try{afficherUserSupabase();}catch(e){console.log(e);}});
 window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();try{afficherUserSupabase();}catch(e){console.log(e);}switchTab('login');const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
 </script>
-  <script>
-// secours si supabase rame
-setTimeout(function(){
-  document.querySelectorAll('button, a').forEach(function(b){
-    b.style.pointerEvents = 'auto';
-    b.style.opacity = '1';
+  <style>
+  #loader, .loader, .overlay, #loading, .modal-backdrop { display:none !important; }
+  button, a, input { pointer-events:auto !important; position:relative !important; z-index:9999 !important; }
+  body { overflow:auto !important; }
+</style>
+<script>
+window.addEventListener('load', function(){
+  document.querySelectorAll('#loader,.loader,.overlay,#loading').forEach(e=>e.remove());
+  document.body.style.overflow='auto';
+  document.querySelectorAll('button,a').forEach(b=>{
+    b.style.pointerEvents='auto';
+    b.style.position='relative';
+    b.style.zIndex='9999';
   });
-}, 1500);
+});
 </script>
 </body>
 </html>
