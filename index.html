@@ -226,7 +226,6 @@ input,textarea,select{font-size:16px}
 <button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button></div>
 <div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <button class="btn-pay" onclick="lancerPaiement()"><i class="fa-solid fa-lock"></i> PAYER 1000F ET TÉLÉCHARGER LE PDF<small>Airtel Money • Moov Money • Visa - via SasPay</small></button>
-<button id="btnPaid" class="btn-all" style="display:none;background:#16a34a" onclick="confirmerApresPaiement()">✅ J'AI PAYÉ, TÉLÉCHARGER MON PDF</button>
 <div id="payStatus" style="text-align:center;font-weight:800;margin-top:8px"></div>
 </div>
 <div class="card preview-card"><h3 style="margin:0 0 12px;font-size:14px" id="previewTitle">Aperçu Live - Modèle 1</h3><div class="preview-box" id="preview"></div></div>
@@ -357,7 +356,7 @@ async function saveClientToSupabase(nom, email, phone){
     }
   }catch(e){ console.log("Supabase non dispo", e); }
 }
-// ===== V5 SASPAY API =====
+// ===== V5 SASPAY API - AUTO SANS BOUTON =====
 async function lancerPaiement(){
   if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
   saveAuto();
@@ -393,38 +392,13 @@ async function lancerPaiement(){
       reference: data.reference,
       checkout_url: data.checkout_url
     }));
-    $('btnPaid').style.display='block';
     status.textContent = '✅ Paiement créé ! Redirection vers SasPay...';
-    alert('💳 On te redirige vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');
     window.location.href = data.checkout_url;
   }catch(e){
     console.error(e);
     alert('❌ Erreur réseau. Vérifie ta connexion puis recommence.');
     status.textContent = '';
   }
-}
-async function confirmerApresPaiement(){
-  const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}
-  let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}
-  if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}
-  // Vérification auto via Supabase si le webhook est déjà passé
-  let paid = false;
-  if(pe.reference && window.supabaseClient){
-    try{
-      const {data} = await window.supabaseClient.from('clients').select('*').eq('reference', pe.reference).eq('paid', true).limit(1);
-      if(data && data.length>0) paid = true;
-    }catch(e){}
-  }
-  if(!paid){
-    if(!confirm('Voulez-vous confirmer que vous avez bien payé 1000F sur SasPay ?\n\nOK = Oui, j\'ai payé\nAnnuler = Non, pas encore'))return;
-  }
-  sessionStorage.removeItem('cv_pending');
-  localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
-  $('btnPaid').style.display='none';
-  $('payStatus').textContent='';
-  await saveClientToSupabase(pe.nom || $('nom').value.trim(), pe.email || $('email').value.trim(), pe.wa || $('tel').value.trim());
-  alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');
-  currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);
 }
 function openModal(t){const c=$('modalContent');const x={conf:'<h3>🔒 Confidentialité</h3><p>Aucune donnée stockée sur serveur. Tout reste dans ton téléphone.</p>',mentions:'<h3>⚖️ Mentions Légales</h3><p>CV PRO Gabon - Libreville - 1000 FCFA via SasPay - Contact 065663721</p>',contact:'<h3>📞 Contact</h3><p>contact@cv-gabon.ga - 065663721 - WhatsApp direct</p>',apropos:'<h3>🇬🇦 À propos</h3><p>CV Gabon aide les jeunes gabonais à créer un CV pro en 2 min pour 1000 FCFA.</p>'};c.innerHTML=x[t]+'<button class="close-btn" onclick="closeModal()">FERMER</button>';$('modal').classList.add('open');}
 function closeModal(){$('modal').classList.remove('open');}
@@ -446,7 +420,37 @@ function posterAvis(){const nom=$('avisNom').value.trim(),txt=$('avisTxt').value
 function renderAvis(){const a=getAvis();const def=[{nom:'Grâce M., Libreville',txt:'Mon CV était prêt en 2 minutes, je l\'ai envoyé partout. Merci !',stars:5},{nom:'Junior O., Port-Gentil',txt:'Je ne savais pas faire un CV, l\'exemple m\'a beaucoup aidé.',stars:5}];const all=a.concat(def);$('avisList').innerHTML=all.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</b><br>"${escapeHtml(x.txt)}" 😊<br><span style="color:#64748b;font-size:12px">- ${escapeHtml(x.nom)}</span></div>`).join('');}
 function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}</b> ${escapeHtml(x.nom)}<br>"${escapeHtml(x.txt)}"<br><button class="btn-all" style="background:#25D366;padding:8px" onclick="window.open('https://wa.me/${WA_NUMBER}?text=Bonjour%20${encodeURIComponent(x.nom)}%2C%20merci%20pour%20ton%20avis%20sur%20CV%20Gabon','_blank')">💬 RÉPONDRE SUR WHATSAPP</button></div>`).join('')||'<p>Aucun avis pour l\'instant</p>';}
 (function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
-window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();afficherUser();const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
+window.addEventListener('load', async ()=>{
+  loadAuto(); loadModelToControls(); render(); renderAvis(); afficherUser();
+  const params = new URLSearchParams(location.search);
+  const isSuccess = params.get('payment') === 'success';
+  const ref = params.get('reference');
+  const pendingRaw = sessionStorage.getItem('cv_pending');
+  if(isSuccess && ref){
+    $('payStatus').textContent = '✅ Paiement reçu ! Vérification...';
+    $('payStatus').style.color = '#16a34a';
+    showPage('generateur', document.querySelectorAll('.nav button')[1]);
+    let pe = null;
+    try{ pe = pendingRaw ? JSON.parse(pendingRaw) : null; }catch(e){}
+    let paid = false;
+    for(let i=0; i<5; i++){
+      await new Promise(r=>setTimeout(r,1500));
+      if(window.supabaseClient){
+        try{
+          const {data} = await window.supabaseClient.from('clients').select('*').eq('reference', ref).limit(1);
+          if(data && data[0] && data[0].paid){ paid = true; break; }
+        }catch(e){}
+      }
+      if(i===4) paid = true;
+    }
+    sessionStorage.removeItem('cv_pending');
+    localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
+    if(pe){ currentModel = pe.model || currentModel; loadModelToControls(); render(); }
+    $('payStatus').textContent = '🎉 Merci ! Téléchargement de ton CV...';
+    setTimeout(genererPDF, 800);
+    history.replaceState({}, '', location.pathname);
+  }
+});
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
