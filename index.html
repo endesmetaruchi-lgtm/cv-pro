@@ -292,7 +292,7 @@ $('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)re
 function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
 function getJSPDFImageFormat(d){if(!d||typeof d!=='string')return null;if(d.startsWith('data:image/png'))return 'PNG';if(d.startsWith('data:image/jpeg'))return 'JPEG';return null;}
 function safeAddImage(doc,dataUrl,fmt,x,y,w,h){if(!dataUrl)return false;try{doc.addImage(dataUrl,fmt||getJSPDFImageFormat(dataUrl)||'PNG',x,y,w,h);return true;}catch(e){return false;}}
-function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
+function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:255);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
 const txtFor=k=>k==='comps'?compsLines.map(c=>'- '+c).join('\n'):(d[k]||'');const labelFor=k=>(BLOCKS.find(x=>x.k===k)||{}).l||k.toUpperCase();
 if(currentModel===1){doc.setFillColor(sr,sg,sb);doc.rect(0,0,210,pageH,'F');let y=20;const ps=Math.min(st.photoSize||84,100);if(d.photo){safeAddImage(doc,d.photo,photoFormat,105-ps/2,y,ps,ps);y+=ps+10+(st.nameGap||10);}doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+3);const n=doc.splitTextToSize(nom.toUpperCase(),180);doc.text(n,105,y,{align:'center'});y+=n.length*(base+5)+8;doc.setTextColor(ar,ag,ab);doc.setFontSize(base+1);const ti=doc.splitTextToSize(d.titre||'',180);doc.text(ti,105,y,{align:'center'});y+=ti.length*lh+20;y=sec(15,'CONTACT',contact,y,170,true);st.order.filter(k=>['form','comps','langues','qualites'].includes(k)).forEach(k=>{y=sec(15,labelFor(k),txtFor(k),y,170,true);});let y2=40;st.order.filter(k=>['profil','exps','motiv'].includes(k)).forEach(k=>{y2=sec(230,labelFor(k),txtFor(k),y2,320,false);});}
 else if(currentModel===2){doc.setFillColor(sr,sg,sb);doc.rect(0,0,pageW,110,'F');const ps=Math.min(st.photoSize||84,90);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-20,10,ps,ps);doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,24,50+(st.nameGap||10)*0.3);doc.setTextColor(ar,ag,ab);doc.setFontSize(base+2);doc.text(d.titre||'',24,72);doc.setTextColor(230,230,230);doc.setFontSize(base-1);doc.text(contact,24,92);let cy=140;st.order.forEach(k=>{cy=sec(30,labelFor(k),k==='comps'?compsLines.join(' • '):txtFor(k),cy,pageW-60,false);});}
@@ -301,8 +301,51 @@ else{const ps=Math.min(st.photoSize||84,80);if(d.photo)safeAddImage(doc,d.photo,
 doc.save('CV_'+nom.replace(/\s+/g,'_')+'.pdf');}
 function valider(){let ok=true;const tel=($('tel').value||'').replace(/\s/g,'');const email=$('email').value||'';$('errNom').classList.toggle('show',!$('nom').value.trim());if(!$('nom').value.trim())ok=false;$('errTitre').classList.toggle('show',!$('titre').value.trim());if(!$('titre').value.trim())ok=false;const telOk=tel.length>=8&&/^[0-9+]+$/.test(tel);$('errTel').classList.toggle('show',!telOk);if(!telOk)ok=false;const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);$('errEmail').classList.toggle('show',!emailOk);if(!emailOk)ok=false;return ok;}
 function isTestMode(){return new URLSearchParams(location.search).get('test')==='1';}
-function lancerPaiement(){if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}saveAuto();sessionStorage.setItem('cv_pending',JSON.stringify({model:currentModel,time:Date.now(),email:$('email').value.trim()}));if(SASPAY_PAYMENT_LINK.includes('METS-TON')||isTestMode()){alert('⚠️ MODE TEST - PDF gratuit');sessionStorage.removeItem('cv_pending');genererPDF();return;}$('btnPaid').style.display='block';window.open(SASPAY_PAYMENT_LINK,'_blank');alert('💳 Tu as été redirigé vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');}
-function confirmerApresPaiement(){const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}if(!confirm('Voulez-vous confirmer que vous avez bien payé 1000F sur SasPay ?\n\nOK = Oui, j\'ai payé\nAnnuler = Non, pas encore'))return;sessionStorage.removeItem('cv_pending');localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));$('btnPaid').style.display='none';alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);}
+// ===== V2 : Demande WhatsApp + Email avant paiement =====
+function demanderCoordonnees(){
+  let wa = prompt("Avant de payer, mets ton numéro WhatsApp pour recevoir ton CV en cas de problème :\nEx: 065663721");
+  if(!wa) return null;
+  wa = wa.replace(/\s/g,'');
+  if(wa.length < 8){ alert("Numéro WhatsApp invalide"); return null; }
+  let email = prompt("Et ton email pour recevoir ton PDF :\nEx: tonemail@gmail.com");
+  if(!email) return null;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Email invalide"); return null; }
+  return {wa: wa, email: email};
+}
+async function saveClientToSupabase(nom, email, phone){
+  try{
+    if(window.supabaseClient){
+      const {error} = await window.supabaseClient.from("clients").insert({name: nom, email: email, phone: phone});
+      if(error) console.log("Supabase insert:", error.message);
+      else console.log("Client enregistré dans Supabase");
+    }
+  }catch(e){ console.log("Supabase non dispo", e); }
+}
+function lancerPaiement(){
+  if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
+  saveAuto();
+  const coords = demanderCoordonnees();
+  if(!coords) return;
+  // On met à jour les champs tel/email avec ce qu'il a donné pour le paiement
+  sessionStorage.setItem('cv_pending',JSON.stringify({model:currentModel,time:Date.now(),email:coords.email,wa:coords.wa,nom:$('nom').value.trim()}));
+  if(SASPAY_PAYMENT_LINK.includes('METS-TON')||isTestMode()){alert('⚠️ MODE TEST - PDF gratuit');sessionStorage.removeItem('cv_pending');genererPDF();return;}
+  $('btnPaid').style.display='block';
+  window.open(SASPAY_PAYMENT_LINK,'_blank');
+  alert('💳 Tu as été redirigé vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".\n\nOn a enregistré ton WhatsApp '+coords.wa+' pour te renvoyer ton CV si besoin.');
+}
+async function confirmerApresPaiement(){
+  const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}
+  let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}
+  if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}
+  if(!confirm('Voulez-vous confirmer que vous avez bien payé 1000F sur SasPay ?\n\nOK = Oui, j\'ai payé\nAnnuler = Non, pas encore'))return;
+  sessionStorage.removeItem('cv_pending');
+  localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
+  $('btnPaid').style.display='none';
+  // V2 : Enregistrement Supabase après paiement
+  await saveClientToSupabase(pe.nom || $('nom').value.trim(), pe.email || $('email').value.trim(), pe.wa || $('tel').value.trim());
+  alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');
+  currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);
+}
 function openModal(t){const c=$('modalContent');const x={conf:'<h3>🔒 Confidentialité</h3><p>Aucune donnée stockée sur serveur. Tout reste dans ton téléphone.</p>',mentions:'<h3>⚖️ Mentions Légales</h3><p>CV PRO Gabon - Libreville - 1000 FCFA via SasPay - Contact 065663721</p>',contact:'<h3>📞 Contact</h3><p>contact@cv-gabon.ga - 065663721 - WhatsApp direct</p>',apropos:'<h3>🇬🇦 À propos</h3><p>CV Gabon aide les jeunes gabonais à créer un CV pro en 2 min pour 1000 FCFA.</p>'};c.innerHTML=x[t]+'<button class="close-btn" onclick="closeModal()">FERMER</button>';$('modal').classList.add('open');}
 function closeModal(){$('modal').classList.remove('open');}
 function showPage(n,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);}
@@ -327,9 +370,9 @@ window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();re
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const supabase = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
+window.supabaseClient = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
 async function saveClient(nom,email,phone){
-  await supabase.from("clients").insert({name:nom,email:email,phone:phone});
+  await window.supabaseClient.from("clients").insert({name:nom,email:email,phone:phone});
   alert("Bien enregistré !");
 }
 </script>
