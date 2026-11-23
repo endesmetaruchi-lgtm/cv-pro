@@ -227,6 +227,7 @@ input,textarea,select{font-size:16px}
 <div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <button class="btn-pay" onclick="lancerPaiement()"><i class="fa-solid fa-lock"></i> PAYER 1000F ET TÉLÉCHARGER LE PDF<small>Airtel Money • Moov Money • Visa - via SasPay</small></button>
 <button id="btnPaid" class="btn-all" style="display:none;background:#16a34a" onclick="confirmerApresPaiement()">✅ J'AI PAYÉ, TÉLÉCHARGER MON PDF</button>
+<div id="payStatus" style="text-align:center;font-weight:800;margin-top:8px"></div>
 </div>
 <div class="card preview-card"><h3 style="margin:0 0 12px;font-size:14px" id="previewTitle">Aperçu Live - Modèle 1</h3><div class="preview-box" id="preview"></div></div>
 </div></div>
@@ -276,7 +277,6 @@ input,textarea,select{font-size:16px}
 </div>
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
 <script>
-const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
 const ADMIN_CODE="gabon2026@admin";
 const WA_NUMBER="24165663721";
 const{jsPDF}=window.jspdf;let currentModel=1;const $=id=>document.getElementById(id);
@@ -338,7 +338,6 @@ else if(currentModel===3){const ps=Math.min(st.photoSize||84,96);const headerH=p
 else{const ps=Math.min(st.photoSize||84,80);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-30,20,ps,ps);doc.setTextColor(sr,sg,sb);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,30,55+(st.nameGap||10)*0.3);doc.setTextColor(tr,tg,tb);doc.setFont(pdfFont,'normal');doc.setFontSize(base+1);doc.text(d.titre||'',30,78);doc.setTextColor(100,116,139);doc.setFontSize(base-1);doc.text(contact,30,95);doc.setDrawColor(sr,sg,sb);doc.setLineWidth(2);doc.line(30,105,pageW-30,105);let cy=135;st.order.forEach(k=>{const tx=k==='comps'?compsLines.join(', '):txtFor(k);if(!tx||!String(tx).trim())return;cy=checkPage(cy);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(sr,sg,sb);doc.text(labelFor(k)+'.',30,cy);doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(30,30,30);const lines=doc.splitTextToSize(String(tx),pageW-60);doc.text(lines,30,cy+lh);cy+=lines.length*lh+gap;});}
 savePDFMobile(doc,'CV_'+nom.replace(/\s+/g,'_')+'.pdf');}
 function valider(){let ok=true;const tel=($('tel').value||'').replace(/\s/g,'');const email=$('email').value||'';$('errNom').classList.toggle('show',!$('nom').value.trim());if(!$('nom').value.trim())ok=false;$('errTitre').classList.toggle('show',!$('titre').value.trim());if(!$('titre').value.trim())ok=false;const telOk=tel.length>=8&&/^[0-9+]+$/.test(tel);$('errTel').classList.toggle('show',!telOk);if(!telOk)ok=false;const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);$('errEmail').classList.toggle('show',!emailOk);if(!emailOk)ok=false;return ok;}
-function isTestMode(){return new URLSearchParams(location.search).get('test')==='1';}
 function demanderCoordonnees(){
   let wa = prompt("Avant de payer, mets ton numéro WhatsApp pour recevoir ton CV en cas de problème :\nEx: 065663721");
   if(!wa) return null;
@@ -358,26 +357,71 @@ async function saveClientToSupabase(nom, email, phone){
     }
   }catch(e){ console.log("Supabase non dispo", e); }
 }
-function lancerPaiement(){
+// ===== V5 SASPAY API =====
+async function lancerPaiement(){
   if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
   saveAuto();
   const coords = demanderCoordonnees();
   if(!coords) return;
-  sessionStorage.setItem('cv_pending',JSON.stringify({model:currentModel,time:Date.now(),email:coords.email,wa:coords.wa,nom:$('nom').value.trim()}));
-  if(SASPAY_PAYMENT_LINK.includes('METS-TON')||isTestMode()){alert('⚠️ MODE TEST - PDF gratuit');sessionStorage.removeItem('cv_pending');genererPDF();return;}
-  $('btnPaid').style.display='block';
-  // FIX: on utilise location.href au lieu de window.open car les prompts bloquent le popup sur téléphone
-  alert('💳 On te redirige vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');
-  window.location.href = SASPAY_PAYMENT_LINK;
+  const status = $('payStatus');
+  status.textContent = '⏳ Création du paiement SasPay...';
+  status.style.color = '#0f766e';
+  try{
+    const res = await fetch('/api/create-payment', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        amount: 1000,
+        currency: 'XAF',
+        name: $('nom').value.trim(),
+        email: coords.email,
+        phone: coords.wa,
+        model: currentModel
+      })
+    });
+    const data = await res.json();
+    if(!res.ok || !data.checkout_url){
+      console.error(data);
+      alert('❌ Impossible de créer le paiement SasPay.\n' + (data.error || 'Vérifie que les clés sont bien mises dans Cloudflare.'));
+      status.textContent = '';
+      return;
+    }
+    sessionStorage.setItem('cv_pending', JSON.stringify({
+      model: currentModel, time: Date.now(),
+      email: coords.email, wa: coords.wa,
+      nom: $('nom').value.trim(),
+      reference: data.reference,
+      checkout_url: data.checkout_url
+    }));
+    $('btnPaid').style.display='block';
+    status.textContent = '✅ Paiement créé ! Redirection vers SasPay...';
+    alert('💳 On te redirige vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');
+    window.location.href = data.checkout_url;
+  }catch(e){
+    console.error(e);
+    alert('❌ Erreur réseau. Vérifie ta connexion puis recommence.');
+    status.textContent = '';
+  }
 }
 async function confirmerApresPaiement(){
   const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}
   let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}
   if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}
-  if(!confirm('Voulez-vous confirmer que vous avez bien payé 1000F sur SasPay ?\n\nOK = Oui, j\'ai payé\nAnnuler = Non, pas encore'))return;
+  // Vérification auto via Supabase si le webhook est déjà passé
+  let paid = false;
+  if(pe.reference && window.supabaseClient){
+    try{
+      const {data} = await window.supabaseClient.from('clients').select('*').eq('reference', pe.reference).eq('paid', true).limit(1);
+      if(data && data.length>0) paid = true;
+    }catch(e){}
+  }
+  if(!paid){
+    if(!confirm('Voulez-vous confirmer que vous avez bien payé 1000F sur SasPay ?\n\nOK = Oui, j\'ai payé\nAnnuler = Non, pas encore'))return;
+  }
   sessionStorage.removeItem('cv_pending');
   localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
   $('btnPaid').style.display='none';
+  $('payStatus').textContent='';
   await saveClientToSupabase(pe.nom || $('nom').value.trim(), pe.email || $('email').value.trim(), pe.wa || $('tel').value.trim());
   alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');
   currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);
