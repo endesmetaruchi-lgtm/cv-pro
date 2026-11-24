@@ -1,4 +1,7 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
+  if (context.request.method !== "POST") {
+    return Response.json({ ok: true, message: "create-payment actif, utilise POST" });
+  }
   const { request, env } = context;
   try {
     const body = await request.json();
