@@ -5,45 +5,20 @@ export async function onRequest(context) {
   const { request, env } = context;
   try {
     const body = await request.json();
-    const amount = Number(body.amount || 1000);
-    const currency = body.currency || "XAF";
-    const reference = "CVPRO-" + Date.now();
-    const origin = new URL(request.url).origin;
-
     if (!env.SASPAY_SECRET_KEY) {
-      return Response.json({ error: "Clé SasPay manquante" }, { status: 500 });
+      return Response.json({ error: "Clé SasPay manquante dans Cloudflare" }, { status: 500 });
     }
-
     const res = await fetch("https://api.saspay.me/v1/payments/checkout", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + env.SASPAY_SECRET_KEY
-      },
-      body: JSON.stringify({
-        amount: amount,
-        currency: currency,
-        reference: reference,
-        description: "CV Pro - " + (body.model || "Premium"),
-        return_url: origin + "/?payment=success&reference=" + reference,
-        cancel_url: origin + "/?payment=cancel",
-        customer: {
-          name: body.name || "Client",
-          email: body.email || "client@example.com",
-          phone: body.phone || ""
-        },
-        metadata: { model: body.model || "" }
-      })
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + env.SASPAY_SECRET_KEY },
+      body: JSON.stringify({ amount: Number(body.amount || 1000), currency: body.currency || "XAF", reference: "CVPRO-" + Date.now(), description: "CV Pro", return_url: new URL(request.url).origin + "/?payment=success", cancel_url: new URL(request.url).origin + "/?payment=cancel" })
     });
-
-    const data = await res.json();
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } catch { return Response.json({ error: "SasPay a répondu en HTML, pas JSON", status: res.status, body: text.slice(0, 500) }, { status: 502 }); }
     const checkout_url = data.checkout_url || data.url || data.payment_url;
-
-    if (!res.ok || !checkout_url) {
-      return Response.json({ error: data.message || data.error || "SasPay error", details: data }, { status: 400 });
-    }
-
-    return Response.json({ checkout_url, reference });
+    if (!res.ok || !checkout_url) return Response.json({ error: data.message || "SasPay error", details: data }, { status: 400 });
+    return Response.json({ checkout_url });
   } catch (e) {
     return Response.json({ error: e.message }, { status: 500 });
   }
