@@ -2,8 +2,8 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    // Route paiement SasPay
-    if (url.pathname === "/api/create-payment") {
+    // Route paiement SasPay - tolérante
+    if (url.pathname.includes("create-payment")) {
       if (request.method !== "POST") {
         return Response.json({ ok: true, message: "create-payment actif, utilise POST" });
       }
@@ -53,12 +53,10 @@ export default {
       }
     }
 
-    // Route webhook SasPay - on la gérera juste après
-    if (url.pathname === "/api/webhook-saspay") {
+    if (url.pathname.includes("webhook-saspay")) {
       return Response.json({ ok: true, message: "webhook actif" });
     }
 
-    // Sinon, on affiche le site normal
     return env.ASSETS.fetch(request);
   }
 };
