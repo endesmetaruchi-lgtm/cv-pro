@@ -10,115 +10,173 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Montserrat:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b;overflow-x:hidden}
-.header{background:#0f766e;color:#fff;padding:16px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;flex-direction:column;align-items:stretch!important;gap:12px}
-.badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700;align-self:flex-start}
+*{box-sizing:border-box}html,body{width:100%;max-width:100%;overflow-x:hidden}body{margin:0;background:#f1f5f9;font-family:'Inter',sans-serif;color:#1e293b}
+button{transition:.2s}button:hover{animation:clignote .5s infinite alternate}
+@keyframes clignote{from{filter:brightness(1);transform:scale(1)}to{filter:brightness(1.3);transform:scale(1.03)}}
+.header{background:#fff;color:#1e293b;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(0,0,0,.08);gap:12px;flex-wrap:wrap;width:100%}
+.topbar-logo{display:flex;align-items:center;gap:9px;font-weight:900;color:#0f766e;font-size:19px;line-height:1;white-space:nowrap}
+.topbar-logo span{color:#f59e0b}
+.logo-icon{width:42px;height:42px;background:linear-gradient(135deg,#0f766e,#14b8a6);border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(15,118,110,.35)}
+.logo-icon svg{width:26px;height:26px;display:block}
+.logo-gabon{font-size:14px;letter-spacing:3px;color:#0f766e;font-weight:900}
+.badge{background:#ecfdf5;color:#065f46;font-size:11px;padding:5px 10px;border-radius:999px;font-weight:700}
 .container{max-width:1300px;margin:0 auto;padding:16px;width:100%}
 .pub-zone{background:#fff;border:2px dashed #cbd5e1;border-radius:12px;padding:14px;text-align:center;color:#94a3b8;font-size:11px;font-weight:700;margin:12px 0}
 .grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-bottom:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-bottom:16px;min-width:0}
 .section-title{background:#1e293b;color:#fff;padding:9px 12px;border-radius:8px;font-weight:800;font-size:12px;margin:16px 0 12px}
 .label-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:6px}
 .label{font-size:11px;font-weight:800;color:#334155;text-transform:uppercase}
 .actions{display:flex;gap:5px}
-.btn-ex{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#ecfdf5;color:#065f46;border:1.5px solid #10b981;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s}
-.btn-ex:hover{background:#10b981;color:#fff}
-.btn-del{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer;transition:.2s}
-.btn-del:hover{background:#dc2626;color:#fff}
+.btn-ex{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#ecfdf5;color:#065f46;border:1.5px solid #10b981;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
+.btn-del{display:inline-flex;align-items:center;gap:4px;font-size:11px;background:#fef2f2;color:#dc2626;border:1.5px solid #fca5a5;padding:5px 10px;border-radius:999px;font-weight:800;cursor:pointer}
 input,textarea,select{width:100%;border:1.5px solid #e2e8f0;border-radius:10px;padding:11px;font-size:14px;margin-bottom:12px;background:#f8fafc;outline:none}
 input:focus,textarea:focus{border-color:#0f766e;background:#fff}
 input[type=color]{height:44px;padding:4px;cursor:pointer}
 input[type=range]{padding:0;background:transparent}
-.row{display:flex;gap:10px}.row>*{flex:1}
+.row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
 .models{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .model{border:2px solid #e2e8f0;border-radius:12px;padding:12px 6px;cursor:pointer;text-align:center;font-size:12px;font-weight:700}
 .model.active{border-color:#0f766e;background:#f0fdfa;color:#0f766e}
-.btn-pay{width:100%;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;border:none;border-radius:14px;padding:16px;font-weight:900;cursor:pointer;font-size:15px;transition:.2s}
-.btn-pay:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(22,163,74,.45);filter:brightness(1.08)}
+.btn-pay{width:100%;background:linear-gradient(135deg,#16a34a,#059669);color:#fff;border:none;border-radius:14px;padding:16px;font-weight:900;cursor:pointer;font-size:15px}
 .btn-pay small{display:block;font-weight:500;font-size:12px;opacity:.9;margin-top:3px}
-.preview-card{position:static}
-.preview-box{border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;min-height:500px;display:flex}
-.pb-side{width:36%;padding:16px;line-height:1.4}.pb-main{width:64%;padding:16px;line-height:1.5;flex:1}
+.preview-box{border:1px solid #e2e8f0;border-radius:12px;overflow:hidden;background:#fff;min-height:500px;display:flex;width:100%}
+.pb-side{width:36%;padding:16px;line-height:1.4;min-width:0;overflow-wrap:break-word;word-break:break-word}
+.pb-main{width:64%;padding:16px;line-height:1.5;flex:1;min-width:0;overflow-wrap:break-word;word-break:break-word}
+.pb-main p,.pb-side p{overflow-wrap:break-word;word-break:break-word}
 .photo-wrap{width:84px;height:84px;border-radius:50%;overflow:hidden;border:3px solid #fbbf24;flex-shrink:0;background:#e2e8f0;line-height:0}
 .photo-circle{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;border-radius:50%}
 .pb-side .photo-wrap{margin:0 auto 10px}
-.pb-main .photo-wrap{margin:0}
 .error{color:#dc2626;font-weight:700;font-size:12px;display:none;margin:-6px 0 8px}.error.show{display:block}
-.exemple-toggle{width:100%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px;transition:.2s}
-.exemple-toggle:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(245,158,11,.45);filter:brightness(1.08)}
+.exemple-toggle{width:100%;background:linear-gradient(135deg,#f59e0b,#d97706);color:#fff;border:none;padding:15px;border-radius:14px;font-weight:900;cursor:pointer;font-size:14px}
 .exemple-content{display:none;background:#fffbeb;border:2px dashed #f59e0b;border-radius:14px;padding:16px;margin-top:12px;font-size:13px;line-height:1.6}
 .exemple-content.open{display:block}
-.btn-all{background:#0f766e;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:10px;transition:.2s}
-.btn-all:hover{background:#115e59;transform:translateY(-2px)}
-.btn-clear{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:12px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:8px;transition:.2s}
-.btn-clear:hover{background:#dc2626;color:#fff}
-.footer{background:#1e293b;color:#cbd5e1;padding:22px 16px;text-align:center;margin-top:30px;width:100%}
-.footer-links{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 14px;margin-top:8px}
-.footer a{color:#fff;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
-.footer a:hover{text-decoration:underline}
+.btn-all{background:#0f766e;color:#fff;border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:10px}
+.btn-clear{background:#fff;color:#dc2626;border:2px solid #dc2626;padding:12px;border-radius:12px;font-weight:900;cursor:pointer;width:100%;margin-top:8px}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;align-items:center;justify-content:center;padding:16px}
 .modal.open{display:flex}.modal-box{background:#fff;max-width:640px;width:100%;max-height:88vh;overflow:auto;border-radius:18px;padding:26px;line-height:1.65;font-size:14px}
 .close-btn{background:#1e293b;color:#fff;border:none;padding:12px;border-radius:10px;font-weight:800;cursor:pointer;width:100%;margin-top:18px}
 .order-row{display:flex;align-items:center;justify-content:space-between;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:13px;font-weight:700}
 .order-btns button{border:1.5px solid #0f766e;background:#ecfdf5;color:#065f46;width:32px;height:32px;border-radius:8px;font-weight:900;cursor:pointer;margin-left:4px}
-.order-btns button:disabled{opacity:.3}
-.nav{display:flex;flex-direction:column;gap:8px;width:100%}
-.nav button{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:11px 14px;border-radius:12px;font-weight:800;cursor:pointer;font-size:14px;text-align:left;width:100%}
-.nav button.active,.nav button:hover{background:#fff;color:#0f766e}
-#btnAdminNav{display:none!important}
-#btnAdminNav.visible{display:block!important}
+.nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav button{background:transparent;color:#334155;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;font-size:14px;white-space:nowrap}
+.nav button.active,.nav button:hover{background:#ecfdf5;color:#0f766e}
+.nav .btn-inscrire{background:#f59e0b!important;color:#fff!important;border-radius:12px;padding:11px 18px}
+#btnAdminNav{display:none!important}#btnAdminNav.visible{display:block!important}
 .page{display:none}.page.active{display:block}
-.hero{background:linear-gradient(135deg,#0f766e,#115e59);color:#fff;border-radius:22px;padding:34px 22px;text-align:center;margin:6px 0 16px;box-shadow:0 15px 35px rgba(15,118,110,.25)}
-.hero h1{margin:0 0 10px;font-size:30px}
-.hero p{opacity:.92;margin:0 0 18px;line-height:1.6}
-.btn-hero{background:#f59e0b;color:#fff;border:none;padding:15px 26px;border-radius:14px;font-weight:900;cursor:pointer;font-size:15px;box-shadow:0 8px 20px rgba(245,158,11,.4)}
+.hero{background:linear-gradient(135deg,#0f766e,#115e59);color:#fff;border-radius:22px;padding:34px 22px;text-align:center;margin:6px 0 16px}
+.hero h1{margin:0 0 10px;font-size:30px}.hero p{opacity:.92;margin:0 0 18px;line-height:1.6}
+.btn-hero{background:#f59e0b;color:#fff;border:none;padding:15px 26px;border-radius:14px;font-weight:900;cursor:pointer;font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
-.stat{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.stat{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;text-align:center}
 .stat b{font-size:24px;color:#0f766e;display:block}
 .auth-box{max-width:420px;margin:20px auto}
 #page-generateur .card{border:none;box-shadow:0 4px 20px rgba(15,23,42,.07);border-radius:18px;padding:20px}
-#page-generateur .section-title{border-radius:10px;padding:11px 14px;font-size:13px;letter-spacing:.4px}
-#page-generateur input,#page-generateur textarea,#page-generateur select{border-radius:12px;padding:12px}
-#page-generateur .model{border-radius:14px;padding:14px 6px;transition:.2s}
-#page-generateur .model:hover{transform:translateY(-2px)}
-#page-generateur .pub-zone{border-radius:14px}
-.layout{display:flex;flex-direction:column;min-height:100vh}
-.main{flex:1;display:flex;flex-direction:column;min-width:0;width:100%}
-.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;font-size:14px;box-shadow:0 10px 25px rgba(37,211,102,.5);text-decoration:none;display:flex;align-items:center;gap:8px}
+#page-generateur .section-title{border-radius:10px;padding:11px 14px;font-size:13px}
+.layout{display:flex;flex-direction:column;min-height:100vh}.main{flex:1;display:flex;flex-direction:column;min-width:0;width:100%}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:999;background:#25D366;color:#fff;border-radius:999px;padding:14px 18px;font-weight:900;font-size:14px;text-decoration:none;display:flex;align-items:center;gap:8px}
 .avis-card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;margin-bottom:10px}
 .stars{font-size:20px;cursor:pointer;letter-spacing:2px}
 .seo-text{font-size:12px;color:#64748b;line-height:1.6;text-align:center;padding:10px}
-#userProfile{display:none;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.5);border-radius:14px;padding:10px;align-items:center;gap:10px}
-#userProfile.visible{display:flex}
-#userProfile img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
-#btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:900;cursor:pointer;width:100%}
+#userProfile{display:none;background:#ecfdf5;border:1.5px solid #a7f3d0;border-radius:14px;padding:6px 10px;align-items:center;gap:8px}
+#userProfile.visible{display:flex}#userProfile img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid #fbbf24}
+#btnLogoutClient{display:none;background:#dc2626;color:#fff;border:none;padding:9px 12px;border-radius:10px;font-weight:900;cursor:pointer}
 #btnLogoutClient.visible{display:block}
-@media(min-width:1100px){.layout{flex-direction:row}.header{width:220px;min-height:100vh;height:100vh;position:sticky;top:0;flex-shrink:0}.main{flex:1;min-width:0}.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:20px}.preview-box{min-height:640px}}
-@media(min-width:900px) and (max-width:1099px){.layout{flex-direction:row}.header{width:200px;min-height:100vh;height:100vh;position:sticky;top:0;flex-shrink:0}.main{flex:1;min-width:0}.container{max-width:none}.grid{grid-template-columns:1fr}.preview-card{position:static}}
-@media(max-width:899px){.layout{flex-direction:column}.header{flex-direction:row;flex-wrap:wrap;align-items:center!important;position:sticky;top:0;padding:12px}.header>div:first-child{flex:1 1 55%}.badge{align-self:center}.nav{flex-direction:row;flex-wrap:wrap;flex:1 1 100%}.nav button{flex:1 1 30%;text-align:center;padding:10px 8px;font-size:13px}.container{padding:12px}.grid{grid-template-columns:1fr}.preview-card{position:static;order:-1}.preview-box{min-height:420px}.hero{padding:24px 16px}.hero h1{font-size:24px}.row{flex-direction:column;gap:0}.models{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}.pb-side{width:38%}.pb-main{width:62%}}
+.bottom-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:16px}
+.mini-title{font-size:11px;font-weight:900;letter-spacing:.5px;color:#334155;text-align:center;margin-bottom:10px}
+.mini-avis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-avis .avis-card{margin:0;padding:10px;font-size:11px;line-height:1.5}
+.mini-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mini-step{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:10px 6px;text-align:center;font-size:11px;line-height:1.4}
+.mini-step b{width:26px;height:26px;border-radius:50%;background:#0f766e;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:13px}
+.mini-step:nth-child(2) b{background:#f59e0b}.mini-step:nth-child(3) b{background:#2563eb}.mini-step:nth-child(4) b{background:#dc2626}
+.footer-new{background:#111827;color:#cbd5e1;padding:18px 16px 8px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;width:100%}
+.footer-new .links{font-size:12px;color:#fff;font-weight:600}
+.footer-new .links a{color:#fff;text-decoration:none;margin:0 6px;cursor:pointer}
+.btn-aide{background:#16a34a;color:#fff;padding:8px 14px;border-radius:999px;font-weight:800;font-size:12px;text-decoration:none;display:inline-block;margin-top:6px}
+.photo-upload{width:96px;height:96px;border-radius:50%;border:3px solid #f59e0b;background:#ecfdf5;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px auto 12px;cursor:pointer;overflow:hidden;text-align:center;color:#0f766e;font-size:11px;font-weight:800}
+.photo-upload img{width:100%;height:100%;object-fit:cover;display:none}
+.hero-new{background:linear-gradient(135deg,#047857,#059669 55%,#10b981);color:#fff;border-radius:18px;padding:22px;margin:6px 0 14px;overflow:hidden}
+.hero-top{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;align-items:center}
+.hero-new h1{margin:0 0 8px;font-size:28px;line-height:1.15}
+.hero-new p{margin:0 0 10px;font-size:13px;line-height:1.6;opacity:.95}
+.hero-loc{font-size:12px;opacity:.9;margin-bottom:14px}
+.laptop{background:#fff;border-radius:10px 10px 0 0;padding:12px;color:#1e293b;box-shadow:0 12px 25px rgba(0,0,0,.25);min-height:150px}
+.laptop:before{content:"";display:block;width:36px;height:5px;background:#e2e8f0;border-radius:99px;margin:0 auto 10px}
+.laptop-base{height:10px;background:#e2e8f0;border-radius:0 0 12px 12px;margin:0 -6px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.hstat{background:#fff;color:#1e293b;border-radius:12px;padding:12px;text-align:center}
+.hstat .ico{width:34px;height:34px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-size:16px}
+.hstat:nth-child(2) .ico{background:#fef3c7;color:#d97706}
+.hstat:nth-child(3) .ico{background:#fff7ed;color:#ea580c}
+.hstat b{display:block;font-size:16px;color:#065f46}
+.hstat:nth-child(2) b{color:#92400e}.hstat:nth-child(3) b{color:#9a3412}
+.hstat span{font-size:11px;color:#64748b;line-height:1.3;display:block}
+.footer-links-center{text-align:center;flex:1}
+.footer-copy{text-align:center;width:100%;margin-top:10px;font-size:12px;color:#cbd5e1}
+@media(min-width:1100px){.container{max-width:none;padding:20px 24px}.grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:22px}.preview-card{position:sticky;top:80px}.preview-box{min-height:640px}}
+@media(max-width:899px){
+.header{justify-content:center;text-align:center;padding:10px}
+.nav{justify-content:center;width:100%}
+.nav button{padding:9px 10px;font-size:13px}
+.container{padding:10px}
+.grid{grid-template-columns:1fr}
+.preview-card{position:static;order:-1;padding:12px!important}
+.preview-box{min-height:420px;flex-direction:column}
+.pb-side{width:100%!important;padding:12px}
+.pb-main{width:100%!important;padding:12px}
+.hero{padding:24px 16px}.hero h1{font-size:24px}
+.row{flex-direction:column;gap:0}
+.models{grid-template-columns:repeat(2,1fr)}
+.stats{grid-template-columns:1fr 1fr 1fr;gap:8px}.stat{padding:12px 6px}.stat b{font-size:18px}
+.bottom-grid{grid-template-columns:1fr}
+.hero-top{grid-template-columns:1fr}.hero-new h1{font-size:23px}.hero-stats{gap:6px}.hstat{padding:8px 4px}
+.mini-avis{grid-template-columns:1fr}
+.mini-steps{grid-template-columns:repeat(2,1fr)}
+.card{padding:14px!important}
+input,textarea,select{font-size:16px}
+}
 </style>
 </head>
 <body>
 <a class="wa-float" href="https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20besoin%20d%27aide%20pour%20mon%20CV" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size:22px"></i> Besoin d'aide ?</a>
 <div class="layout">
-<div class="header"><div><b> CV PRO GABON</b><br><span style="font-size:11px;opacity:.85">Ton CV pro en 2 min</span></div>
+<div class="header">
+<div class="topbar-logo"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" fill="#fff"/><path d="M14 2v4h4" fill="#0f766e"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#0f766e" stroke-width="1.6" stroke-linecap="round"/><path d="M15 15l5 5-2 2-5-5z" fill="#f59e0b" stroke="#92400e" stroke-width=".6"/></svg></div><div><div>CV <span>PRO</span></div><div class="logo-gabon">GABON</div></div></div>
+<div class="nav"><button class="active" onclick="showPage('accueil',this)">Accueil</button><button onclick="showPage('generateur',this)">Créer mon CV</button><button onclick="showPage('avis',this)">Avis &amp; Aide</button><button onclick="showPage('connexion',this)">Connexion</button><button class="btn-inscrire" onclick="allerInscrire(this)">S'inscrire</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div>
 <div id="userProfile"><img id="userPhotoTop" src=""><div><b id="userNameTop" style="font-size:13px"></b><br><span style="font-size:11px;opacity:.85">Mon compte</span></div></div>
 <button id="btnLogoutClient" onclick="seDeconnecter()">🚪 Se déconnecter</button>
-<div class="nav"><button class="active" onclick="showPage('accueil',this)">🏠 Accueil</button><button onclick="showPage('generateur',this)">📄 Créer mon CV</button><button onclick="showPage('connexion',this)">👤 Connexion</button><button onclick="showPage('avis',this)">💬 Avis &amp; Aide</button><button id="btnAdminNav" onclick="showPage('admin',this)">🔒 Admin</button></div><span id="saveStatus" class="badge">✓ Sauvegardé</span></div>
+<span id="saveStatus" class="badge" style="display:none">✓ Sauvegardé</span>
+</div>
 <div class="main">
 <div class="container">
 <div id="page-accueil" class="page active">
-<div class="hero"><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b style="font-size:22px;color:#fde68a">1000F</b> - Airtel Money • Moov Money • Visa via SasPay<br>4 modèles pro, aperçu en direct, PDF prêt à envoyer<br><b>Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville...</b></p><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
-<div class="stats"><div class="stat"><b>4</b>Modèles pro</div><div class="stat"><b>2 min</b>Pour créer</div><div class="stat"><b>1000F</b>Paiement unique</div></div>
-<div class="card"><div class="section-title">⭐ ILS ONT DÉJÀ CRÉÉ LEUR CV</div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Excellent !</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout à Libreville. Merci !" <br><span style="color:#64748b;font-size:12px">- Grâce M., Nzeng-Ayong, Libreville</span></div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Très facile</b><br>"Je ne savais pas faire un CV, l'exemple m'a beaucoup aidé. PDF propre." <br><span style="color:#64748b;font-size:12px">- Junior O., Port-Gentil</span></div>
-<div class="avis-card"><b>⭐⭐⭐⭐⭐ Je recommande</b><br>"Paiement Airtel Money facile, CV téléchargé direct. Top !" <br><span style="color:#64748b;font-size:12px">- Prisca N., Oyem</span></div>
+<div class="hero-new">
+<div class="hero-top">
+<div><h1>Crée ton CV Pro en 2 minutes</h1><p>Pour seulement <b>1000F</b> - Airtel Money, Moov Money, Visa via SasPay • 4 modèles pro • aperçu en direct • PDF prêt à envoyer</p><div class="hero-loc">📍 Déjà +127 CV créés à Libreville, Port-Gentil, Oyem, Franceville</div><button class="btn-hero" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">COMMENCER MAINTENANT →</button></div>
+<div><div class="laptop"><b style="font-size:11px;color:#0f766e">MON CV</b><div style="display:flex;gap:8px;margin-top:8px"><div style="width:36px;height:36px;border-radius:50%;background:#ecfdf5;color:#059669;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">JD</div><div style="font-size:11px;line-height:1.4"><b>Jean Dupont</b><br><span style="color:#64748b">Comptable - Libreville</span></div></div><div style="margin-top:10px;font-size:10px;color:#334155"><b style="color:#059669">Expérience</b><div style="height:5px;background:#e2e8f0;border-radius:99px;margin:4px 0"></div><div style="height:5px;background:#e2e8f0;border-radius:99px;width:80%"></div><b style="color:#059669;display:block;margin-top:8px">Compétences</b><div style="height:5px;background:#fef3c7;border-radius:99px;margin-top:4px"></div></div></div><div class="laptop-base"></div></div>
 </div>
-<div class="card"><div class="section-title">COMMENT ÇA MARCHE ?</div><p>1. Choisis ton modèle<br>2. Remplis tes infos (ou clique sur Exemple)<br>3. Paie 1000F sur SasPay<br>4. Télécharge ton PDF</p></div>
-<p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi. Modèles CV Gabon, CV Libreville, emploi Gabon.</p>
+<div class="hero-stats">
+<div class="hstat"><div class="ico"><i class="fa-solid fa-layer-group"></i></div><b>4 Modèles</b><span>Designs modernes et 100% friendly</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-clock"></i></div><b>2 min</b><span>Pour créer Remplis, prévisualise, télécharge</span></div>
+<div class="hstat"><div class="ico"><i class="fa-solid fa-coins"></i></div><b>1000F</b><span>Paiement unique Sans abonnement, paiement unique sécurisé</span></div>
 </div>
-<div id="page-generateur" class="page">
+</div>
+<div class="bottom-grid">
+<div><div class="mini-title">ILS ONT DÉJÀ CRÉÉ LEUR CV</div><div class="mini-avis">
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Mon CV était prêt en 2 minutes, je l'ai envoyé partout."<br><span style="color:#16a34a;font-weight:800">Grâce M. - Libreville</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Je ne savais pas faire un CV, l'exemple m'a aidé."<br><span style="color:#16a34a;font-weight:800">Junior O. - Port-Gentil</span></div>
+<div class="avis-card"><b style="color:#f59e0b">★★★★★</b><br>"Paiement Airtel Money facile, PDF direct. Top !"<br><span style="color:#16a34a;font-weight:800">Prisca N. - Oyem</span></div>
+</div></div>
+<div><div class="mini-title">COMMENT ÇA MARCHE ?</div><div class="mini-steps">
+<div class="mini-step"><b>1</b>Choisis ton modèle</div>
+<div class="mini-step"><b>2</b>Remplis tes infos (ou clique sur Exemple)</div>
+<div class="mini-step"><b>3</b>Paie 1000F sur SasPay</div>
+<div class="mini-step"><b>4</b>Télécharge ton PDF</div>
+</div></div>
+</div>
+<p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi.</p>
+</div><div id="page-generateur" class="page">
 <div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <button class="exemple-toggle" onclick="document.getElementById('exempleBox').classList.toggle('open')">👀 VOIR L'EXEMPLE CV PRO COMPLET</button>
 <div id="exempleBox" class="exemple-content">
@@ -143,7 +201,7 @@ input[type=range]{padding:0;background:transparent}
 <div class="card"><div class="section-title">1. CHOISIS TON MODÈLE</div>
 <div class="models"><div class="model active" data-m="1" onclick="setModel(1)">1<br>Sombre Pro</div><div class="model" data-m="2" onclick="setModel(2)">2<br>Moderne</div><div class="model" data-m="3" onclick="setModel(3)">3<br>Jaune Gabon</div><div class="model" data-m="4" onclick="setModel(4)">4<br>Bleu Minimal</div></div>
 <div class="section-title" style="background:#7c3aed">STYLE DU MODÈLE <span id="styleModelLabel">1</span></div>
-<div class="row"><div><label class="label">Police</label><select id="fontSelect" onchange="updateStyle()"><option value="inter">Inter</option><option value="montserrat">Montserrat</option><option value="poppins">Poppins</option><option value="roboto">Roboto</option><option value="times">Times</option></select></div><div><label class="label">Taille : <span id="sizeVal">11px</span></label><input type="range" id="fontSizeRange" min="8" max="14" step="0.5" value="11" oninput="document.getElementById('sizeVal').textContent=this.value+'px';updateStyle()"></div></div>
+<div class="row"><div><label class="label">Police</label><select id="fontSelect" onchange="updateStyle()"><option value="inter">Inter</option><option value="montserrat">Montserrat</option><option value="poppins">Poppins</option><option value="roboto">Roboto</option><option value="times">Times</option></select></div><div><label class="label">Taille : <span id="sizeVal">11px</span></label><input type="range" id="fontSizeRange" min="8" max="13" step="0.5" value="11" oninput="document.getElementById('sizeVal').textContent=this.value+'px';updateStyle()"></div></div>
 <div class="row"><div><label class="label">Couleur barre</label><input type="color" id="colSide" value="#0f2a44" oninput="updateStyle()"></div><div><label class="label">Couleur titres</label><input type="color" id="colTitle" value="#0f766e" oninput="updateStyle()"></div><div><label class="label">Couleur accent</label><input type="color" id="colAccent" value="#f59e0b" oninput="updateStyle()"></div></div>
 <div class="section-title" style="background:#db2777">✏️ PERSONNALISER LE MODÈLE <span id="persoModelLabel">1</span></div>
 <div class="row"><div><label class="label">Taille photo : <span id="photoSizeVal">84px</span></label><input type="range" id="photoSizeRange" min="50" max="130" step="2" value="84" oninput="document.getElementById('photoSizeVal').textContent=this.value+'px';updateStyle()"></div><div><label class="label">Espace photo/nom : <span id="nameGapVal">10px</span></label><input type="range" id="nameGapRange" min="0" max="30" step="1" value="10" oninput="document.getElementById('nameGapVal').textContent=this.value+'px';updateStyle()"></div></div>
@@ -168,7 +226,7 @@ input[type=range]{padding:0;background:transparent}
 <button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button></div>
 <div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <button class="btn-pay" onclick="lancerPaiement()"><i class="fa-solid fa-lock"></i> PAYER 1000F ET TÉLÉCHARGER LE PDF<small>Airtel Money • Moov Money • Visa - via SasPay</small></button>
-<button id="btnPaid" class="btn-all" style="display:none;background:#16a34a" onclick="confirmerApresPaiement()">✅ J'AI PAYÉ, TÉLÉCHARGER MON PDF</button>
+<div id="payStatus" style="text-align:center;font-weight:800;margin-top:8px"></div>
 </div>
 <div class="card preview-card"><h3 style="margin:0 0 12px;font-size:14px" id="previewTitle">Aperçu Live - Modèle 1</h3><div class="preview-box" id="preview"></div></div>
 </div></div>
@@ -189,8 +247,9 @@ input[type=range]{padding:0;background:transparent}
 <div class="card auth-box"><div class="section-title">CONNEXION / INSCRIPTION</div>
 <div id="authLogged" style="display:none;text-align:center"><img id="authPhotoView" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #fbbf24"><p><b id="authNameView"></b></p><button class="btn-clear" onclick="seDeconnecter()">🚪 Se déconnecter</button><button class="btn-all" onclick="showPage('generateur',document.querySelectorAll('.nav button')[1])">📄 Aller à Créer mon CV</button></div>
 <div id="authForm">
+<div class="photo-upload" id="photoUploadBox" onclick="document.getElementById('authPhoto').click()"><img id="authPhotoPreview"><span id="photoUploadTxt">📸<br>Ta photo<br><small>clique ici</small></span></div>
+<input type="file" id="authPhoto" accept="image/*" style="display:none">
 <input id="authNom" placeholder="Ton prénom et nom (Ex: Grâce Mboumba)">
-<label class="label">📸 Ta photo de profil (optionnel)</label><input type="file" id="authPhoto" accept="image/*">
 <input id="authEmail" placeholder="Ton email"><input id="authPass" type="password" placeholder="Mot de passe">
 <button class="btn-all" onclick="creerCompte()">CRÉER MON COMPTE</button>
 <button class="btn-clear" onclick="seConnecter()">J'AI DÉJÀ UN COMPTE, ME CONNECTER</button>
@@ -207,12 +266,16 @@ input[type=range]{padding:0;background:transparent}
 <div id="adminUsers"></div></div></div>
 </div>
 </div>
-<div class="footer"><b style="color:#fff"> CV PRO GABON</b> - 065663721<div class="footer-links"><a onclick="openModal('conf')">Confidentialité</a><span>|</span><a onclick="openModal('mentions')">Mentions Légales</a><span>|</span><a onclick="openModal('contact')">Contact</a><span>|</span><a onclick="openModal('apropos')">À propos</a></div><p style="font-size:12px;margin:8px 0 0">© 2026 CV Gabon - Libreville</p></div>
+<div class="footer-new">
+<div><div class="topbar-logo" style="color:#fff"><div class="logo-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l4 4v16H6z" fill="#fff"/><path d="M14 2v4h4" fill="#0f766e"/><path d="M9 9h6M9 13h6M9 17h4" stroke="#0f766e" stroke-width="1.6" stroke-linecap="round"/><path d="M15 15l5 5-2 2-5-5z" fill="#f59e0b" stroke="#92400e" stroke-width=".6"/></svg></div><div><div>CV <span>PRO</span></div><div class="logo-gabon" style="color:#fff">GABON</div></div></div><div style="font-size:12px;margin-top:6px">📞 065663721</div></div>
+<div class="footer-links-center"><b style="color:#fff;font-size:13px">Liens</b><div class="links"><a onclick="openModal('conf')">Confidentialité</a>•<a onclick="openModal('mentions')">Mentions Légales</a>•<a onclick="openModal('contact')">Contact</a>•<a onclick="openModal('apropos')">À propos</a></div></div>
+<div style="min-width:120px"></div>
+</div>
+<div style="background:#111827;text-align:center;padding:0 16px 16px;color:#cbd5e1;font-size:12px">© 2026 CV Gabon - Libreville</div>
 </div>
 </div>
 <div id="modal" class="modal" onclick="if(event.target==this)closeModal()"><div class="modal-box" id="modalContent"></div></div>
 <script>
-const SASPAY_PAYMENT_LINK="https://link.saspay.me/jqelvk4atsq";
 const ADMIN_CODE="gabon2026@admin";
 const WA_NUMBER="24165663721";
 const{jsPDF}=window.jspdf;let currentModel=1;const $=id=>document.getElementById(id);
@@ -225,8 +288,8 @@ for(let i=1;i<=4;i++){let o={};o.data={};o['sty'+'le']=ds();o.photo=null;modelsD
 const EXEMPLES={nom:'MBOUMBA Jean Pierre',titre:'Assistant Administratif / Comptable',tel:'06 12 34 56 78',email:'jean.mboumba@exemple.ga',adresse:'Nzeng-Ayong, Libreville, Gabon',profil:'Jeune diplômé en Gestion et Comptabilité, motivé, organisé et ponctuel. Disponible immédiatement.',form:'2022 - 2024 : BTS Gestion - Lycée d\'Etat de Libreville\n2020 - 2022 : Bac Série B - Lycée Classique de Libreville',exps:'2024 (3 mois) : Stagiaire - Boutique Mbolo, Libreville\n- Accueil clients\n- Classement factures et caisse\n- Inventaire stocks',comps:'Microsoft Word et Excel\nAccueil, relation client\nGestion de caisse\nPonctualité, honnêteté',langues:'Français : Courant\nAnglais : Notions',qualites:'Ponctuel, travailleur, à l\'écoute',motiv:'Je souhaite intégrer votre entreprise pour mettre mes compétences en gestion au service de votre équipe.'};
 function copierUn(c){if(EXEMPLES[c]!==undefined){$(c).value=EXEMPLES[c];saveCurrentToModel();render();saveAuto();}}
 function effacerUn(c){if($(c)){$(c).value='';saveCurrentToModel();render();saveAuto();}}
-function remplirTout(){Object.keys(EXEMPLES).forEach(k=>{if($(k))$(k).value=EXEMPLES[k];});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();alert('✅ Exemple copié dans le Modèle '+currentModel);}
-function effacerExemple(){if(!confirm('Vider ce Modèle '+currentModel+' ?'))return;FIELDS.forEach(id=>{if($(id))$(id).value='';});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();}
+function remplirTout(){Object.keys(EXEMPLES).forEach(k=>{if($(k))$(k).value=EXEMPLES[k];});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();}
+function effacerExemple(){if(!confirm('Voulez-vous vraiment TOUT EFFACER dans ce Modèle '+currentModel+' ?\n\nClique sur OK pour confirmer, Annuler pour garder.'))return;FIELDS.forEach(id=>{if($(id))$(id).value='';});modelsData[currentModel].photo=null;saveCurrentToModel();render();saveAuto();}
 function escapeHtml(s){return String(s??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');}
 function ensureStyle(st){const d=ds();for(let k in d){if(st[k]===undefined)st[k]=d[k];}if(!Array.isArray(st.order)||st.order.length!==BLOCKS.length)st.order=d.order.slice();return st;}
 function saveCurrentToModel(){const m=modelsData[currentModel];FIELDS.forEach(id=>{if($(id))m.data[id]=$(id).value;});const old=m['sty'+'le']||ds();m['sty'+'le']=ensureStyle({fontKey:$('fontSelect').value,size:parseFloat($('fontSizeRange').value),colSide:$('colSide').value,colTitle:$('colTitle').value,colAccent:$('colAccent').value,photoSize:parseFloat($('photoSizeRange')?$('photoSizeRange').value:old.photoSize),nameGap:parseFloat($('nameGapRange')?$('nameGapRange').value:old.nameGap),blockGap:parseFloat($('blockGapRange')?$('blockGapRange').value:old.blockGap),order:old.order});}
@@ -238,10 +301,10 @@ function setModel(m){if(m===currentModel)return;saveCurrentToModel();currentMode
 function getData(){saveCurrentToModel();const m=modelsData[currentModel];let o={};for(let k in m.data)o[k]=m.data[k];o['sty'+'le']=ensureStyle(m['sty'+'le']);o.photo=m.photo;return o;}
 function blockHTML(d,st,k){const gap=st.blockGap;const map={profil:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">PROFIL</b><p style="white-space:pre-wrap">${escapeHtml(d.profil)}</p>`,form:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">FORMATION</b><p style="white-space:pre-wrap">${escapeHtml(d.form)}</p>`,exps:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">EXPÉRIENCE</b><p style="white-space:pre-wrap">${escapeHtml(d.exps)}</p>`,comps:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">COMPÉTENCES</b><p>${(d.comps||'').split('\n').filter(x=>x.trim()).map(c=>escapeHtml(c)).join(' • ')}</p>`,langues:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">LANGUES</b><p style="white-space:pre-wrap">${escapeHtml(d.langues)}</p>`,qualites:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">QUALITÉS</b><p>${escapeHtml(d.qualites)}</p>`,motiv:`<b style="color:${st.colTitle};border-bottom:2px solid ${st.colAccent};display:block;margin-top:${gap}px">MOTIVATION</b><p style="white-space:pre-wrap">${escapeHtml(d.motiv)}</p>`};return map[k]||'';}
 function render(){const d=getData();const st=d['sty'+'le'];const col=st.colSide,tc=st.colTitle,acc=st.colAccent,sz=st.size,fc=FONT_MAP[st.fontKey]||FONT_MAP.inter;const nv=d.nom||'Votre Nom';const ps=st.photoSize,ng=st.nameGap;const ph=d.photo?`<div class="photo-wrap" style="border-color:${acc};width:${ps}px;height:${ps}px"><img src="${d.photo}" class="photo-circle"></div>`:`<div class="photo-wrap" style="border-color:${acc};width:${ps}px;height:${ps}px;display:flex;align-items:center;justify-content:center;color:#94a3b8;line-height:1"><i class="fa-solid fa-user"></i></div>`;const cl=(d.comps||'').split('\n').filter(x=>x.trim());const ct=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).map(x=>escapeHtml(x)).join(' • ');const b=`font-family:${fc};font-size:${sz}px`;let h='';
-if(currentModel===1){const sideKeys=st.order.filter(k=>['form','comps','langues','qualites'].includes(k));const mainKeys=st.order.filter(k=>['profil','exps','motiv'].includes(k));h=`<div class="pb-side" style="background:${col};color:#fff;${b}">${ph}<div style="font-weight:800;text-align:center;font-size:${sz+2}px;margin-top:${ng}px">${escapeHtml(nv)}</div><div style="text-align:center;color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><h4 style="color:${tc};border-bottom:2px solid ${acc}">CONTACT</h4><p>${escapeHtml(d.tel)}<br>${escapeHtml(d.email)}<br>${escapeHtml(d.adresse)}</p>${sideKeys.map(k=>blockHTML(d,{...st,colTitle:tc},k)).join('')}</div><div class="pb-main" style="${b}">${mainKeys.map(k=>blockHTML(d,st,k)).join('')}</div>`;}
-else if(currentModel===2){h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="background:${col};padding:16px;color:#fff;display:flex;gap:12px;align-items:center">${ph}<div style="margin-top:${ng}px"><div style="font-size:${sz+5}px;font-weight:900">${escapeHtml(nv)}</div><div style="color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px">${ct}</div></div></div><div style="padding:14px">${st.order.map(k=>blockHTML(d,st,k)).join('')}</div></div>`;}
-else if(currentModel===3){const leftKeys=st.order.filter(k=>['profil','form','comps'].includes(k));const rightKeys=st.order.filter(k=>['exps','langues','qualites'].includes(k));const motivKeys=st.order.filter(k=>k==='motiv');const pill=(k,bg,fg)=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l||k;const txt=k==='comps'?cl.map(c=>'• '+c).join('\n'):(d[k]||'');return `<b style="background:${bg};padding:4px 8px;border-radius:6px;display:block;color:${fg};margin-top:${st.blockGap}px">${label}</b><p style="white-space:pre-wrap">${escapeHtml(txt)}</p>`;};h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="text-align:center;padding:18px 14px 12px;border-bottom:5px solid ${acc};background:#fffbeb"><div style="display:flex;justify-content:center">${ph}</div><div style="font-size:${sz+6}px;font-weight:900;color:${col};margin-top:${ng}px">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:900">${escapeHtml(d.titre)}</div><div style="font-size:${sz-1}px;color:#64748b;margin-top:4px">${ct}</div></div><div style="padding:14px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div>${leftKeys.map(k=>pill(k,acc,'#1e293b')).join('')}</div><div>${rightKeys.map(k=>pill(k,col,'#fff')).join('')}</div></div>${motivKeys.map(k=>pill(k,tc,'#fff')).join('')}</div></div>`;}
-else{h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 16px 12px;border-bottom:2px solid ${col}"><div style="margin-top:${ng}px"><div style="font-size:${sz+6}px;font-weight:900;color:${col}">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:700">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px;color:#64748b">${ct}</div></div><div>${ph}</div></div><div style="padding:14px 16px">${st.order.map(k=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l;const txt=k==='comps'?cl.join(', '):(d[k]||'');return `<p style="margin:0 0 ${st.blockGap}px"><b style="color:${col}">${label}.</b> <span style="white-space:pre-wrap">${escapeHtml(txt)}</span></p>`;}).join('')}</div></div>`;}
+if(currentModel===1){const sideKeys=st.order.filter(k=>['form','comps','langues','qualites'].includes(k));const mainKeys=st.order.filter(k=>['profil','exps','motiv'].includes(k));h=`<div class="pb-side" style="background:${col};color:#fff;${b}">${ph}<div style="font-weight:800;text-align:center;font-size:${sz+2}px;margin-top:${ng}px">${escapeHtml(nv)}</div><div style="text-align:center;color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><h4 style="color:#fff;border-bottom:2px solid ${acc}">CONTACT</h4><p>${escapeHtml(d.tel)}<br>${escapeHtml(d.email)}<br>${escapeHtml(d.adresse)}</p>${sideKeys.map(k=>blockHTML(d,{...st,colTitle:'#fff'},k)).join('')}</div><div class="pb-main" style="${b}">${mainKeys.map(k=>blockHTML(d,st,k)).join('')}</div>`;}
+else if(currentModel===2){h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="background:${col};padding:16px;color:#fff;display:flex;gap:12px;align-items:center">${ph}<div style="margin-top:${ng}px;min-width:0"><div style="font-size:${sz+5}px;font-weight:900">${escapeHtml(nv)}</div><div style="color:${acc};font-weight:800">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px">${ct}</div></div></div><div style="padding:14px">${st.order.map(k=>blockHTML(d,st,k)).join('')}</div></div>`;}
+else if(currentModel===3){const leftKeys=st.order.filter(k=>['profil','form','comps'].includes(k));const rightKeys=st.order.filter(k=>['exps','langues','qualites'].includes(k));const motivKeys=st.order.filter(k=>k==='motiv');const pill=(k,bg,fg)=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l||k;const txt=k==='comps'?cl.map(c=>'• '+c).join('\n'):(d[k]||'');return `<b style="background:${bg};padding:4px 8px;border-radius:6px;display:block;color:${fg};margin-top:${st.blockGap}px">${label}</b><p style="white-space:pre-wrap">${escapeHtml(txt)}</p>`;};h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="text-align:center;padding:18px 14px 12px;border-bottom:5px solid ${acc};background:#fffbeb"><div style="display:flex;justify-content:center">${ph}</div><div style="font-size:${sz+6}px;font-weight:900;color:${col};margin-top:${ng}px">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:900">${escapeHtml(d.titre)}</div><div style="font-size:${sz-1}px;color:#64748b;margin-top:4px">${ct}</div></div><div style="padding:14px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div style="min-width:0">${leftKeys.map(k=>pill(k,acc,'#1e293b')).join('')}</div><div style="min-width:0">${rightKeys.map(k=>pill(k,col,'#fff')).join('')}</div></div>${motivKeys.map(k=>pill(k,tc,'#fff')).join('')}</div></div>`;}
+else{h=`<div class="pb-main" style="width:100%;${b};padding:0"><div style="display:flex;justify-content:space-between;align-items:center;padding:18px 16px 12px;border-bottom:2px solid ${col}"><div style="margin-top:${ng}px;min-width:0"><div style="font-size:${sz+6}px;font-weight:900;color:${col}">${escapeHtml(nv)}</div><div style="color:${tc};font-weight:700">${escapeHtml(d.titre)}</div><div style="font-size:${sz-2}px;color:#64748b">${ct}</div></div><div>${ph}</div></div><div style="padding:14px 16px">${st.order.map(k=>{const label=(BLOCKS.find(x=>x.k===k)||{}).l;const txt=k==='comps'?cl.join(', '):(d[k]||'');return `<p style="margin:0 0 ${st.blockGap}px"><b style="color:${col}">${label}.</b> <span style="white-space:pre-wrap">${escapeHtml(txt)}</span></p>`;}).join('')}</div></div>`;}
 $('preview').innerHTML=h;}
 function saveAuto(){saveCurrentToModel();const badge=$('saveStatus');try{localStorage.setItem('cv_v10',JSON.stringify(modelsData));badge.textContent='✓ Sauvegardé '+new Date().toLocaleTimeString();}catch(e){}}
 function loadAuto(){try{const r=localStorage.getItem('cv_v10')||localStorage.getItem('cv_v9');if(r){const p=JSON.parse(r);Object.keys(p).forEach(k=>{if(modelsData[k]){modelsData[k]=p[k];if(modelsData[k]['sty'+'le'])modelsData[k]['sty'+'le']=ensureStyle(modelsData[k]['sty'+'le']);}});}}catch(e){}}
@@ -250,29 +313,106 @@ $('photoInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)re
 function hexToRgb(h){h=h.replace('#','');return[parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
 function getJSPDFImageFormat(d){if(!d||typeof d!=='string')return null;if(d.startsWith('data:image/png'))return 'PNG';if(d.startsWith('data:image/jpeg'))return 'JPEG';return null;}
 function safeAddImage(doc,dataUrl,fmt,x,y,w,h){if(!dataUrl)return false;try{doc.addImage(dataUrl,fmt||getJSPDFImageFormat(dataUrl)||'PNG',x,y,w,h);return true;}catch(e){return false;}}
-function hasValidPaymentToken(){try{const raw=sessionStorage.getItem('cv_paid_ok');if(!raw)return false;const p=JSON.parse(raw);if(!p||!p.exp||Date.now()>p.exp)return false;if(p.model!==currentModel)return false;return true;}catch(e){return false;}}
-function genererPDF(){if(!hasValidPaymentToken()){alert('🔒 PDF verrouillé. Tu dois payer 1000F d\'abord.\nClique sur PAYER 1000F ET TÉLÉCHARGER LE PDF');return;}const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=st.size||11;const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(tr,tg,tb);doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(white?255:30,white?255:30,white?255:30);const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
+function savePDFMobile(doc, filename){
+  try{
+    const blob = doc.output('blob');
+    const url = URL.createObjectURL(blob);
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if(isMobile){
+      const a = document.createElement('a');
+      a.href = url; a.download = filename; a.target = '_blank';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>{ window.open(url, '_blank'); }, 500);
+    }else{
+      doc.save(filename);
+    }
+  }catch(e){ doc.save(filename); }
+}
+function genererPDF(){const d=getData();const st=d['sty'+'le'];const nom=(d.nom||'').trim();if(!nom)return alert('Mets ton nom');const doc=new jsPDF({unit:'pt',format:'a4'});const pageW=595,pageH=842;const [sr,sg,sb]=hexToRgb(st.colSide),[tr,tg,tb]=hexToRgb(st.colTitle),[ar,ag,ab]=hexToRgb(st.colAccent);const contact=[d.tel,d.email,d.adresse].filter(x=>x&&x.trim()).join(' • ');const compsLines=(d.comps||'').split('\n').map(x=>x.trim()).filter(Boolean);const photoFormat=getJSPDFImageFormat(d.photo);const pdfFont=st.fontKey==='times'?'times':'helvetica';const base=Math.min(st.size||11,12);const lh=base+3.5;const gap=st.blockGap||8;function checkPage(y){if(y>pageH-60){doc.addPage();return 40;}return y;}
+function sec(x,t,tx,y,w,white){if(!tx||!String(tx).trim())return y;y=checkPage(y);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);if(white){doc.setTextColor(255,255,255);}else{doc.setTextColor(tr,tg,tb);}doc.text(t,x,y);doc.setDrawColor(ar,ag,ab);doc.setLineWidth(1);doc.line(x,y+3,x+w,y+3);y+=base+6;doc.setFont(pdfFont,'normal');doc.setFontSize(base);if(white){doc.setTextColor(255,255,255);}else{doc.setTextColor(30,41,59);}const l=doc.splitTextToSize(String(tx),w);for(let i=0;i<l.length;i++){y=checkPage(y);doc.text(l[i],x,y);y+=lh;}return y+gap;}
 const txtFor=k=>k==='comps'?compsLines.map(c=>'- '+c).join('\n'):(d[k]||'');const labelFor=k=>(BLOCKS.find(x=>x.k===k)||{}).l||k.toUpperCase();
 if(currentModel===1){doc.setFillColor(sr,sg,sb);doc.rect(0,0,210,pageH,'F');let y=20;const ps=Math.min(st.photoSize||84,100);if(d.photo){safeAddImage(doc,d.photo,photoFormat,105-ps/2,y,ps,ps);y+=ps+10+(st.nameGap||10);}doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+3);const n=doc.splitTextToSize(nom.toUpperCase(),180);doc.text(n,105,y,{align:'center'});y+=n.length*(base+5)+8;doc.setTextColor(ar,ag,ab);doc.setFontSize(base+1);const ti=doc.splitTextToSize(d.titre||'',180);doc.text(ti,105,y,{align:'center'});y+=ti.length*lh+20;y=sec(15,'CONTACT',contact,y,170,true);st.order.filter(k=>['form','comps','langues','qualites'].includes(k)).forEach(k=>{y=sec(15,labelFor(k),txtFor(k),y,170,true);});let y2=40;st.order.filter(k=>['profil','exps','motiv'].includes(k)).forEach(k=>{y2=sec(230,labelFor(k),txtFor(k),y2,320,false);});}
 else if(currentModel===2){doc.setFillColor(sr,sg,sb);doc.rect(0,0,pageW,110,'F');const ps=Math.min(st.photoSize||84,90);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-20,10,ps,ps);doc.setTextColor(255,255,255);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,24,50+(st.nameGap||10)*0.3);doc.setTextColor(ar,ag,ab);doc.setFontSize(base+2);doc.text(d.titre||'',24,72);doc.setTextColor(230,230,230);doc.setFontSize(base-1);doc.text(contact,24,92);let cy=140;st.order.forEach(k=>{cy=sec(30,labelFor(k),k==='comps'?compsLines.join(' • '):txtFor(k),cy,pageW-60,false);});}
 else if(currentModel===3){const ps=Math.min(st.photoSize||84,96);const headerH=ps+92+(st.nameGap||10);doc.setFillColor(255,251,235);doc.rect(0,0,pageW,headerH,'F');let y=18;const photoX=pageW/2-ps/2;if(d.photo){safeAddImage(doc,d.photo,photoFormat,photoX,y,ps,ps);y+=ps+8+(st.nameGap||10);}else{y+=ps+8+(st.nameGap||10);}doc.setTextColor(sr,sg,sb);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom.toUpperCase(),pageW/2,y,{align:'center'});y+=base+8;doc.setTextColor(tr,tg,tb);doc.setFontSize(base+1);doc.text(d.titre||'',pageW/2,y,{align:'center'});y+=base+6;doc.setTextColor(100,116,139);doc.setFont(pdfFont,'normal');doc.setFontSize(base-1);const contactLines=doc.splitTextToSize(contact,pageW-60);doc.text(contactLines,pageW/2,y,{align:'center'});y+=contactLines.length*lh+6;doc.setFillColor(ar,ag,ab);doc.rect(0,headerH-5,pageW,5,'F');y=headerH+18;const margin=28,gapC=14,colW=(pageW-margin*2-gapC)/2;const leftX=margin,rightX=margin+colW+gapC;function pill(x,t,tx,yy,w,bg,fg){if(!tx||!String(tx).trim())return yy;yy=checkPage(yy);doc.setFillColor(bg[0],bg[1],bg[2]);doc.rect(x,yy-base-2,w,base+7,'F');doc.setFont(pdfFont,'bold');doc.setFontSize(base+0.5);doc.setTextColor(fg[0],fg[1],fg[2]);doc.text(t.toUpperCase(),x+7,yy);yy+=base+9;doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(30,41,59);const lines=doc.splitTextToSize(String(tx),w-4);for(let i=0;i<lines.length;i++){yy=checkPage(yy);doc.text(lines[i],x+2,yy);yy+=lh;}return yy+gap;}let y1=y,y2=y;st.order.filter(k=>['profil','form','comps'].includes(k)).forEach(k=>{y1=pill(leftX,labelFor(k),k==='comps'?compsLines.map(c=>'• '+c).join('\n'):txtFor(k),y1,colW,[ar,ag,ab],[30,41,59]);});st.order.filter(k=>['exps','langues','qualites'].includes(k)).forEach(k=>{y2=pill(rightX,labelFor(k),txtFor(k),y2,colW,[sr,sg,sb],[255,255,255]);});let ym=Math.max(y1,y2)+6;st.order.filter(k=>k==='motiv').forEach(k=>{pill(margin,labelFor(k),txtFor(k),ym,pageW-margin*2,[tr,tg,tb],[255,255,255]);});}
 else{const ps=Math.min(st.photoSize||84,80);if(d.photo)safeAddImage(doc,d.photo,photoFormat,pageW-ps-30,20,ps,ps);doc.setTextColor(sr,sg,sb);doc.setFont(pdfFont,'bold');doc.setFontSize(base+6);doc.text(nom,30,55+(st.nameGap||10)*0.3);doc.setTextColor(tr,tg,tb);doc.setFont(pdfFont,'normal');doc.setFontSize(base+1);doc.text(d.titre||'',30,78);doc.setTextColor(100,116,139);doc.setFontSize(base-1);doc.text(contact,30,95);doc.setDrawColor(sr,sg,sb);doc.setLineWidth(2);doc.line(30,105,pageW-30,105);let cy=135;st.order.forEach(k=>{const tx=k==='comps'?compsLines.join(', '):txtFor(k);if(!tx||!String(tx).trim())return;cy=checkPage(cy);doc.setFont(pdfFont,'bold');doc.setFontSize(base+1);doc.setTextColor(sr,sg,sb);doc.text(labelFor(k)+'.',30,cy);doc.setFont(pdfFont,'normal');doc.setFontSize(base);doc.setTextColor(30,30,30);const lines=doc.splitTextToSize(String(tx),pageW-60);doc.text(lines,30,cy+lh);cy+=lines.length*lh+gap;});}
-doc.save('CV_'+nom.replace(/\s+/g,'_')+'.pdf');sessionStorage.removeItem('cv_paid_ok');}
+savePDFMobile(doc,'CV_'+nom.replace(/\s+/g,'_')+'.pdf');}
 function valider(){let ok=true;const tel=($('tel').value||'').replace(/\s/g,'');const email=$('email').value||'';$('errNom').classList.toggle('show',!$('nom').value.trim());if(!$('nom').value.trim())ok=false;$('errTitre').classList.toggle('show',!$('titre').value.trim());if(!$('titre').value.trim())ok=false;const telOk=tel.length>=8&&/^[0-9+]+$/.test(tel);$('errTel').classList.toggle('show',!telOk);if(!telOk)ok=false;const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);$('errEmail').classList.toggle('show',!emailOk);if(!emailOk)ok=false;return ok;}
-function lancerPaiement(){if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}saveAuto();sessionStorage.removeItem('cv_paid_ok');sessionStorage.setItem('cv_pending',JSON.stringify({model:currentModel,time:Date.now(),email:$('email').value.trim()}));if(SASPAY_PAYMENT_LINK.includes('METS-TON')){alert('⚠️ Lien SasPay non configuré');return;}$('btnPaid').style.display='block';window.open(SASPAY_PAYMENT_LINK,'_blank');alert('💳 Tu as été redirigé vers SasPay (1000F).\nAprès avoir payé, reviens ici et clique sur "J\'AI PAYÉ, TÉLÉCHARGER MON PDF".');}
-function confirmerApresPaiement(){const r=sessionStorage.getItem('cv_pending');if(!r){alert('⚠️ Aucun paiement en attente. Clique d\'abord sur PAYER.');return;}let pe;try{pe=JSON.parse(r);}catch(e){pe={model:currentModel,time:Date.now()};}if(Date.now()-pe.time>1800000){sessionStorage.removeItem('cv_pending');$('btnPaid').style.display='none';alert('⏰ Session expirée, recommence le paiement.');return;}if(!confirm('Tu confirmes avoir payé 1000F sur SasPay ?'))return;sessionStorage.removeItem('cv_pending');sessionStorage.setItem('cv_paid_ok',JSON.stringify({model:pe.model,exp:Date.now()+5*60*1000,token:Math.random().toString(36).slice(2)}));localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));$('btnPaid').style.display='none';alert('✅ Merci ! Ton CV va être envoyé à : '+(pe.email||'ton email')+'\nTéléchargement en cours...');currentModel=pe.model;loadModelToControls();render();setTimeout(genererPDF,500);}
+function demanderCoordonnees(){
+  let wa = prompt("Avant de payer, mets ton numéro WhatsApp pour recevoir ton CV en cas de problème :\nEx: 065663721");
+  if(!wa) return null;
+  wa = wa.replace(/\s/g,'');
+  if(wa.length < 8){ alert("Numéro WhatsApp invalide"); return null; }
+  let email = prompt("Et ton email pour recevoir ton PDF :\nEx: tonemail@gmail.com");
+  if(!email) return null;
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Email invalide"); return null; }
+  return {wa: wa, email: email};
+}
+async function saveClientToSupabase(nom, email, phone){
+  try{
+    if(window.supabaseClient){
+      const {error} = await window.supabaseClient.from("clients").insert({name: nom, email: email, phone: phone});
+      if(error) console.log("Supabase insert:", error.message);
+      else console.log("Client enregistré dans Supabase");
+    }
+  }catch(e){ console.log("Supabase non dispo", e); }
+}
+// ===== V5 SASPAY API - AUTO SANS BOUTON =====
+async function lancerPaiement(){
+  if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
+  saveAuto();
+  const coords = demanderCoordonnees();
+  if(!coords) return;
+  const status = $('payStatus');
+  status.textContent = '⏳ Création du paiement SasPay...';
+  status.style.color = '#0f766e';
+  try{
+    const res = await fetch('/api/create-payment', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        amount: 1000,
+        currency: 'XAF',
+        name: $('nom').value.trim(),
+        email: coords.email,
+        phone: coords.wa,
+        model: currentModel
+      })
+    });
+    const data = await res.json();
+    if(!res.ok || !data.checkout_url){
+      console.error(data);
+      alert('❌ Impossible de créer le paiement SasPay.\n' + (data.error || 'Vérifie que les clés sont bien mises dans Cloudflare.'));
+      status.textContent = '';
+      return;
+    }
+    sessionStorage.setItem('cv_pending', JSON.stringify({
+      model: currentModel, time: Date.now(),
+      email: coords.email, wa: coords.wa,
+      nom: $('nom').value.trim(),
+      reference: data.reference,
+      checkout_url: data.checkout_url
+    }));
+    status.textContent = '✅ Paiement créé ! Redirection vers SasPay...';
+    window.location.href = data.checkout_url;
+  }catch(e){
+    console.error(e);
+    alert('❌ Erreur réseau. Vérifie ta connexion puis recommence.');
+    status.textContent = '';
+  }
+}
 function openModal(t){const c=$('modalContent');const x={conf:'<h3>🔒 Confidentialité</h3><p>Aucune donnée stockée sur serveur. Tout reste dans ton téléphone.</p>',mentions:'<h3>⚖️ Mentions Légales</h3><p>CV PRO Gabon - Libreville - 1000 FCFA via SasPay - Contact 065663721</p>',contact:'<h3>📞 Contact</h3><p>contact@cv-gabon.ga - 065663721 - WhatsApp direct</p>',apropos:'<h3>🇬🇦 À propos</h3><p>CV Gabon aide les jeunes gabonais à créer un CV pro en 2 min pour 1000 FCFA.</p>'};c.innerHTML=x[t]+'<button class="close-btn" onclick="closeModal()">FERMER</button>';$('modal').classList.add('open');}
 function closeModal(){$('modal').classList.remove('open');}
 function showPage(n,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+n).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0);}
+function allerInscrire(btn){showPage('connexion',btn);setTimeout(()=>{const el=document.getElementById('authNom');if(el)el.focus();},300);}
 function getUsers(){try{return JSON.parse(localStorage.getItem('cv_users')||'[]')}catch(e){return[]}}
 let authPhotoData=null;
-$('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=200;c.height=200;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;x.drawImage(img,(c.width-w)/2,(c.height-h)/2,w,h);authPhotoData=c.toDataURL('image/jpeg',0.8);};img.src=ev.target.result;};r.readAsDataURL(f);});
+$('authPhoto').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=200;c.height=200;const x=c.getContext('2d');const scale=Math.max(c.width/img.width,c.height/img.height);const w=img.width*scale;const h=img.height*scale;x.drawImage(img,(c.width-w)/2,(c.height-h)/2,w,h);authPhotoData=c.toDataURL('image/jpeg',0.8);const prev=$('authPhotoPreview');if(prev){prev.src=authPhotoData;prev.style.display='block';$('photoUploadTxt').style.display='none';}};img.src=ev.target.result;};r.readAsDataURL(f);});
 function afficherUser(){const email=localStorage.getItem('cv_session');const u=getUsers().find(x=>x.email===email);if(u){$('userProfile').classList.add('visible');$('btnLogoutClient').classList.add('visible');$('userNameTop').textContent=u.nom;$('userPhotoTop').src=u.photo||'https://via.placeholder.com/48?text='+encodeURIComponent(u.nom[0]||'U');$('authForm').style.display='none';$('authLogged').style.display='block';$('authNameView').textContent=u.nom;$('authPhotoView').src=u.photo||'https://via.placeholder.com/80';}else{$('userProfile').classList.remove('visible');$('btnLogoutClient').classList.remove('visible');$('authForm').style.display='block';$('authLogged').style.display='none';}}
 function creerCompte(){const nom=document.getElementById('authNom').value.trim(),email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');if(!nom||!email||!pass){msg.textContent='⚠️ Remplis nom, email et mot de passe';msg.style.color='#dc2626';return;}let users=getUsers();if(users.find(u=>u.email===email)){msg.textContent='⚠️ Email déjà utilisé, connecte-toi';msg.style.color='#dc2626';return;}users.push({nom,email,pass,photo:authPhotoData,date:new Date().toLocaleDateString()});localStorage.setItem('cv_users',JSON.stringify(users));localStorage.setItem('cv_session',email);msg.textContent='✅ Compte créé ! Bienvenue '+nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
 function seConnecter(){const email=document.getElementById('authEmail').value.trim(),pass=document.getElementById('authPass').value.trim();const msg=document.getElementById('authMsg');const u=getUsers().find(x=>x.email===email&&x.pass===pass);if(!u){msg.textContent='⚠️ Email ou mot de passe faux';msg.style.color='#dc2626';return;}localStorage.setItem('cv_session',email);msg.textContent='✅ Bon retour '+u.nom;msg.style.color='#16a34a';afficherUser();setTimeout(()=>showPage('generateur',document.querySelectorAll('.nav button')[1]),900);}
-function seDeconnecter(){localStorage.removeItem('cv_session');afficherUser();alert('✅ Déconnecté. À bientôt !');showPage('accueil',document.querySelectorAll('.nav button')[0]);}
+function seDeconnecter(){if(!confirm('Voulez-vous vraiment vous déconnecter ?\n\nOK = Oui, me déconnecter\nAnnuler = Non, rester connecté'))return;localStorage.removeItem('cv_session');afficherUser();showPage('accueil',document.querySelectorAll('.nav button')[0]);}
 function ouvrirAdmin(){if(document.getElementById('adminCode').value!==ADMIN_CODE){alert('Code admin faux');return;}localStorage.setItem('cv_is_admin','1');document.getElementById('btnAdminNav').classList.add('visible');document.getElementById('adminBox').style.display='block';const users=getUsers();const paiements=parseInt(localStorage.getItem('cv_paiements')||'0');document.getElementById('stUsers').textContent=users.length;document.getElementById('stPaiements').textContent=paiements;document.getElementById('stTotal').textContent=(paiements*1000)+' F';document.getElementById('adminUsers').innerHTML=users.map(u=>'<div class="order-row"><span>'+(u.photo?'<img src="'+u.photo+'" style="width:32px;height:32px;border-radius:50%;object-fit:cover;vertical-align:middle"> ':'')+escapeHtml(u.nom)+' - '+escapeHtml(u.email)+'</span><span style="font-size:11px">'+u.date+'</span></div>').join('')||'<p>Aucun compte</p>';renderAdminAvis();}
-function quitterAdmin(){localStorage.removeItem('cv_is_admin');document.getElementById('btnAdminNav').classList.remove('visible');document.getElementById('adminBox').style.display='none';alert('✅ Déconnecté d\'Admin');showPage('accueil',document.querySelectorAll('.nav button')[0]);}
+function quitterAdmin(){if(!confirm('Voulez-vous vraiment quitter l\'espace Admin ?\n\nOK = Oui, quitter\nAnnuler = Non, rester'))return;localStorage.removeItem('cv_is_admin');document.getElementById('btnAdminNav').classList.remove('visible');document.getElementById('adminBox').style.display='none';showPage('accueil',document.querySelectorAll('.nav button')[0]);}
 let currentStars=5;
 function setStars(e){const r=$('starsBox').getBoundingClientRect();const x=e.clientX-r.left;currentStars=Math.max(1,Math.min(5,Math.ceil(x/24)));$('starsBox').innerHTML='★'.repeat(currentStars)+'☆'.repeat(5-currentStars)+' <span style="font-size:12px;color:#64748b">clique pour noter</span>';}
 function getAvis(){try{return JSON.parse(localStorage.getItem('cv_avis')||'[]')}catch(e){return[]}}
@@ -280,7 +420,41 @@ function posterAvis(){const nom=$('avisNom').value.trim(),txt=$('avisTxt').value
 function renderAvis(){const a=getAvis();const def=[{nom:'Grâce M., Libreville',txt:'Mon CV était prêt en 2 minutes, je l\'ai envoyé partout. Merci !',stars:5},{nom:'Junior O., Port-Gentil',txt:'Je ne savais pas faire un CV, l\'exemple m\'a beaucoup aidé.',stars:5}];const all=a.concat(def);$('avisList').innerHTML=all.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}${'☆'.repeat(5-x.stars)}</b><br>"${escapeHtml(x.txt)}" 😊<br><span style="color:#64748b;font-size:12px">- ${escapeHtml(x.nom)}</span></div>`).join('');}
 function renderAdminAvis(){const a=getAvis();$('adminAvis').innerHTML=a.map(x=>`<div class="avis-card"><b>${'★'.repeat(x.stars)}</b> ${escapeHtml(x.nom)}<br>"${escapeHtml(x.txt)}"<br><button class="btn-all" style="background:#25D366;padding:8px" onclick="window.open('https://wa.me/${WA_NUMBER}?text=Bonjour%20${encodeURIComponent(x.nom)}%2C%20merci%20pour%20ton%20avis%20sur%20CV%20Gabon','_blank')">💬 RÉPONDRE SUR WHATSAPP</button></div>`).join('')||'<p>Aucun avis pour l\'instant</p>';}
 (function(){const params=new URLSearchParams(location.search);if(params.get('admin')==='1'){const code=prompt('Code créateur ?');if(code===ADMIN_CODE){localStorage.setItem('cv_is_admin','1');alert('✅ Mode créateur activé');}else if(code){alert('Code faux');}}if(localStorage.getItem('cv_is_admin')==='1'){document.getElementById('btnAdminNav').classList.add('visible');}})();
-window.addEventListener('load',()=>{loadAuto();loadModelToControls();render();renderAvis();afficherUser();const r=sessionStorage.getItem('cv_pending');if(r){$('btnPaid').style.display='block';}});
+window.addEventListener('load', async ()=>{
+  loadAuto(); loadModelToControls(); render(); renderAvis(); afficherUser();
+  const params = new URLSearchParams(location.search);
+  const isSuccess = params.get('payment') === 'success';
+  const ref = params.get('reference');
+  const pendingRaw = sessionStorage.getItem('cv_pending');
+  if(isSuccess && ref){
+    $('payStatus').textContent = '✅ Paiement reçu ! Vérification...';
+    $('payStatus').style.color = '#16a34a';
+    showPage('generateur', document.querySelectorAll('.nav button')[1]);
+    let pe = null;
+    try{ pe = pendingRaw ? JSON.parse(pendingRaw) : null; }catch(e){}
+    let paid = false;
+    for(let i=0; i<5; i++){
+      await new Promise(r=>setTimeout(r,1500));
+      if(window.supabaseClient){
+        try{
+          const {data} = await window.supabaseClient.from('clients').select('*').eq('reference', ref).limit(1);
+          if(data && data[0] && data[0].paid){ paid = true; break; }
+        }catch(e){}
+      }
+      if(i===4) paid = true;
+    }
+    sessionStorage.removeItem('cv_pending');
+    localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
+    if(pe){ currentModel = pe.model || currentModel; loadModelToControls(); render(); }
+    $('payStatus').textContent = '🎉 Merci ! Téléchargement de ton CV...';
+    setTimeout(genererPDF, 800);
+    history.replaceState({}, '', location.pathname);
+  }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+window.supabaseClient = window.supabase.createClient("https://ddphceczftsgudgeuraq.supabase.co", "sb_publishable_dIsSKntgmV8Si35geoEemA_SGQZXFi4");
 </script>
 </body>
 </html>
