@@ -11,7 +11,7 @@ export async function onRequest(context) {
     const reference = "CVPRO-" + Date.now();
     const origin = new URL(request.url).origin;
 
-    const res = await fetch("https://api.saspay.me/v1/checkout/sessions", {
+    const res = await fetch("https://api.saspay.me/api/v1/payments/softpay/", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json", 
