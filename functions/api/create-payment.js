@@ -10,7 +10,7 @@ export async function onRequest(context) {
       currency: "XAF",
       country: "GA",
       phone_number: phone,
-      network: body.network || "airtel",
+      method: "airtel_money",
       reference: "CVPRO-" + Date.now(),
       customer: {
         first_name: body.first_name || "Client",
