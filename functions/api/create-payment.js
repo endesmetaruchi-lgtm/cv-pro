@@ -13,8 +13,9 @@ export async function onRequest(context) {
       network: body.network || "airtel",
       reference: "CVPRO-" + Date.now(),
       customer: {
-        name: body.name || "Client CV Pro",
-        phone_number: phone,
+        first_name: body.first_name || "Client",
+        last_name: body.last_name || "CV Pro",
+        phone: phone,
         email: body.email || "client@cvpro.ga"
       }
     })
