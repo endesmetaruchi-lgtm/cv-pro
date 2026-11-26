@@ -175,9 +175,9 @@ input,textarea,select{font-size:16px}
 <div class="mini-step"><b>4</b>Télécharge ton PDF</div>
 </div></div>
 </div>
+<div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <p class="seo-text">CV Gabon vous aide à créer un CV professionnel en ligne à Libreville, Port-Gentil, Oyem, Franceville, Moanda et partout au Gabon. Idéal pour étudiants, jeunes diplômés, demandeurs d'emploi.</p>
 </div><div id="page-generateur" class="page">
-<div class="pub-zone">[ PUB MONETAG 1 ]</div>
 <button class="exemple-toggle" onclick="document.getElementById('exempleBox').classList.toggle('open')">👀 VOIR L'EXEMPLE CV PRO COMPLET</button>
 <div id="exempleBox" class="exemple-content">
 <div style="background:#fff;border-radius:12px;padding:18px;border:1px solid #fde68a">
@@ -208,7 +208,6 @@ input,textarea,select{font-size:16px}
 <label class="label">Espace entre blocs : <span id="blockGapVal">8px</span></label><input type="range" id="blockGapRange" min="0" max="24" step="1" value="8" oninput="document.getElementById('blockGapVal').textContent=this.value+'px';updateStyle()">
 <label class="label">↕️ Ordre des blocs (flèches pour déplacer)</label><div id="orderList"></div>
 </div>
-<div class="pub-zone">[ PUB MONETAG 2 ]</div>
 <div class="card"><div class="section-title">2. TA PHOTO</div><input type="file" id="photoInput" accept="image/*"></div>
 <div class="card"><div class="section-title" style="background:#2563eb">3. TON IDENTITÉ</div>
 <div class="label-row"><label class="label">Nom complet *</label><div class="actions"><button class="btn-ex" onclick="copierUn('nom')">Exemple</button><button class="btn-del" onclick="effacerUn('nom')">🗑️</button></div></div><input id="nom" placeholder="Ex: MBOUMBA Jean Pierre"><div class="error" id="errNom">⚠️ Mets ton nom</div>
@@ -224,13 +223,14 @@ input,textarea,select{font-size:16px}
 <div class="label-row"><label class="label">Qualités</label><div class="actions"><button class="btn-ex" onclick="copierUn('qualites')">Exemple</button><button class="btn-del" onclick="effacerUn('qualites')">🗑️</button></div></div><input id="qualites">
 <div class="label-row"><label class="label">Motivation</label><div class="actions"><button class="btn-ex" onclick="copierUn('motiv')">Exemple</button><button class="btn-del" onclick="effacerUn('motiv')">🗑️</button></div></div><textarea id="motiv" style="height:60px"></textarea>
 <button class="btn-clear" onclick="effacerExemple()">🗑️ TOUT EFFACER DANS CE MODÈLE</button></div>
-<div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <button class="btn-pay" onclick="lancerPaiement()"><i class="fa-solid fa-lock"></i> PAYER 1000F ET TÉLÉCHARGER LE PDF<small>Airtel Money • Moov Money • Visa - via SasPay</small></button>
 <div id="payStatus" style="text-align:center;font-weight:800;margin-top:8px"></div>
 </div>
+<div class="pub-zone">[ PUB MONETAG 3 ]</div>
 <div class="card preview-card"><h3 style="margin:0 0 12px;font-size:14px" id="previewTitle">Aperçu Live - Modèle 1</h3><div class="preview-box" id="preview"></div></div>
 </div></div>
 <div id="page-avis" class="page">
+  <div class="pub-zone">[ PUB MONETAG 2 ]</div>
 <div class="card"><div class="section-title">💬 AVIS &amp; AIDE - MESSAGERIE</div>
 <p style="font-size:13px">Un souci ? Ton CV n'est pas arrivé alors que tu as payé ? Écris ici, on te répond sur WhatsApp direct 😊</p>
 <button class="btn-all" style="background:#25D366" onclick="window.open('https://wa.me/24165663721?text=Bonjour%2C%20j%27ai%20pay%C3%A9%201000F%20mais%20mon%20CV%20n%27est%20pas%20arriv%C3%A9%20%F0%9F%98%A1','_blank')">😡 MON CV N'EST PAS ARRIVÉ</button>
@@ -338,13 +338,8 @@ else{const ps=Math.min(st.photoSize||84,80);if(d.photo)safeAddImage(doc,d.photo,
 savePDFMobile(doc,'CV_'+nom.replace(/\s+/g,'_')+'.pdf');}
 function valider(){let ok=true;const tel=($('tel').value||'').replace(/\s/g,'');const email=$('email').value||'';$('errNom').classList.toggle('show',!$('nom').value.trim());if(!$('nom').value.trim())ok=false;$('errTitre').classList.toggle('show',!$('titre').value.trim());if(!$('titre').value.trim())ok=false;const telOk=tel.length>=8&&/^[0-9+]+$/.test(tel);$('errTel').classList.toggle('show',!telOk);if(!telOk)ok=false;const emailOk=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);$('errEmail').classList.toggle('show',!emailOk);if(!emailOk)ok=false;return ok;}
 function demanderCoordonnees(){
-  let wa = prompt("Avant de payer, mets ton numéro WhatsApp pour recevoir ton CV en cas de problème :\nEx: 065663721");
-  if(!wa) return null;
-  wa = wa.replace(/\s/g,'');
-  if(wa.length < 8){ alert("Numéro WhatsApp invalide"); return null; }
-  let email = prompt("Et ton email pour recevoir ton PDF :\nEx: tonemail@gmail.com");
-  if(!email) return null;
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Email invalide"); return null; }
+  const wa = ($('tel').value||'').replace(/\s/g,'');
+  const email = ($('email').value||'').trim();
   return {wa: wa, email: email};
 }
 // ===== V6 SASPAY SOFT PAY PUSH TELEPHONE =====
