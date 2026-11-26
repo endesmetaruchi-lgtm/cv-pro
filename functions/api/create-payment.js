@@ -5,7 +5,7 @@ export async function onRequestPost(context) {
     const amount = body.amount || 1000;
     const reference = "CV" + Date.now();
 
-    const res = await fetch("https://api.saspay.me/v1/payments/checkout/", {
+    const res = await fetch("https://api.saspay.me/v1/payments/", {
       method: "POST",
       headers: {
         "Authorization": `Basic ${btoa(env.SASPAY_KEY_ID + ":" + env.SASPAY_SECRET_KEY)}`,
