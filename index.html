@@ -347,15 +347,6 @@ function demanderCoordonnees(){
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Email invalide"); return null; }
   return {wa: wa, email: email};
 }
-async function saveClientToSupabase(nom, email, phone){
-  try{
-    if(window.supabaseClient){
-      const {error} = await window.supabaseClient.from("clients").insert({name: nom, email: email, phone: phone});
-      if(error) console.log("Supabase insert:", error.message);
-      else console.log("Client enregistré dans Supabase");
-    }
-  }catch(e){ console.log("Supabase non dispo", e); }
-}
 // ===== V5 SASPAY API - AUTO SANS BOUTON =====
 async function lancerPaiement(){
   if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
@@ -437,8 +428,8 @@ window.addEventListener('load', async ()=>{
       await new Promise(r=>setTimeout(r,1500));
       if(window.supabaseClient){
         try{
-          const {data} = await window.supabaseClient.from('clients').select('*').eq('reference', ref).limit(1);
-          if(data && data[0] && data[0].paid){ paid = true; break; }
+          const {data} = await window.supabaseClient.from('orders').select('*').eq('reference', ref).limit(1);
+          if(data && data[0] && data[0].status === 'paid'){ paid = true; break; }
         }catch(e){}
       }
       if(i===4) paid = true;
