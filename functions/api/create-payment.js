@@ -18,13 +18,14 @@ export async function onRequestPost(context) {
     };
 
     const urls = [
-      "https://api.saspay.me/v1/payments/",
-      "https://api.saspay.com/v1/payments/",
-      "https://api.saspay.me/v1/checkout-sessions/",
-      "https://api.saspay.com/v1/checkout-sessions/"
+      "https://api.saspay.me/v1/payments/checkout-create/",
+      "https://api.saspay.me/v1/payments/checkout/",
+      "https://api.saspay.me/v1/checkout/",
+      "https://api.saspay.me/v1/payment-links/",
+      "https://api.saspay.me/v1/payments/link/"
     ];
 
-    let lastText = "";
+    let logs = "";
     for (const url of urls) {
       const res = await fetch(url, {
         method: "POST",
@@ -35,12 +36,12 @@ export async function onRequestPost(context) {
         body: JSON.stringify(payload)
       });
       const text = await res.text();
-      lastText = url + " -> " + text.slice(0,150);
+      logs += url + " [" + res.status + "] " + text.slice(0,120) + " | ";
       if (res.ok) {
         return Response.json(JSON.parse(text));
       }
     }
-    return Response.json({ error: "Aucune adresse SasPay ne répond. Dernière: " + lastText }, { status: 500 });
+    return Response.json({ error: logs }, { status: 500 });
   } catch(e) {
     return Response.json({ error: e.message }, { status: 500 });
   }
