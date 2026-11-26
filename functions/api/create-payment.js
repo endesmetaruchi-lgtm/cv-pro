@@ -5,31 +5,42 @@ export async function onRequestPost(context) {
     const amount = body.amount || 1000;
     const reference = "CV" + Date.now();
 
-    const res = await fetch("https://api.saspay.me/v1/payments/", {
-      method: "POST",
-      headers: {
-        "Authorization": `Basic ${btoa(env.SASPAY_KEY_ID + ":" + env.SASPAY_SECRET_KEY)}`,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        amount: amount,
-        currency: "XAF",
-        description: "Paiement CV Pro Gabon",
-        reference: reference,
-        customer_email: body.email || "client@cv-gabon.ga",
-        customer_name: body.nom || "Client",
-        return_url: "https://cv-pro.pages.dev/?payment=success&reference=" + reference,
-        cancel_url: "https://cv-pro.pages.dev/",
-        notification_url: "https://cv-pro.pages.dev/api/notification"
-      })
-    });
+    const payload = {
+      amount: amount,
+      currency: "XAF",
+      description: "Paiement CV Pro Gabon",
+      reference: reference,
+      customer_email: body.email || "client@cv-gabon.ga",
+      customer_name: body.nom || "Client",
+      return_url: "https://cv-pro.pages.dev/?payment=success&reference=" + reference,
+      cancel_url: "https://cv-pro.pages.dev/",
+      notification_url: "https://cv-pro.pages.dev/api/notification"
+    };
 
-    const text = await res.text();
-    let data;
-    try { data = JSON.parse(text); } catch(e) {
-      return Response.json({ error: "SasPay a renvoyé: " + text.slice(0,200) }, { status: 500 });
+    const urls = [
+      "https://api.saspay.me/v1/payments/",
+      "https://api.saspay.com/v1/payments/",
+      "https://api.saspay.me/v1/checkout-sessions/",
+      "https://api.saspay.com/v1/checkout-sessions/"
+    ];
+
+    let lastText = "";
+    for (const url of urls) {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Authorization": `Basic ${btoa(env.SASPAY_KEY_ID + ":" + env.SASPAY_SECRET_KEY)}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const text = await res.text();
+      lastText = url + " -> " + text.slice(0,150);
+      if (res.ok) {
+        return Response.json(JSON.parse(text));
+      }
     }
-    return Response.json(data);
+    return Response.json({ error: "Aucune adresse SasPay ne répond. Dernière: " + lastText }, { status: 500 });
   } catch(e) {
     return Response.json({ error: e.message }, { status: 500 });
   }
