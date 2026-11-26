@@ -347,14 +347,14 @@ function demanderCoordonnees(){
   if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ alert("Email invalide"); return null; }
   return {wa: wa, email: email};
 }
-// ===== V5 SASPAY API - AUTO SANS BOUTON =====
+// ===== V6 SASPAY SOFT PAY PUSH TELEPHONE =====
 async function lancerPaiement(){
   if(!valider()){alert('⚠️ Corrige les erreurs en rouge');return;}
   saveAuto();
   const coords = demanderCoordonnees();
   if(!coords) return;
   const status = $('payStatus');
-  status.textContent = '⏳ Création du paiement SasPay...';
+  status.textContent = '⏳ Envoi de la demande sur ton téléphone...';
   status.style.color = '#0f766e';
   try{
     const res = await fetch('/api/create-payment', {
@@ -370,21 +370,55 @@ async function lancerPaiement(){
       })
     });
     const data = await res.json();
-    if(!res.ok || !data.checkout_url){
-      console.error(data);
-      alert('❌ Impossible de créer le paiement SasPay.\n' + (data.error || 'Vérifie que les clés sont bien mises dans Cloudflare.'));
-      status.textContent = '';
+    console.log('SasPay:', data);
+    if(data.pushed){
+      sessionStorage.setItem('cv_pending', JSON.stringify({
+        model: currentModel, time: Date.now(),
+        email: coords.email, wa: coords.wa,
+        nom: $('nom').value.trim(),
+        reference: data.reference
+      }));
+      status.textContent = '✅ Demande envoyée ! Vérifie ton téléphone Airtel Money et tape ton code pour valider les 1000 FCFA';
+      status.style.color = '#16a34a';
+      alert('✅ Paiement envoyé !\n\nVérifie ton téléphone Airtel Money et tape ton code pour valider les 1000 FCFA.\n\nTon CV se téléchargera automatiquement après validation (environ 30 secondes).');
+      let attempts = 0;
+      let paid = false;
+      while(attempts < 20){
+        await new Promise(r=>setTimeout(r,3000));
+        attempts++;
+        status.textContent = '⏳ En attente de ton code sur le téléphone... (' + attempts + ')';
+        if(window.supabaseClient){
+          try{
+            const {data: orders} = await window.supabaseClient.from('orders').select('*').eq('reference', data.reference).limit(1);
+            if(orders && orders[0] && orders[0].status === 'paid'){ paid = true; break; }
+          }catch(e){}
+        }
+      }
+      if(paid){
+        localStorage.setItem('cv_paiements',(parseInt(localStorage.getItem('cv_paiements')||'0')+1));
+        sessionStorage.removeItem('cv_pending');
+        status.textContent = '🎉 Paiement reçu ! Téléchargement de ton CV...';
+        setTimeout(genererPDF, 800);
+      }else{
+        status.textContent = '⚠️ Pas encore validé. Si tu as tapé ton code, recharge la page, ton CV est peut-être déjà payé. Sinon recommence.';
+        alert('⚠️ Je n\'ai pas encore vu ton paiement.\n\nSi tu as déjà tapé ton code Airtel, attends 10 secondes et recharge la page.\nSi non, recommence le paiement.');
+      }
       return;
     }
-    sessionStorage.setItem('cv_pending', JSON.stringify({
-      model: currentModel, time: Date.now(),
-      email: coords.email, wa: coords.wa,
-      nom: $('nom').value.trim(),
-      reference: data.reference,
-      checkout_url: data.checkout_url
-    }));
-    status.textContent = '✅ Paiement créé ! Redirection vers SasPay...';
-    window.location.href = data.checkout_url;
+    if(data.checkout_url){
+      sessionStorage.setItem('cv_pending', JSON.stringify({
+        model: currentModel, time: Date.now(),
+        email: coords.email, wa: coords.wa,
+        nom: $('nom').value.trim(),
+        reference: data.reference,
+        checkout_url: data.checkout_url
+      }));
+      status.textContent = '✅ Paiement créé ! Redirection vers SasPay...';
+      window.location.href = data.checkout_url;
+      return;
+    }
+    alert('❌ Impossible de créer le paiement SasPay.\n' + (data.error || JSON.stringify(data)));
+    status.textContent = '';
   }catch(e){
     console.error(e);
     alert('❌ Erreur réseau. Vérifie ta connexion puis recommence.');
